@@ -6,7 +6,7 @@
     "scripts": {
         "dev": "nodemon ./index.mjs --ignore '*.json'",
         "preinstall": "sudo npm i -g pm2",
-        "launch": "pm2 start ./index.mjs -i 0 -n scrap",
+        "launch": "pm2 start ./index.mjs -i 1 -n scrap",
         "restart": "pm2 restart scrap",
         "stop": "pm2 delete scrap"
     },
