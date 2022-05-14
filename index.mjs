@@ -28,11 +28,11 @@ process.once('unhandledRejection', async (ex) => {
         await init_lowdb();
         await server.initialize();
         scrapAndSave();
-        scheduleJob('job_scrap', '*/1 * * * *', async () => {
+        scheduleJob('job_scrap', '*/5 * * * *', async () => {
             if (process.env.NODE_ENV == 'dev') console.log('scrap start @', new Date().toLocaleString('en-US', { timeZone: 'IST', timeZoneName: 'short' }));
             await scrapAndSave();
             if (process.env.NODE_ENV == 'dev') console.log('scrap finished @', new Date().toLocaleString('en-US', { timeZone: 'IST', timeZoneName: 'short' }, '\n'));
-        }); // run every 1 minute
+        }); // run every 5 minute
     } catch (err) {
         console.info(':-(');
         console.error(`reason: ${err.message}, stack: ${err.stack}`);

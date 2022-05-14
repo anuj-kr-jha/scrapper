@@ -64,10 +64,10 @@ export const c = {
 
     reset: async (req, res, next) => {
         low._Error.length = 0;
-        low.Final.length = 0;
-        low.Dailyfx.length = 0;
-        low.Myfxbook.length = 0;
-        low.Ig.length = 0;
+        // low.Final.length = 0;
+        // low.Dailyfx.length = 0;
+        // low.Myfxbook.length = 0;
+        // low.Ig.length = 0;
 
         await low.db.write();
 
