@@ -3,7 +3,7 @@ import helmet from 'helmet';
 import express from 'express';
 import compression from 'compression';
 import { router } from '../app/routers/index.mjs';
-
+process.env.PORT = process.env.PORT || 4000
 class Server {
     constructor() {}
 

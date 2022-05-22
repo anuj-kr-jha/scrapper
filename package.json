@@ -21,5 +21,6 @@
         "node-schedule": "^2.1.0",
         "nth-check": "^2.0.1",
         "p-limit": "^4.0.0"
-    }
+    },
+    "type": "module"
 }

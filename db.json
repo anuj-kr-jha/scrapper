@@ -107,7 +107,7 @@
         "https://www.myfxbook.com/community/outlook/XAUAUD"
       ],
       "dailyFx_url": "https://www.dailyfx.com/sentiment-report",
-      "created_at": "2022-05-22T15:41:39.075Z"
+      "created_at": "2022-05-22T15:45:42.643Z"
     }
   ],
   "FINAL": [
@@ -136,8 +136,8 @@
         },
         {
           "currency": "GBPJPY",
-          "long": "0.44",
-          "short": "0.56",
+          "long": "0.60",
+          "short": "0.40",
           "ssi_signal": "BEARISH",
           "oi_signal": "FLAT"
         },
@@ -150,8 +150,8 @@
         },
         {
           "currency": "EURAUD",
-          "long": "0.64",
-          "short": "0.36",
+          "long": "0.53",
+          "short": "0.47",
           "ssi_signal": "BULLISH",
           "oi_signal": "NA"
         },
@@ -318,8 +318,8 @@
         },
         {
           "currency": "USDZAR",
-          "long": "0.38",
-          "short": "0.62",
+          "long": "0.53",
+          "short": "0.47",
           "ssi_signal": "FLAT",
           "oi_signal": "NA"
         },
@@ -332,8 +332,8 @@
         },
         {
           "currency": "USDSEK",
-          "long": "0.43",
-          "short": "0.57",
+          "long": "0.64",
+          "short": "0.36",
           "ssi_signal": "BEARISH",
           "oi_signal": "NA"
         },
@@ -346,8 +346,8 @@
         },
         {
           "currency": "XAGUSD",
-          "long": "0.84",
-          "short": "0.16",
+          "long": "0.95",
+          "short": "0.05",
           "ssi_signal": "BULLISH",
           "oi_signal": "NA"
         },
@@ -388,8 +388,8 @@
         },
         {
           "currency": "XPTUSD",
-          "long": "0.88",
-          "short": "0.12",
+          "long": "0.86",
+          "short": "0.14",
           "ssi_signal": "BULLISH",
           "oi_signal": "NA"
         },
@@ -437,8 +437,8 @@
         },
         {
           "currency": "NAS100USD",
-          "long": "0.77",
-          "short": "0.23",
+          "long": "0.70",
+          "short": "0.30",
           "ssi_signal": "BULLISH",
           "oi_signal": "NA"
         },
@@ -493,8 +493,8 @@
         },
         {
           "currency": "FR40EUR",
-          "long": "0.60",
-          "short": "0.40",
+          "long": "0.63",
+          "short": "0.37",
           "ssi_signal": "FLAT",
           "oi_signal": "NA"
         },
@@ -576,7 +576,7 @@
           "oi_signal": "NA"
         }
       ],
-      "createdAt": "2022-05-22T15:41:50.908Z"
+      "createdAt": "2022-05-22T16:25:15.184Z"
     }
   ],
   "MYFXBOOK": [
@@ -835,7 +835,7 @@
           "ssi_signal": "FLAT"
         }
       ],
-      "createdAt": "2022-05-22T15:41:50.907Z"
+      "createdAt": "2022-05-22T16:25:15.183Z"
     }
   ],
   "IG": [
@@ -870,10 +870,10 @@
         },
         {
           "currency": "GBPJPY",
-          "percent": "0.56",
-          "longShort": "short",
-          "long": "0.44",
-          "short": "0.56",
+          "percent": "0.60",
+          "longShort": "long",
+          "long": "0.60",
+          "short": "0.40",
           "signal": "FLAT",
           "ssi_signal": "BEARISH"
         },
@@ -888,10 +888,10 @@
         },
         {
           "currency": "EURAUD",
-          "percent": "0.64",
+          "percent": "0.53",
           "longShort": "long",
-          "long": "0.64",
-          "short": "0.36",
+          "long": "0.53",
+          "short": "0.47",
           "signal": "FLAT",
           "ssi_signal": "BULLISH"
         },
@@ -1104,10 +1104,10 @@
         },
         {
           "currency": "USDZAR",
-          "percent": "0.62",
-          "longShort": "short",
-          "long": "0.38",
-          "short": "0.62",
+          "percent": "0.53",
+          "longShort": "long",
+          "long": "0.53",
+          "short": "0.47",
           "signal": "FLAT",
           "ssi_signal": "FLAT"
         },
@@ -1122,10 +1122,10 @@
         },
         {
           "currency": "USDSEK",
-          "percent": "0.57",
-          "longShort": "short",
-          "long": "0.43",
-          "short": "0.57",
+          "percent": "0.64",
+          "longShort": "long",
+          "long": "0.64",
+          "short": "0.36",
           "signal": "FLAT",
           "ssi_signal": "BEARISH"
         },
@@ -1140,10 +1140,10 @@
         },
         {
           "currency": "XAGUSD",
-          "percent": "0.84",
+          "percent": "0.95",
           "longShort": "long",
-          "long": "0.84",
-          "short": "0.16",
+          "long": "0.95",
+          "short": "0.05",
           "signal": "BULLISH",
           "ssi_signal": "BULLISH"
         },
@@ -1194,10 +1194,10 @@
         },
         {
           "currency": "XPTUSD",
-          "percent": "0.88",
+          "percent": "0.86",
           "longShort": "long",
-          "long": "0.88",
-          "short": "0.12",
+          "long": "0.86",
+          "short": "0.14",
           "signal": "BULLISH",
           "ssi_signal": "BULLISH"
         },
@@ -1257,10 +1257,10 @@
         },
         {
           "currency": "NAS100USD",
-          "percent": "0.77",
+          "percent": "0.70",
           "longShort": "long",
-          "long": "0.77",
-          "short": "0.23",
+          "long": "0.70",
+          "short": "0.30",
           "signal": "BULLISH",
           "ssi_signal": "BULLISH"
         },
@@ -1329,10 +1329,10 @@
         },
         {
           "currency": "FR40EUR",
-          "percent": "0.60",
+          "percent": "0.63",
           "longShort": "long",
-          "long": "0.60",
-          "short": "0.40",
+          "long": "0.63",
+          "short": "0.37",
           "signal": "FLAT",
           "ssi_signal": "FLAT"
         },
@@ -1418,7 +1418,7 @@
           "ssi_signal": "FLAT"
         }
       ],
-      "createdAt": "2022-05-22T15:41:50.904Z"
+      "createdAt": "2022-05-22T16:25:15.180Z"
     }
   ],
   "DAILYFX": [
@@ -1785,7 +1785,7 @@
           }
         }
       ],
-      "createdAt": "2022-05-22T15:41:50.906Z"
+      "createdAt": "2022-05-22T16:25:15.182Z"
     }
   ],
   "ERROR": []
