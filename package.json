@@ -5,9 +5,12 @@
     "license": "MIT",
     "scripts": {
         "dev": "nodemon ./index.mjs --ignore '*.json'",
-        "launch": "pm2 start ./index.mjs -i 1 -n scrap",
-        "restart": "pm2 restart scrap",
-        "stop": "pm2 delete scrap"
+        "preinstall": "npm i -g forever",
+        "launch": "forever start ./index.mjs",
+        "restart": "forever restart 0 ",
+        "stop": "forever stop 0 ",
+        "logs": "forever logs 0 ",
+        "list": "forever list"
     },
     "dependencies": {
         "axios": "^0.27.2",
