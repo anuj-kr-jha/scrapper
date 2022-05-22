@@ -1,5 +1,4 @@
 import axios from 'axios';
-// import { load } from 'cheerio';
 import pkg from 'cheerio';
 const { load } = pkg;
 

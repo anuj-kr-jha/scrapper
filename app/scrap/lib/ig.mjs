@@ -1,6 +1,5 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
-// import { load } from 'cheerio';
 import pkg from 'cheerio';
 const { load } = pkg;
 
@@ -43,7 +42,7 @@ function titleRename(title) {
 
 async function scrapIG(url, log) {
     try {
-        const response = await axios.get(url, { timeout: 30e3, maxContentLength: 1e6 });
+        const response = await axios.get(url, { timeout: 60e3, maxContentLength: 2e6 });
         const html = await response.data;
 
         if (response.status == 200) {
@@ -70,11 +69,9 @@ async function scrapIG(url, log) {
 
             return result;
         }
-        console.error(`scrap failed. url: ${url} status: ${response.status}`);
-        return {};
+        throw new Error()
     } catch (err) {
-        console.error(err.message);
-        console.error(`scrapping[ig] failed :)`);
+        console.error(`scrapping[ig] failed :). \n url: ${url} status: ${response.status}`);
 
         db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
         return {};
@@ -99,12 +96,11 @@ async function scrapIGs(urls = []) {
                 console.error(`not found(ig) => currency: ${currency} percent: ${percent} longShort: ${longShort}`);
                 continue;
             }
-            result[currency] = { currency, percent, longShort }; // TODO
+            result[currency] = { currency, percent, longShort };
         }
         return result;
     } catch (err) {
-        console.error(err.message);
-        console.error('scrapping failed :)');
+        console.error('scrapping failed :), reason: ', err.message);
     }
 }
 
