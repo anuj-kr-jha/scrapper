@@ -5,23 +5,21 @@
     "license": "MIT",
     "scripts": {
         "dev": "nodemon ./index.mjs --ignore '*.json'",
-        "preinstall": "sudo npm i -g pm2",
         "launch": "pm2 start ./index.mjs -i 1 -n scrap",
         "restart": "pm2 restart scrap",
         "stop": "pm2 delete scrap"
     },
     "dependencies": {
         "axios": "^0.27.2",
-        "cheerio": "^1.0.0-rc.10",
+        "cheerio": "0.22.0",
         "compression": "^1.7.4",
         "express": "^4.18.1",
         "express-rate-limit": "^6.4.0",
         "helmet": "^5.0.2",
-        "lodash": "^4.17.21",
-        "lowdb": "^3.0.0",
-        "mongoose": "^6.3.2",
+        "lowdb": "^1.0.0",
         "morgan": "^1.10.0",
         "node-schedule": "^2.1.0",
+        "nth-check": "^2.0.1",
         "p-limit": "^4.0.0"
     }
 }

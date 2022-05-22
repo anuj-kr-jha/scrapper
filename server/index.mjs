@@ -10,12 +10,12 @@ class Server {
     async initialize() {
         this.app = express();
         this.httpServer = http.createServer(this.app);
-        await this.#setupMiddleware();
-        await this.#setupServer();
+        await this.setupMiddleware();
+        await this.setupServer();
         global.app = this.app;
     }
 
-    async #setupMiddleware() {
+    async setupMiddleware() {
         this.app.disable('etag'); //
         this.app.use(helmet());
         this.app.use(compression());
@@ -32,7 +32,7 @@ class Server {
         this.app.use('/', router);
     }
 
-    async #setupServer() {
+    async setupServer() {
         this.httpServer.timeout = 120e3; // 120*1000
         this.httpServer.listen(process.env.PORT, () => console.log(`Spinning on ${process.env.PORT} 🌀`));
     }

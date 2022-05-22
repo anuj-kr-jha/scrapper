@@ -1,1 +1,1 @@
-export { getDb, init_lowdb } from './lib/lowdb.mjs';
+export { init_lowdb } from './lib/lowdb.mjs';

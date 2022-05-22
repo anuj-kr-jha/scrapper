@@ -6,22 +6,13 @@ import { scrapAndSave } from './app/scrap/index.mjs';
 
 process.env.UV_THREADPOOL_SIZE = '1';
 
-process.once('uncaughtException', async (ex) => {
-    console.error(`we have uncaughtException, ${ex.message}, ${ex.stack}`);
-
-    low._Error.splice(9, 1, { message: ex.message, method: 'main', createdAt: new Date().toISOString(), trace: ex.stack });
-    await low.db.write();
-
+async function exception(ex, type) {
+    console.error(`we have ${type}, ${ex.message}, ${ex.stack}`);
+    db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
     process.exit(1);
-});
-process.once('unhandledRejection', async (ex) => {
-    console.error(`we have unhandledRejection, ${ex.message}, ${ex.stack}`);
-
-    low._Error.splice(9, 1, { message: ex.message, method: 'main', createdAt: new Date().toISOString(), trace: ex.stack });
-    await low.db.write();
-
-    process.exit(1);
-});
+}
+process.once('uncaughtException', (ex) => exception(ex, 'uncaughtException'));
+process.once('unhandledRejection', (ex) => exception(ex, 'unhandledRejection'));
 
 (async () => {
     try {
@@ -29,15 +20,13 @@ process.once('unhandledRejection', async (ex) => {
         await server.initialize();
         scrapAndSave();
         scheduleJob('job_scrap', '*/5 * * * *', async () => {
-            if (process.env.NODE_ENV == 'dev') console.log('scrap start @', new Date().toLocaleString('en-US', { timeZone: 'IST', timeZoneName: 'short' }));
+            if (process.env.NODE_ENV == 'dev') console.log('scrap start @', new Date().toLocaleString('en-US', { timeZoneName: 'short' }));
             await scrapAndSave();
-            if (process.env.NODE_ENV == 'dev') console.log('scrap finished @', new Date().toLocaleString('en-US', { timeZone: 'IST', timeZoneName: 'short' }, '\n'));
+            if (process.env.NODE_ENV == 'dev') console.log('scrap finished @', new Date().toLocaleString('en-US', { timeZoneName: 'short' }, '\n'));
         }); // run every 5 minute
     } catch (err) {
         console.info(':-(');
         console.error(`reason: ${err.message}, stack: ${err.stack}`);
-
-        low._Error.splice(9, 1, { message: err.message, method: 'main', createdAt: new Date().toISOString(), trace: err.stack });
-        await low.db.write();
+        db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
     }
 })();

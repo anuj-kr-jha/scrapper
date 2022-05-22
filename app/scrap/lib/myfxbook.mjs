@@ -1,6 +1,7 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
-import { load } from 'cheerio';
+import pkg from 'cheerio';
+const { load } = pkg;
 
 async function scrapMyFx(url, log) {
     try {
@@ -10,16 +11,14 @@ async function scrapMyFx(url, log) {
         if (response.status == 200) {
             const $ = load(html);
 
-            const symbolSelector = '#currentMetricsTable > tbody > tr:nth-child(1) > td';
-            const shortPercentSelector = '#currentMetricsTable > tbody > tr:nth-child(2) > td:nth-child(2)';
-            // const longPercentSelector = '#currentMetricsTable > tbody > tr:nth-child(3) > td:nth-child(2)';
+
+            const symbolSelector = '#currentMetricsTable > tr:nth-child(2)';
+            const shortPercentSelector = '#currentMetricsTable > tr:nth-child(3) > td:nth-child(2)';
 
             let currency = $(symbolSelector).text();
             let shortPercent = $(shortPercentSelector).text();
-            // let longPercent = $(longPercentSelector).text()
 
             shortPercent = parseFloat(shortPercent.replace('%', '')) / 100;
-            // longPercent = parseFloat(longPercent.replace('%', '')) / 100;
 
             currency = currency.replace(new RegExp('/', 'g'), '');
             currency = currency.replace(new RegExp('-', 'g'), '');

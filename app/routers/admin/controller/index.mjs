@@ -12,8 +12,8 @@ export const c = {
     },
     send: (req, res, next) => {
         try {
-            if (req.data?.err) return res.send('server error');
             if (!req.data) return res.send('server error');
+            if (req.data.err) return res.send('server error');
             res.send(req.data._data);
         } catch (err) {
             console.error({ name: err.name, msg: err.message, err });
@@ -22,8 +22,8 @@ export const c = {
     },
     json: (req, res, next) => {
         try {
-            if (req.data?.err) return res.send('server error');
             if (!req.data) return res.send('server error');
+            if (req.data.err) return res.send('server error');
             res.json(req.data._data);
         } catch (err) {
             console.error({ name: err.name, msg: err.message, err });
@@ -33,7 +33,7 @@ export const c = {
     update: async (req, res, next) => {
         try {
             const { factor, ig_urls, myFxBook_urls, dailyFx_url } = req.body;
-            const old_constant = low.Constant[0];
+            const old_constant = getConstant(0);
             const data = {
                 factor: factor || old_constant.factor,
                 ig_urls: ig_urls.length > 0 ? ig_urls : old_constant.ig_urls,
@@ -41,35 +41,33 @@ export const c = {
                 dailyFx_url: dailyFx_url || old_constant.dailyFx_url,
                 created_at: new Date().toISOString(),
             };
-            low.Constant.unshift(data);
-            low.Constant.splice(1);
-            await low.db.write();
-            req.data = { err: false, _data: low.Constant[0], info: '' };
+
+            db.get('CONSTANT').unshift(data).write();
+            db.get('CONSTANT').splice(1).write();
+
+            req.data = { err: false, _data: getConstant(0), info: '' };
         } catch (err) {
             console.error(`error on admin/update  reason: ${err.message}, trace: ${err.stack}`);
             req.data = { err: true, _data: null, info: err.message };
 
-            low._Error.splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack });
-            await low.db.write();
+            db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
         } finally {
             next();
             await scrapAndSave();
         }
     },
     health_check: async (req, res, next) => {
-        const errors = low._Error;
-
+        const errors = db.get('ERROR').value();
         return res.json(errors);
     },
 
     reset: async (req, res, next) => {
-        low._Error.length = 0;
-        // low.Final.length = 0;
-        // low.Dailyfx.length = 0;
-        // low.Myfxbook.length = 0;
-        // low.Ig.length = 0;
+        db.set('ERROR', []).write();
 
-        await low.db.write();
+        // db.set('MYFXBOOK', []).write();
+        // db.set('IG', []).write();
+        // db.set('DAILYFX', []).write();
+        // db.set('FINAL', []).write();
 
         return res.send('ok');
     },

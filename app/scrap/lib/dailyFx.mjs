@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { load } from 'cheerio';
+// import { load } from 'cheerio';
+import pkg from 'cheerio';
+const { load } = pkg;
 
 export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment-report', log = false) {
     try {

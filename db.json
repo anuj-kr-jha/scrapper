@@ -1,0 +1,1792 @@
+{
+  "CONSTANT": [
+    {
+      "factor": 0.3,
+      "ig_urls": [
+        "https://www.ig.com/ae/forex/markets-forex/eur-usd",
+        "https://www.ig.com/ae/forex/markets-forex/gbp-usd",
+        "https://www.ig.com/ae/forex/markets-forex/usd-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/gbp-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/usd-cad",
+        "https://www.ig.com/ae/forex/markets-forex/eur-aud",
+        "https://www.ig.com/ae/forex/markets-forex/eur-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/aud-cad",
+        "https://www.ig.com/ae/forex/markets-forex/aud-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/aud-nzd",
+        "https://www.ig.com/ae/forex/markets-forex/aud-usd",
+        "https://www.ig.com/ae/forex/markets-forex/cad-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/eur-cad",
+        "https://www.ig.com/ae/forex/markets-forex/eur-chf",
+        "https://www.ig.com/ae/forex/markets-forex/eur-gbp",
+        "https://www.ig.com/ae/forex/markets-forex/eur-nzd",
+        "https://www.ig.com/ae/forex/markets-forex/eur-zar",
+        "https://www.ig.com/ae/forex/markets-forex/gbp-cad",
+        "https://www.ig.com/ae/forex/markets-forex/gbp-chf",
+        "https://www.ig.com/ae/forex/markets-forex/spot-fx-nzdcad",
+        "https://www.ig.com/ae/forex/markets-forex/nzd-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/nzd-usd",
+        "https://www.ig.com/ae/forex/markets-forex/usd-chf",
+        "https://www.ig.com/ae/forex/markets-forex/chf-jpy",
+        "https://www.ig.com/ae/forex/markets-forex/aud-chf",
+        "https://www.ig.com/ae/forex/markets-forex/gbp-nzd",
+        "https://www.ig.com/ae/forex/markets-forex/nzd-chf",
+        "https://www.ig.com/ae/forex/markets-forex/cad-chf",
+        "https://www.ig.com/ae/forex/markets-forex/gbp-aud",
+        "https://www.ig.com/ae/forex/markets-forex/usd-zar",
+        "https://www.ig.com/ae/forex/markets-forex/usd-nok",
+        "https://www.ig.com/ae/forex/markets-forex/usd-sek",
+        "https://www.ig.com/ae/commodities/markets-commodities/gold",
+        "https://www.ig.com/ae/commodities/markets-commodities/silver",
+        "https://www.ig.com/ae/forex/markets-forex/usd-dkk",
+        "https://www.ig.com/ae/forex/markets-forex/usd-sgd",
+        "https://www.ig.com/ae/commodities/markets-commodities/brent-crude",
+        "https://www.ig.com/ae/commodities/markets-commodities/us-light-crude",
+        "https://www.ig.com/ae/forex/markets-forex/cash-copper",
+        "https://www.ig.com/ae/forex/markets-forex/spot-platinum-mini-lcp-5oz",
+        "https://www.ig.com/ae/commodities/markets-commodities/natural-gas",
+        "https://www.ig.com/ae/commodities/markets-commodities/heating-oil",
+        "https://www.ig.com/ae/commodities/markets-commodities/london-gas-oil",
+        "https://www.ig.com/ae/commodities/markets-commodities/london-sugar-no-5",
+        "https://www.ig.com/ae/indices/markets-indices/wall-street",
+        "https://www.ig.com/ae/indices/markets-indices/russell-2000",
+        "https://www.ig.com/ae/indices/markets-indices/us-tech-100",
+        "https://www.ig.com/ae/indices/markets-indices/us-spx-500",
+        "https://www.ig.com/ae/indices/markets-indices/ftse-100",
+        "https://www.ig.com/ae/indices/markets-indices/japan-225",
+        "https://www.ig.com/ae/indices/markets-indices/india-50",
+        "https://www.ig.com/ae/indices/markets-indices/germany-40",
+        "https://www.ig.com/ae/indices/markets-indices/australia-200",
+        "https://www.ig.com/ae/indices/markets-indices/eu-stocks-50",
+        "https://www.ig.com/ae/indices/markets-indices/france-40",
+        "https://www.ig.com/ae/indices/markets-indices/hang-seng-tech-cash-hk10",
+        "https://www.ig.com/ae/indices/markets-indices/taiwan-index-tw",
+        "https://www.ig.com/ae/indices/markets-indices/holland-25",
+        "https://www.ig.com/ae/indices/markets-indices/USFANG",
+        "https://www.ig.com/ae/indices/markets-indices/volatility-index",
+        "https://www.ig.com/ae/forex/markets-forex/cash-aluminium-5-mini-contract",
+        "https://www.ig.com/ae/forex/markets-forex/cash-lead-5-mini-contract1",
+        "https://www.ig.com/ae/forex/markets-forex/cash-zinc1",
+        "https://www.ig.com/ae/commodities/markets-commodities/no-lead-gasoline"
+      ],
+      "myFxBook_urls": [
+        "https://www.myfxbook.com/community/outlook/EURUSD",
+        "https://www.myfxbook.com/community/outlook/GBPUSD",
+        "https://www.myfxbook.com/community/outlook/USDJPY",
+        "https://www.myfxbook.com/community/outlook/GBPJPY",
+        "https://www.myfxbook.com/community/outlook/USDCAD",
+        "https://www.myfxbook.com/community/outlook/EURAUD",
+        "https://www.myfxbook.com/community/outlook/EURJPY",
+        "https://www.myfxbook.com/community/outlook/AUDCAD",
+        "https://www.myfxbook.com/community/outlook/AUDJPY",
+        "https://www.myfxbook.com/community/outlook/AUDNZD",
+        "https://www.myfxbook.com/community/outlook/AUDUSD",
+        "https://www.myfxbook.com/community/outlook/CADJPY",
+        "https://www.myfxbook.com/community/outlook/EURCAD",
+        "https://www.myfxbook.com/community/outlook/EURCHF",
+        "https://www.myfxbook.com/community/outlook/EURGBP",
+        "https://www.myfxbook.com/community/outlook/EURNZD",
+        "https://www.myfxbook.com/community/outlook/EURZAR",
+        "https://www.myfxbook.com/community/outlook/GBPCAD",
+        "https://www.myfxbook.com/community/outlook/GBPCHF",
+        "https://www.myfxbook.com/community/outlook/NZDCAD",
+        "https://www.myfxbook.com/community/outlook/NZDJPY",
+        "https://www.myfxbook.com/community/outlook/NZDUSD",
+        "https://www.myfxbook.com/community/outlook/USDCHF",
+        "https://www.myfxbook.com/community/outlook/CHFJPY",
+        "https://www.myfxbook.com/community/outlook/AUDCHF",
+        "https://www.myfxbook.com/community/outlook/GBPNZD",
+        "https://www.myfxbook.com/community/outlook/NZDCHF",
+        "https://www.myfxbook.com/community/outlook/CADCHF",
+        "https://www.myfxbook.com/community/outlook/GBPAUD",
+        "https://www.myfxbook.com/community/outlook/USDZAR",
+        "https://www.myfxbook.com/community/outlook/USDNOK",
+        "https://www.myfxbook.com/community/outlook/USDSEK",
+        "https://www.myfxbook.com/community/outlook/XAGUSD",
+        "https://www.myfxbook.com/community/outlook/XAUUSD",
+        "https://www.myfxbook.com/community/outlook/XAUEUR",
+        "https://www.myfxbook.com/community/outlook/XAUAUD"
+      ],
+      "dailyFx_url": "https://www.dailyfx.com/sentiment-report",
+      "created_at": "2022-05-22T15:41:39.075Z"
+    }
+  ],
+  "FINAL": [
+    {
+      "FX": [
+        {
+          "currency": "EURUSD",
+          "long": "0.68",
+          "short": "0.32",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "GBPUSD",
+          "long": "0.72",
+          "short": "0.28",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "USDJPY",
+          "long": "0.29",
+          "short": "0.71",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPJPY",
+          "long": "0.44",
+          "short": "0.56",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "USDCAD",
+          "long": "0.53",
+          "short": "0.47",
+          "ssi_signal": "FLAT",
+          "oi_signal": "BEARISH"
+        },
+        {
+          "currency": "EURAUD",
+          "long": "0.64",
+          "short": "0.36",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "EURJPY",
+          "long": "0.32",
+          "short": "0.68",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "AUDCAD",
+          "long": "0.52",
+          "short": "0.48",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "AUDJPY",
+          "long": "0.31",
+          "short": "0.69",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "AUDNZD",
+          "long": "0.25",
+          "short": "0.75",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "AUDUSD",
+          "long": "0.67",
+          "short": "0.33",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "CADJPY",
+          "long": "0.22",
+          "short": "0.78",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "EURCAD",
+          "long": "0.76",
+          "short": "0.24",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "EURCHF",
+          "long": "0.69",
+          "short": "0.31",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "FLAT"
+        },
+        {
+          "currency": "EURGBP",
+          "long": "0.60",
+          "short": "0.40",
+          "ssi_signal": "FLAT",
+          "oi_signal": "BEARISH"
+        },
+        {
+          "currency": "EURNZD",
+          "long": "0.50",
+          "short": "0.50",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "EURZAR",
+          "long": "0.26",
+          "short": "0.74",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "GBPCAD",
+          "long": "0.84",
+          "short": "0.16",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "GBPCHF",
+          "long": "0.80",
+          "short": "0.20",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NZDCAD",
+          "long": "0.63",
+          "short": "0.37",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NZDJPY",
+          "long": "0.36",
+          "short": "0.64",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NZDUSD",
+          "long": "0.72",
+          "short": "0.28",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDCHF",
+          "long": "0.52",
+          "short": "0.48",
+          "ssi_signal": "FLAT",
+          "oi_signal": "BEARISH"
+        },
+        {
+          "currency": "CHFJPY",
+          "long": "0.18",
+          "short": "0.82",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "AUDCHF",
+          "long": "0.38",
+          "short": "0.62",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "GBPNZD",
+          "long": "0.73",
+          "short": "0.27",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NZDCHF",
+          "long": "0.57",
+          "short": "0.43",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "CADCHF",
+          "long": "0.54",
+          "short": "0.46",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "GBPAUD",
+          "long": "0.73",
+          "short": "0.27",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "USDZAR",
+          "long": "0.38",
+          "short": "0.62",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "USDNOK",
+          "long": "0.28",
+          "short": "0.72",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "USDSEK",
+          "long": "0.43",
+          "short": "0.57",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "XAUUSD",
+          "long": "0.86",
+          "short": "0.14",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "XAGUSD",
+          "long": "0.84",
+          "short": "0.16",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "USDDKK",
+          "long": "0.86",
+          "short": "0.14",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "USDSGD",
+          "long": "0.51",
+          "short": "0.49",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "BCOUSD",
+          "long": "0.53",
+          "short": "0.47",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "WTICOUSD",
+          "long": "0.42",
+          "short": "0.58",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "XCUUSD",
+          "long": "0.96",
+          "short": "0.04",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "XPTUSD",
+          "long": "0.88",
+          "short": "0.12",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NATGASUSD",
+          "long": "0.37",
+          "short": "0.63",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "HEOUSD",
+          "long": "0.71",
+          "short": "0.29",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "GASUSD",
+          "long": "0.94",
+          "short": "0.06",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "SUGARUSD",
+          "long": "0.71",
+          "short": "0.29",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "US30USD",
+          "long": "0.74",
+          "short": "0.26",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "US2000USD",
+          "long": "0.67",
+          "short": "0.33",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NAS100USD",
+          "long": "0.77",
+          "short": "0.23",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "SPX500USD",
+          "long": "0.67",
+          "short": "0.33",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "UK100GBP",
+          "long": "0.46",
+          "short": "0.54",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "JP225USD",
+          "long": "0.55",
+          "short": "0.45",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "IN50USD",
+          "long": "0.54",
+          "short": "0.46",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "DE30EUR",
+          "long": "0.48",
+          "short": "0.52",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "AU200AUD",
+          "long": "0.60",
+          "short": "0.40",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "EUR50EUR",
+          "long": "0.58",
+          "short": "0.42",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "FR40EUR",
+          "long": "0.60",
+          "short": "0.40",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "HK33HKD",
+          "long": "0.80",
+          "short": "0.20",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "TWIXUSD",
+          "long": "0.28",
+          "short": "0.72",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "NL25EUR",
+          "long": "0.61",
+          "short": "0.39",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "FANG",
+          "long": "0.89",
+          "short": "0.11",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "VIX",
+          "long": "0.24",
+          "short": "0.76",
+          "ssi_signal": "BEARISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "ALU",
+          "long": "0.97",
+          "short": "0.03",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "LEAD",
+          "long": "0.90",
+          "short": "0.10",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "ZINC",
+          "long": "0.87",
+          "short": "0.13",
+          "ssi_signal": "BULLISH",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "GASOLINE",
+          "long": "0.47",
+          "short": "0.53",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "XAUEUR",
+          "long": "0.48",
+          "short": "0.52",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        },
+        {
+          "currency": "XAUAUD",
+          "long": "0.48",
+          "short": "0.52",
+          "ssi_signal": "FLAT",
+          "oi_signal": "NA"
+        }
+      ],
+      "createdAt": "2022-05-22T15:41:50.908Z"
+    }
+  ],
+  "MYFXBOOK": [
+    {
+      "FX": [
+        {
+          "currency": "EURUSD",
+          "percent": "0.38",
+          "long": "0.62",
+          "short": "0.38",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "GBPUSD",
+          "percent": "0.28",
+          "long": "0.72",
+          "short": "0.28",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDJPY",
+          "percent": "0.73",
+          "long": "0.27",
+          "short": "0.73",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "GBPJPY",
+          "percent": "0.66",
+          "long": "0.34",
+          "short": "0.66",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "USDCAD",
+          "percent": "0.53",
+          "long": "0.47",
+          "short": "0.53",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EURAUD",
+          "percent": "0.27",
+          "long": "0.73",
+          "short": "0.27",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "EURJPY",
+          "percent": "0.73",
+          "long": "0.27",
+          "short": "0.73",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDCAD",
+          "percent": "0.44",
+          "long": "0.56",
+          "short": "0.44",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "AUDJPY",
+          "percent": "0.59",
+          "long": "0.41",
+          "short": "0.59",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "AUDNZD",
+          "percent": "0.71",
+          "long": "0.29",
+          "short": "0.71",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDUSD",
+          "percent": "0.41",
+          "long": "0.59",
+          "short": "0.41",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "CADJPY",
+          "percent": "0.89",
+          "long": "0.11",
+          "short": "0.89",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "EURCAD",
+          "percent": "0.26",
+          "long": "0.74",
+          "short": "0.26",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "EURCHF",
+          "percent": "0.22",
+          "long": "0.78",
+          "short": "0.22",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "EURGBP",
+          "percent": "0.43",
+          "long": "0.57",
+          "short": "0.43",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EURNZD",
+          "percent": "0.49",
+          "long": "0.51",
+          "short": "0.49",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EURZAR",
+          "percent": "0.85",
+          "long": "0.15",
+          "short": "0.85",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "GBPCAD",
+          "percent": "0.15",
+          "long": "0.85",
+          "short": "0.15",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPCHF",
+          "percent": "0.24",
+          "long": "0.76",
+          "short": "0.24",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "NZDCAD",
+          "percent": "0.42",
+          "long": "0.58",
+          "short": "0.42",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "NZDJPY",
+          "percent": "0.60",
+          "long": "0.40",
+          "short": "0.60",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "NZDUSD",
+          "percent": "0.32",
+          "long": "0.68",
+          "short": "0.32",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDCHF",
+          "percent": "0.52",
+          "long": "0.48",
+          "short": "0.52",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "CHFJPY",
+          "percent": "0.72",
+          "long": "0.28",
+          "short": "0.72",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDCHF",
+          "percent": "0.23",
+          "long": "0.77",
+          "short": "0.23",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPNZD",
+          "percent": "0.33",
+          "long": "0.67",
+          "short": "0.33",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "NZDCHF",
+          "percent": "0.18",
+          "long": "0.82",
+          "short": "0.18",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "CADCHF",
+          "percent": "0.29",
+          "long": "0.71",
+          "short": "0.29",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPAUD",
+          "percent": "0.32",
+          "long": "0.68",
+          "short": "0.32",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDZAR",
+          "percent": "0.64",
+          "long": "0.36",
+          "short": "0.64",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "USDNOK",
+          "percent": "0.69",
+          "long": "0.31",
+          "short": "0.69",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "USDSEK",
+          "percent": "0.97",
+          "long": "0.03",
+          "short": "0.97",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "XAGUSD",
+          "percent": "0.27",
+          "long": "0.73",
+          "short": "0.27",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "XAUUSD",
+          "percent": "0.56",
+          "long": "0.44",
+          "short": "0.56",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "XAUEUR",
+          "percent": "0.52",
+          "long": "0.48",
+          "short": "0.52",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "XAUAUD",
+          "percent": "0.52",
+          "long": "0.48",
+          "short": "0.52",
+          "ssi_signal": "FLAT"
+        }
+      ],
+      "createdAt": "2022-05-22T15:41:50.907Z"
+    }
+  ],
+  "IG": [
+    {
+      "FX": [
+        {
+          "currency": "EURUSD",
+          "percent": "0.68",
+          "longShort": "long",
+          "long": "0.68",
+          "short": "0.32",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPUSD",
+          "percent": "0.72",
+          "longShort": "long",
+          "long": "0.72",
+          "short": "0.28",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDJPY",
+          "percent": "0.71",
+          "longShort": "short",
+          "long": "0.29",
+          "short": "0.71",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "GBPJPY",
+          "percent": "0.56",
+          "longShort": "short",
+          "long": "0.44",
+          "short": "0.56",
+          "signal": "FLAT",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "USDCAD",
+          "percent": "0.53",
+          "longShort": "long",
+          "long": "0.53",
+          "short": "0.47",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EURAUD",
+          "percent": "0.64",
+          "longShort": "long",
+          "long": "0.64",
+          "short": "0.36",
+          "signal": "FLAT",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "EURJPY",
+          "percent": "0.68",
+          "longShort": "short",
+          "long": "0.32",
+          "short": "0.68",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDCAD",
+          "percent": "0.52",
+          "longShort": "long",
+          "long": "0.52",
+          "short": "0.48",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "AUDJPY",
+          "percent": "0.69",
+          "longShort": "short",
+          "long": "0.31",
+          "short": "0.69",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDNZD",
+          "percent": "0.75",
+          "longShort": "short",
+          "long": "0.25",
+          "short": "0.75",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDUSD",
+          "percent": "0.67",
+          "longShort": "long",
+          "long": "0.67",
+          "short": "0.33",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "CADJPY",
+          "percent": "0.78",
+          "longShort": "short",
+          "long": "0.22",
+          "short": "0.78",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "EURCAD",
+          "percent": "0.76",
+          "longShort": "long",
+          "long": "0.76",
+          "short": "0.24",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "EURCHF",
+          "percent": "0.69",
+          "longShort": "long",
+          "long": "0.69",
+          "short": "0.31",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "EURGBP",
+          "percent": "0.60",
+          "longShort": "long",
+          "long": "0.60",
+          "short": "0.40",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EURNZD",
+          "percent": "0.50",
+          "longShort": "short",
+          "long": "0.50",
+          "short": "0.50",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EURZAR",
+          "percent": "0.74",
+          "longShort": "short",
+          "long": "0.26",
+          "short": "0.74",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "GBPCAD",
+          "percent": "0.84",
+          "longShort": "long",
+          "long": "0.84",
+          "short": "0.16",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPCHF",
+          "percent": "0.80",
+          "longShort": "long",
+          "long": "0.80",
+          "short": "0.20",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "NZDCAD",
+          "percent": "0.63",
+          "longShort": "long",
+          "long": "0.63",
+          "short": "0.37",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "NZDJPY",
+          "percent": "0.64",
+          "longShort": "short",
+          "long": "0.36",
+          "short": "0.64",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "NZDUSD",
+          "percent": "0.72",
+          "longShort": "long",
+          "long": "0.72",
+          "short": "0.28",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDCHF",
+          "percent": "0.52",
+          "longShort": "long",
+          "long": "0.52",
+          "short": "0.48",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "CHFJPY",
+          "percent": "0.82",
+          "longShort": "short",
+          "long": "0.18",
+          "short": "0.82",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "AUDCHF",
+          "percent": "0.62",
+          "longShort": "short",
+          "long": "0.38",
+          "short": "0.62",
+          "signal": "FLAT",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPNZD",
+          "percent": "0.73",
+          "longShort": "long",
+          "long": "0.73",
+          "short": "0.27",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "NZDCHF",
+          "percent": "0.57",
+          "longShort": "long",
+          "long": "0.57",
+          "short": "0.43",
+          "signal": "FLAT",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "CADCHF",
+          "percent": "0.54",
+          "longShort": "long",
+          "long": "0.54",
+          "short": "0.46",
+          "signal": "FLAT",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GBPAUD",
+          "percent": "0.73",
+          "longShort": "long",
+          "long": "0.73",
+          "short": "0.27",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDZAR",
+          "percent": "0.62",
+          "longShort": "short",
+          "long": "0.38",
+          "short": "0.62",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "USDNOK",
+          "percent": "0.72",
+          "longShort": "short",
+          "long": "0.28",
+          "short": "0.72",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "USDSEK",
+          "percent": "0.57",
+          "longShort": "short",
+          "long": "0.43",
+          "short": "0.57",
+          "signal": "FLAT",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "XAUUSD",
+          "percent": "0.86",
+          "longShort": "long",
+          "long": "0.86",
+          "short": "0.14",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "XAGUSD",
+          "percent": "0.84",
+          "longShort": "long",
+          "long": "0.84",
+          "short": "0.16",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDDKK",
+          "percent": "0.86",
+          "longShort": "long",
+          "long": "0.86",
+          "short": "0.14",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "USDSGD",
+          "percent": "0.51",
+          "longShort": "long",
+          "long": "0.51",
+          "short": "0.49",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "BCOUSD",
+          "percent": "0.53",
+          "longShort": "long",
+          "long": "0.53",
+          "short": "0.47",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "WTICOUSD",
+          "percent": "0.58",
+          "longShort": "short",
+          "long": "0.42",
+          "short": "0.58",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "XCUUSD",
+          "percent": "0.96",
+          "longShort": "long",
+          "long": "0.96",
+          "short": "0.04",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "XPTUSD",
+          "percent": "0.88",
+          "longShort": "long",
+          "long": "0.88",
+          "short": "0.12",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "NATGASUSD",
+          "percent": "0.63",
+          "longShort": "short",
+          "long": "0.37",
+          "short": "0.63",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "HEOUSD",
+          "percent": "0.71",
+          "longShort": "long",
+          "long": "0.71",
+          "short": "0.29",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GASUSD",
+          "percent": "0.94",
+          "longShort": "long",
+          "long": "0.94",
+          "short": "0.06",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "SUGARUSD",
+          "percent": "0.71",
+          "longShort": "long",
+          "long": "0.71",
+          "short": "0.29",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "US30USD",
+          "percent": "0.74",
+          "longShort": "long",
+          "long": "0.74",
+          "short": "0.26",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "US2000USD",
+          "percent": "0.67",
+          "longShort": "long",
+          "long": "0.67",
+          "short": "0.33",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "NAS100USD",
+          "percent": "0.77",
+          "longShort": "long",
+          "long": "0.77",
+          "short": "0.23",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "SPX500USD",
+          "percent": "0.67",
+          "longShort": "long",
+          "long": "0.67",
+          "short": "0.33",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "UK100GBP",
+          "percent": "0.54",
+          "longShort": "short",
+          "long": "0.46",
+          "short": "0.54",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "JP225USD",
+          "percent": "0.55",
+          "longShort": "long",
+          "long": "0.55",
+          "short": "0.45",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "IN50USD",
+          "percent": "0.54",
+          "longShort": "long",
+          "long": "0.54",
+          "short": "0.46",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "DE30EUR",
+          "percent": "0.52",
+          "longShort": "short",
+          "long": "0.48",
+          "short": "0.52",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "AU200AUD",
+          "percent": "0.60",
+          "longShort": "long",
+          "long": "0.60",
+          "short": "0.40",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "EUR50EUR",
+          "percent": "0.58",
+          "longShort": "long",
+          "long": "0.58",
+          "short": "0.42",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "FR40EUR",
+          "percent": "0.60",
+          "longShort": "long",
+          "long": "0.60",
+          "short": "0.40",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "HK33HKD",
+          "percent": "0.80",
+          "longShort": "long",
+          "long": "0.80",
+          "short": "0.20",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "TWIXUSD",
+          "percent": "0.72",
+          "longShort": "short",
+          "long": "0.28",
+          "short": "0.72",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "NL25EUR",
+          "percent": "0.61",
+          "longShort": "long",
+          "long": "0.61",
+          "short": "0.39",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        },
+        {
+          "currency": "FANG",
+          "percent": "0.89",
+          "longShort": "long",
+          "long": "0.89",
+          "short": "0.11",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "VIX",
+          "percent": "0.76",
+          "longShort": "short",
+          "long": "0.24",
+          "short": "0.76",
+          "signal": "BEARISH",
+          "ssi_signal": "BEARISH"
+        },
+        {
+          "currency": "ALU",
+          "percent": "0.97",
+          "longShort": "long",
+          "long": "0.97",
+          "short": "0.03",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "LEAD",
+          "percent": "0.90",
+          "longShort": "long",
+          "long": "0.90",
+          "short": "0.10",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "ZINC",
+          "percent": "0.87",
+          "longShort": "long",
+          "long": "0.87",
+          "short": "0.13",
+          "signal": "BULLISH",
+          "ssi_signal": "BULLISH"
+        },
+        {
+          "currency": "GASOLINE",
+          "percent": "0.53",
+          "longShort": "short",
+          "long": "0.47",
+          "short": "0.53",
+          "signal": "FLAT",
+          "ssi_signal": "FLAT"
+        }
+      ],
+      "createdAt": "2022-05-22T15:41:50.904Z"
+    }
+  ],
+  "DAILYFX": [
+    {
+      "FX": [
+        {
+          "currency": "AUDJPY",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.3274,
+          "net_short_percent": 0.6726000000000001,
+          "change_in_longs": {
+            "Daily": 0.13849999999999998,
+            "Weekly": 0.0068000000000000005
+          },
+          "change_in_shorts": {
+            "Daily": 0.0033,
+            "Weekly": 0.1515
+          },
+          "change_in_io": {
+            "Daily": 0.043899999999999995,
+            "Weekly": 0.0998
+          }
+        },
+        {
+          "currency": "AUDUSD",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.659,
+          "net_short_percent": 0.341,
+          "change_in_longs": {
+            "Daily": 0.0109,
+            "Weekly": -0.1535
+          },
+          "change_in_shorts": {
+            "Daily": -0.0489,
+            "Weekly": 0.32909999999999995
+          },
+          "change_in_io": {
+            "Daily": -0.0103,
+            "Weekly": -0.0339
+          }
+        },
+        {
+          "currency": "OILUSCRUDE",
+          "oi_signal": "BULLISH",
+          "net_long_percent": 0.4397,
+          "net_short_percent": 0.5603,
+          "change_in_longs": {
+            "Daily": -0.044800000000000006,
+            "Weekly": -0.1412
+          },
+          "change_in_shorts": {
+            "Daily": 0.1325,
+            "Weekly": 0.0275
+          },
+          "change_in_io": {
+            "Daily": 0.0471,
+            "Weekly": -0.0542
+          }
+        },
+        {
+          "currency": "GERMANY40",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.48719999999999997,
+          "net_short_percent": 0.5128,
+          "change_in_longs": {
+            "Daily": -0.1718,
+            "Weekly": -0.0235
+          },
+          "change_in_shorts": {
+            "Daily": 0.1052,
+            "Weekly": -0.1047
+          },
+          "change_in_io": {
+            "Daily": -0.049699999999999994,
+            "Weekly": -0.0669
+          }
+        },
+        {
+          "currency": "EURCHF",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.6862,
+          "net_short_percent": 0.31379999999999997,
+          "change_in_longs": {
+            "Daily": 0.044500000000000005,
+            "Weekly": 0.1217
+          },
+          "change_in_shorts": {
+            "Daily": 0.11320000000000001,
+            "Weekly": -0.1631
+          },
+          "change_in_io": {
+            "Daily": 0.0652,
+            "Weekly": 0.013500000000000002
+          }
+        },
+        {
+          "currency": "EURGBP",
+          "oi_signal": "BEARISH",
+          "net_long_percent": 0.5976,
+          "net_short_percent": 0.40240000000000004,
+          "change_in_longs": {
+            "Daily": 0.0728,
+            "Weekly": 0.2097
+          },
+          "change_in_shorts": {
+            "Daily": 0.0037,
+            "Weekly": -0.2929
+          },
+          "change_in_io": {
+            "Daily": 0.043899999999999995,
+            "Weekly": -0.0593
+          }
+        },
+        {
+          "currency": "EURJPY",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.30829999999999996,
+          "net_short_percent": 0.6917,
+          "change_in_longs": {
+            "Daily": 0.0649,
+            "Weekly": -0.0060999999999999995
+          },
+          "change_in_shorts": {
+            "Daily": 0.0395,
+            "Weekly": 0.1757
+          },
+          "change_in_io": {
+            "Daily": 0.0472,
+            "Weekly": 0.113
+          }
+        },
+        {
+          "currency": "EURUSD",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.6584,
+          "net_short_percent": 0.34159999999999996,
+          "change_in_longs": {
+            "Daily": 0.0169,
+            "Weekly": -0.1359
+          },
+          "change_in_shorts": {
+            "Daily": -0.0722,
+            "Weekly": 0.32380000000000003
+          },
+          "change_in_io": {
+            "Daily": -0.0154,
+            "Weekly": -0.0196
+          }
+        },
+        {
+          "currency": "FRANCE40",
+          "oi_signal": "BEARISH",
+          "net_long_percent": 0.6211,
+          "net_short_percent": 0.3789,
+          "change_in_longs": {
+            "Daily": -0.0335,
+            "Weekly": 0.21
+          },
+          "change_in_shorts": {
+            "Daily": -0.049,
+            "Weekly": -0.3538
+          },
+          "change_in_io": {
+            "Daily": -0.0394,
+            "Weekly": -0.0906
+          }
+        },
+        {
+          "currency": "FTSE100",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.4733,
+          "net_short_percent": 0.5267000000000001,
+          "change_in_longs": {
+            "Daily": -0.2645,
+            "Weekly": 0.0229
+          },
+          "change_in_shorts": {
+            "Daily": 0.24960000000000002,
+            "Weekly": -0.1602
+          },
+          "change_in_io": {
+            "Daily": -0.061,
+            "Weekly": -0.0824
+          }
+        },
+        {
+          "currency": "GBPJPY",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.4291,
+          "net_short_percent": 0.5709000000000001,
+          "change_in_longs": {
+            "Daily": 0.054299999999999994,
+            "Weekly": 0.1888
+          },
+          "change_in_shorts": {
+            "Daily": 0.057999999999999996,
+            "Weekly": 0.1355
+          },
+          "change_in_io": {
+            "Daily": 0.0564,
+            "Weekly": 0.1578
+          }
+        },
+        {
+          "currency": "GBPUSD",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.7209,
+          "net_short_percent": 0.2791,
+          "change_in_longs": {
+            "Daily": 0.0255,
+            "Weekly": -0.16390000000000002
+          },
+          "change_in_shorts": {
+            "Daily": -0.0676,
+            "Weekly": 0.3013
+          },
+          "change_in_io": {
+            "Daily": -0.0023,
+            "Weekly": -0.0712
+          }
+        },
+        {
+          "currency": "GOLD",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.8576999999999999,
+          "net_short_percent": 0.1423,
+          "change_in_longs": {
+            "Daily": 0.0067,
+            "Weekly": 0.2112
+          },
+          "change_in_shorts": {
+            "Daily": 0.0101,
+            "Weekly": 0.1773
+          },
+          "change_in_io": {
+            "Daily": 0.0070999999999999995,
+            "Weekly": 0.20629999999999998
+          }
+        },
+        {
+          "currency": "NZDUSD",
+          "oi_signal": "BULLISH",
+          "net_long_percent": 0.6901,
+          "net_short_percent": 0.3099,
+          "change_in_longs": {
+            "Daily": 0.0208,
+            "Weekly": 0.0239
+          },
+          "change_in_shorts": {
+            "Daily": 0.047599999999999996,
+            "Weekly": 0.2126
+          },
+          "change_in_io": {
+            "Daily": 0.028999999999999998,
+            "Weekly": 0.0758
+          }
+        },
+        {
+          "currency": "SILVER",
+          "oi_signal": "BEARISH",
+          "net_long_percent": 0.9568000000000001,
+          "net_short_percent": 0.0432,
+          "change_in_longs": {
+            "Daily": 0.028300000000000002,
+            "Weekly": 0.1729
+          },
+          "change_in_shorts": {
+            "Daily": -0.08,
+            "Weekly": -0.065
+          },
+          "change_in_io": {
+            "Daily": 0.0231,
+            "Weekly": 0.16010000000000002
+          }
+        },
+        {
+          "currency": "US500",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.6787000000000001,
+          "net_short_percent": 0.32130000000000003,
+          "change_in_longs": {
+            "Daily": -0.045599999999999995,
+            "Weekly": 0.0787
+          },
+          "change_in_shorts": {
+            "Daily": 0.0668,
+            "Weekly": 0.013300000000000001
+          },
+          "change_in_io": {
+            "Daily": -0.0121,
+            "Weekly": 0.056799999999999996
+          }
+        },
+        {
+          "currency": "USDCAD",
+          "oi_signal": "BEARISH",
+          "net_long_percent": 0.5354,
+          "net_short_percent": 0.4646,
+          "change_in_longs": {
+            "Daily": 0.0168,
+            "Weekly": 0.1491
+          },
+          "change_in_shorts": {
+            "Daily": -0.0265,
+            "Weekly": 0
+          },
+          "change_in_io": {
+            "Daily": -0.0038,
+            "Weekly": 0.0746
+          }
+        },
+        {
+          "currency": "USDCHF",
+          "oi_signal": "BEARISH",
+          "net_long_percent": 0.5174,
+          "net_short_percent": 0.4826,
+          "change_in_longs": {
+            "Daily": 0.0635,
+            "Weekly": 0.5402
+          },
+          "change_in_shorts": {
+            "Daily": -0.0637,
+            "Weekly": -0.1961
+          },
+          "change_in_io": {
+            "Daily": -0.0019,
+            "Weekly": 0.068
+          }
+        },
+        {
+          "currency": "USDJPY",
+          "oi_signal": "BULLISH",
+          "net_long_percent": 0.2701,
+          "net_short_percent": 0.7299,
+          "change_in_longs": {
+            "Daily": -0.0226,
+            "Weekly": 0.015700000000000002
+          },
+          "change_in_shorts": {
+            "Daily": 0.0167,
+            "Weekly": 0.0197
+          },
+          "change_in_io": {
+            "Daily": 0.0058,
+            "Weekly": 0.018600000000000002
+          }
+        },
+        {
+          "currency": "WALLSTREET",
+          "oi_signal": "FLAT",
+          "net_long_percent": 0.7411,
+          "net_short_percent": 0.2589,
+          "change_in_longs": {
+            "Daily": -0.0558,
+            "Weekly": 0.2547
+          },
+          "change_in_shorts": {
+            "Daily": 0.0955,
+            "Weekly": -0.20170000000000002
+          },
+          "change_in_io": {
+            "Daily": -0.0208,
+            "Weekly": 0.0929
+          }
+        }
+      ],
+      "createdAt": "2022-05-22T15:41:50.906Z"
+    }
+  ],
+  "ERROR": []
+}

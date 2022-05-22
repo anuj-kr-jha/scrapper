@@ -1,6 +1,8 @@
 import axios from 'axios';
 import pLimit from 'p-limit';
-import { load } from 'cheerio';
+// import { load } from 'cheerio';
+import pkg from 'cheerio';
+const { load } = pkg;
 
 function titleRename(title) {
     const titles = {
@@ -74,8 +76,7 @@ async function scrapIG(url, log) {
         console.error(err.message);
         console.error(`scrapping[ig] failed :)`);
 
-        low._Error.splice(9, 1, { message: err.message, method: 'scrapIG', createdAt: new Date().toISOString(), trace: err.stack });
-        await low.db.write();
+        db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
         return {};
     }
 }

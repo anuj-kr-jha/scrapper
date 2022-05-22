@@ -7,11 +7,32 @@
         {
             "type": "pwa-node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "Launch Node_16",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/index.mjs"
+            "program": "${workspaceFolder}/index.mjs",
+            "runtimeExecutable": "/home/evil/.nvm/versions/node/v16.15.0/bin/node"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Launch Node_14",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/index.mjs",
+            "runtimeExecutable": "/home/evil/.nvm/versions/node/v14.19.3/bin/node"
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "Launch Node_12",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/index.mjs",
+            "runtimeExecutable": "/home/evil/.nvm/versions/node/v12.22.12/bin/node"
         }
     ]
 }

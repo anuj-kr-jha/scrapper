@@ -12,8 +12,8 @@ export const c = {
     },
     send: (req, res, next) => {
         try {
-            if (req.data?.err) return res.send('server error');
             if (!req.data) return res.send('server error');
+            if (req.data.err) return res.send('server error');
             res.send(req.data._data);
         } catch (err) {
             console.error({ name: err.name, msg: err.message, err });
@@ -22,8 +22,8 @@ export const c = {
     },
     json: (req, res, next) => {
         try {
-            if (req.data?.err) return res.send('server error');
             if (!req.data) return res.send('server error');
+            if (req.data.err) return res.send('server error');
             res.json(req.data._data);
         } catch (err) {
             console.error({ name: err.name, msg: err.message, err });
@@ -33,20 +33,18 @@ export const c = {
     //
     recent: async (req, res, next) => {
         try {
-            const { FX } = low.Final[0];
+            const { FX } = db.get('FINAL').value()[0];
             req.data = { err: false, _data: { FX: FX }, info: '' };
         } catch (err) {
             req.data = { err: true, _data: null, info: err.message };
-
-            low._Error.splice(9, 1, { message: err.message, method: 'recent', createdAt: new Date().toISOString(), trace: err.stack });
-            await low.db.write();
+            db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
         } finally {
             return next();
         }
     },
     recent_old: async (req, res, next) => {
         try {
-            const { FX } = JSON.parse(JSON.stringify(low.Final[0]));
+            const { FX } = JSON.parse(JSON.stringify(db.get('FINAL').value()[0]));
             for(let item of FX ) {
                 delete item.long;
                 delete item.short;
@@ -54,9 +52,7 @@ export const c = {
             req.data = { err: false, _data: { FX: FX }, info: '' };
         } catch (err) {
             req.data = { err: true, _data: null, info: err.message };
-
-            low._Error.splice(9, 1, { message: err.message, method: 'recent_old', createdAt: new Date().toISOString(), trace: err.stack });
-            await low.db.write();
+            db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
         } finally {
             return next();
         }
@@ -64,14 +60,11 @@ export const c = {
     scrap_now: async (req, res, next) => {
         try {
             await scrapAndSave();
-            await low.db.write();
-            const { FX } = low.Final[0];
+            const { FX } = db.get('FINAL').value()[0];
             req.data = { err: false, _data: { FX: FX }, info: '' };
         } catch (err) {
             req.data = { err: true, _data: null, info: err.message };
-
-            low._Error.splice(9, 1, { message: err.message, method: 'scrap_now', createdAt: new Date().toISOString(), trace: err.stack });
-            await low.db.write();
+            db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
         } finally {
             return next();
         }
