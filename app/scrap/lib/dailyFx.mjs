@@ -2,6 +2,43 @@ import axios from 'axios';
 import pkg from 'cheerio';
 const { load } = pkg;
 
+function titleRename(title) {
+    const titles = {
+        'Oil - Brent Crude': 'BCOUSD',
+        'Oil - US Crude': 'WTICOUSD',
+        'Spot Gold': 'XAUUSD',
+        'Spot Silver (5000oz)': 'XAGUSD',
+        'Spot Platinum Mini LCP (5oz)': 'XPTUSD',
+        'Natural Gas': 'NATGASUSD',
+        'Heating Oil': 'HEOUSD',
+        'London Gas Oil': 'GASUSD',
+        'London Sugar No. 5': 'SUGARUSD',
+        'Wall Street': 'US30USD',
+        'US Russell 2000': 'US2000USD',
+        'US Tech 100': 'NAS100USD',
+        'US 500': 'SPX500USD',
+        'FTSE 100': 'UK100GBP',
+        'Japan 225': 'JP225USD',
+        'India 50': 'IN50USD',
+        'Germany 40': 'DE30EUR',
+        'Australia 200': 'AU200AUD',
+        'EU Stocks 50': 'EUR50EUR',
+        'France 40': 'FR40EUR',
+        'Hong Kong Tech': 'HK33HKD',
+        'Taiwan Index': 'TWIXUSD',
+        'Netherlands 25': 'NL25EUR',
+        USFANG: 'FANG',
+        'Volatility Index': 'VIX',
+        'Aluminium ($5 Mini Contract)': 'ALU',
+        'Lead ($5 Mini Contract)': 'LEAD',
+        Zinc: 'ZINC',
+        Copper: 'XCUUSD',
+        'No Lead Gasoline': 'GASOLINE',
+    };
+
+    return Object.keys(titles).includes(title) ? titles[title] : title;
+}
+
 export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment-report', log = false) {
     try {
         const result = [];
@@ -68,6 +105,7 @@ export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment
 
             let currency = renamedItem.currency;
             currency = currency.replace(new RegExp('/', 'g'), '');
+            currency = titleRename(currency);
             currency = currency.replace(new RegExp('-', 'g'), '');
             currency = currency.replace(new RegExp(' ', 'g'), '');
             currency = currency.replace(new RegExp('\\n', 'g'), '');

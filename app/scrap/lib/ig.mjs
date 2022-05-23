@@ -51,9 +51,8 @@ async function scrapIG(url, log) {
             const percent = $('.price-ticket__percent').text().slice(0, -1) / 100;
             const longShort = $('strong', '.information-popup').text();
 
-            currency = currency.replace('/', '');
-            currency = titleRename(currency);
             currency = currency.replace(new RegExp('/', 'g'), '');
+            currency = titleRename(currency);
             currency = currency.replace(new RegExp('-', 'g'), '');
             currency = currency.replace(new RegExp(' ', 'g'), '');
             currency = currency.toUpperCase();

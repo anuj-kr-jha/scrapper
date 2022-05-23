@@ -2,9 +2,7 @@ import { scrapIGs } from './lib/ig.mjs';
 import { scrapDailyFxTable } from './lib/dailyFx.mjs';
 import { scrapMyFxs } from './lib/myfxbook.mjs';
 
-async function calculateFinal(igs, dailyFxs, myFxBooks) {
-    let factor = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.3;
-
+async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
     try {
         const final_igs = {};
         const final_data = {};
@@ -14,7 +12,7 @@ async function calculateFinal(igs, dailyFxs, myFxBooks) {
         for (const [myFxBooksKey, myFxBooksVal] of Object.entries(myFxBooks)) {
             const short = myFxBooksVal.percent;
             const long = 1 - short;
-            const signal = Math.abs(long - short) > factor ? (long > short ? 'BULLISH' : 'BEARISH') : 'FLAT';
+            const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
             final_myFxBooks[myFxBooksKey] = {
                 currency: myFxBooksVal.currency,
                 percent: myFxBooksVal.percent.toFixed(2),
@@ -26,15 +24,12 @@ async function calculateFinal(igs, dailyFxs, myFxBooks) {
         }
 
         for (const [igKey, igVal] of Object.entries(igs)) {
-            var _final_myFxBooks$igKe, _final_myFxBooks$igKe2;
-
             const long = igVal.longShort == 'long' ? igVal.percent : 1 - igVal.percent;
             const short = 1 - long;
-            const signal = Math.abs(long - short) > factor ? (long > short ? 'BULLISH' : 'BEARISH') : 'FLAT';
+            const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
             // console.log(igKey)
 
-            const ssi_signal =
-                signal == 'FLAT' ? ((_final_myFxBooks$igKe = (_final_myFxBooks$igKe2 = final_myFxBooks[igKey]) === null || _final_myFxBooks$igKe2 === void 0 ? void 0 : _final_myFxBooks$igKe2.ssi_signal) !== null && _final_myFxBooks$igKe !== void 0 ? _final_myFxBooks$igKe : signal) : signal;
+            const ssi_signal = signal != 'FLAT' ? signal : (final_myFxBooks[igKey] && final_myFxBooks[igKey].ssi_signal && final_myFxBooks[igKey].ssi_signal != 'FLAT') ? final_myFxBooks[igKey].ssi_signal : 'FLAT'
             final_igs[igKey] = {
                 currency: igVal.currency,
                 percent: igVal.percent.toFixed(2),
@@ -61,9 +56,8 @@ async function calculateFinal(igs, dailyFxs, myFxBooks) {
         }
 
         for (const [igKey, igVal] of Object.entries(final_igs)) {
-            var _final_dailyFxs$igKey, _final_dailyFxs$igKey2;
 
-            const oi_signal = (_final_dailyFxs$igKey = (_final_dailyFxs$igKey2 = final_dailyFxs[igKey]) === null || _final_dailyFxs$igKey2 === void 0 ? void 0 : _final_dailyFxs$igKey2.oi_signal) !== null && _final_dailyFxs$igKey !== void 0 ? _final_dailyFxs$igKey : 'NA';
+            const oi_signal = final_dailyFxs[igKey] && final_dailyFxs[igKey].oi_signal ? final_dailyFxs[igKey].oi_signal : 'NA';
             final_data[igKey] = {
                 currency: igVal.currency,
                 long: parseFloat(igVal.long).toFixed(2),
@@ -74,13 +68,11 @@ async function calculateFinal(igs, dailyFxs, myFxBooks) {
         } // add missing_data(from ig) to  final_data (from myFxBook)
 
         for (const [key, val] of Object.entries(final_myFxBooks)) {
-            var _final_dailyFxs$key$o, _final_dailyFxs$key;
-
             if (Object.keys(final_igs).includes(key)) continue;
             const short = val.percent;
             const long = 1 - short;
-            const signal = Math.abs(long - short) > factor ? (long > short ? 'BULLISH' : 'BEARISH') : 'FLAT';
-            const oi_signal = (_final_dailyFxs$key$o = (_final_dailyFxs$key = final_dailyFxs[key]) === null || _final_dailyFxs$key === void 0 ? void 0 : _final_dailyFxs$key.oi_signal) !== null && _final_dailyFxs$key$o !== void 0 ? _final_dailyFxs$key$o : 'NA';
+            const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
+            const oi_signal = final_dailyFxs[key] && final_dailyFxs[key].oi_signal ? final_dailyFxs[key].oi_signal : 'NA';
             final_data[key] = {
                 currency: val.currency,
                 long: val.long,
@@ -97,10 +89,10 @@ async function calculateFinal(igs, dailyFxs, myFxBooks) {
             final_data,
         };
     } catch (err) {
-        console.error('Error in calculateFinal '.concat(err.messge));
+        console.error('Error in calculateFinal ', err.messge, err.stack);
 
         db.get('ERROR')
-            .splice.splice(9, 1, {
+            .splice(9, 1, {
                 message: err.message,
                 method: 'calculateFinal',
                 createdAt: new Date().toISOString(),
@@ -137,7 +129,7 @@ export async function scrapAndSave() {
         const t1 = Date.now();
         console.info('ms(scrap): ', t1 - t0);
 
-        const { final_igs, final_dailyFxs, final_myFxBooks, final_data } = await calculateFinal(igs, dailyFxs, myFxBooks, factor !== null && factor !== void 0 ? factor : 0.3);
+        const { final_igs, final_dailyFxs, final_myFxBooks, final_data } = await calculateFinal(igs, dailyFxs, myFxBooks, factor || 0.3);
 
         if (!final_igs) throw new Error('Calculating final_igs failed');
         if (!final_dailyFxs) throw new Error('Calculating final_dailyFxs failed');

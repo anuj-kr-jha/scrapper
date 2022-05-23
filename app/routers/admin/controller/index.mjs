@@ -36,8 +36,8 @@ export const c = {
             const old_constant = getConstant(0);
             const data = {
                 factor: factor || old_constant.factor,
-                ig_urls: ig_urls.length > 0 ? ig_urls : old_constant.ig_urls,
-                myFxBook_urls: myFxBook_urls.length > 0 ? myFxBook_urls : old_constant.myFxBook_urls,
+                ig_urls: ig_urls && ig_urls.length > 0 ? ig_urls : old_constant.ig_urls,
+                myFxBook_urls: myFxBook_urls && myFxBook_urls.length > 0 ? myFxBook_urls : old_constant.myFxBook_urls,
                 dailyFx_url: dailyFx_url || old_constant.dailyFx_url,
                 created_at: new Date().toISOString(),
             };
