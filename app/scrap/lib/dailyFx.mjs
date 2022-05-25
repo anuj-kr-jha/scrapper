@@ -6,8 +6,8 @@ function titleRename(title) {
     const titles = {
         'Oil - Brent Crude': 'BCOUSD',
         'Oil - US Crude': 'WTICOUSD',
-        'Spot Gold': 'XAUUSD',
-        'Spot Silver (5000oz)': 'XAGUSD',
+        'Gold': 'XAUUSD',//
+        'Silver': 'XAGUSD',//
         'Spot Platinum Mini LCP (5oz)': 'XPTUSD',
         'Natural Gas': 'NATGASUSD',
         'Heating Oil': 'HEOUSD',
@@ -112,6 +112,7 @@ export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment
             currency = currency.toUpperCase();
 
             dailyFx[currency] = { ...renamedItem, currency };
+            if(currency=='WTICOUSD') dailyFx['BCOUSD'] = { ...renamedItem, currency: 'BCOUSD' }; // as oi for both is same
         }
 
         return dailyFx;
