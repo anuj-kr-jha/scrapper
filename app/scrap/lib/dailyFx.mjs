@@ -113,6 +113,7 @@ export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment
 
             dailyFx[currency] = { ...renamedItem, currency };
             if(currency=='WTICOUSD') dailyFx['BCOUSD'] = { ...renamedItem, currency: 'BCOUSD' }; // as oi for both is same
+            if(currency=='SPX500USD') dailyFx['NAS100USD'] = { ...renamedItem, currency: 'NAS100USD' }; // as oi for both is same
         }
 
         return dailyFx;
