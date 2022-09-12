@@ -33,6 +33,11 @@ export const c = {
     //
     recent: async (req, res, next) => {
         try {
+            if (db.get('FINAL').value().length == 0) {
+                await scrapAndSave();
+                const { FX } = db.get('FINAL').value()[0];
+                return (req.data = { err: false, _data: { FX: FX }, info: '' });
+            }
             const { FX } = db.get('FINAL').value()[0];
             req.data = { err: false, _data: { FX: FX }, info: '' };
         } catch (err) {
@@ -44,8 +49,17 @@ export const c = {
     },
     recent_old: async (req, res, next) => {
         try {
+            if (db.get('FINAL').value().length == 0) {
+                await scrapAndSave();
+                const { FX } = JSON.parse(JSON.stringify(db.get('FINAL').value()[0]));
+                for (let item of FX) {
+                    delete item.long;
+                    delete item.short;
+                }
+                return (req.data = { err: false, _data: { FX: FX }, info: '' });
+            }
             const { FX } = JSON.parse(JSON.stringify(db.get('FINAL').value()[0]));
-            for(let item of FX ) {
+            for (let item of FX) {
                 delete item.long;
                 delete item.short;
             }
