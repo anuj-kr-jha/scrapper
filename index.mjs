@@ -1,8 +1,10 @@
 import './env.mjs';
-import { scheduleJob, cancelJob } from 'node-schedule';
+import nsh from 'node-schedule';
 import { init_lowdb } from './app/util/index.mjs';
 import { server } from './server/index.mjs';
 import { scrapAndSave } from './app/scrap/index.mjs';
+
+const { scheduleJob, cancelJob } = nsh;
 
 process.env.UV_THREADPOOL_SIZE = '1';
 
@@ -19,7 +21,7 @@ process.once('unhandledRejection', (ex) => exception(ex, 'unhandledRejection'));
         await init_lowdb();
         await server.initialize();
         scrapAndSave();
-        scheduleJob('job_scrap', '*/5 * * * *', async () => {
+        scheduleJob('job_scrap', '*/2 * * * *', async () => {
             if (process.env.NODE_ENV == 'dev') console.log('scrap start @', new Date().toLocaleString('en-US', { timeZoneName: 'short' }));
             await scrapAndSave();
             if (process.env.NODE_ENV == 'dev') console.log('scrap finished @', new Date().toLocaleString('en-US', { timeZoneName: 'short' }, '\n'));

@@ -6,8 +6,8 @@ function titleRename(title) {
     const titles = {
         'Oil - Brent Crude': 'BCOUSD',
         'Oil - US Crude': 'WTICOUSD',
-        'Gold': 'XAUUSD',//
-        'Silver': 'XAGUSD',//
+        Gold: 'XAUUSD', //
+        Silver: 'XAGUSD', //
         'Spot Platinum Mini LCP (5oz)': 'XPTUSD',
         'Natural Gas': 'NATGASUSD',
         'Heating Oil': 'HEOUSD',
@@ -73,7 +73,7 @@ export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment
                         const ps = $(_td).find('p');
                         ps.each((_idx_p, _p) => {
                             const p = $(_p).text();
-                            const [value, key] = p.split('  ');
+                            const [value, key] = p.split(' ');
                             doc[mapper[_idx_td]][key] = parseFloat(value.replace('%', '')) / 100;
                         });
                     } else doc[mapper[_idx_td]] = td == 'MIXED' ? 'FLAT' : td;
@@ -93,7 +93,7 @@ export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment
             'NET-SHORT%': 'net_short_percent',
             'CHANGE IN LONGS': 'change_in_longs',
             'CHANGE IN SHORTS': 'change_in_shorts',
-            'CHANGE IN OI': 'change_in_io',
+            'CHANGE IN OI': 'change_in_oi',
         };
         const dailyFx = {};
         for (const item of result) {
@@ -112,13 +112,13 @@ export async function scrapDailyFxTable(url = 'https://www.dailyfx.com/sentiment
             currency = currency.toUpperCase();
 
             dailyFx[currency] = { ...renamedItem, currency };
-            if(currency=='WTICOUSD') dailyFx['BCOUSD'] = { ...renamedItem, currency: 'BCOUSD' }; // as oi for both is same
-            if(currency=='SPX500USD') dailyFx['NAS100USD'] = { ...renamedItem, currency: 'NAS100USD' }; // as oi for both is same
+            if (currency == 'WTICOUSD') dailyFx['BCOUSD'] = { ...renamedItem, currency: 'BCOUSD' }; // as oi for both is same
+            if (currency == 'SPX500USD') dailyFx['NAS100USD'] = { ...renamedItem, currency: 'NAS100USD' }; // as oi for both is same
         }
 
         return dailyFx;
     } catch (err) {
         console.log(err.message);
-        console.log('scrapping [dailyFx] failed :)');
+        console.log('scrapping [dailyFx] failed :(');
     }
 }

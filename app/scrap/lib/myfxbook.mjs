@@ -48,7 +48,6 @@ async function scrapMyFx(url, log) {
         if (response.status == 200) {
             const $ = load(html);
 
-
             const symbolSelector = '#currentMetricsTable > tr:nth-child(2)';
             const shortPercentSelector = '#currentMetricsTable > tr:nth-child(3) > td:nth-child(2)';
 

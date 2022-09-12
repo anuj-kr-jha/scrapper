@@ -68,11 +68,12 @@ async function scrapIG(url, log) {
 
             return result;
         }
-        throw new Error()
+        console.error(`scrap failed. url: ${url} status: ${response.status}`);
+        return {};
     } catch (err) {
-        console.error(`scrapping[ig] failed :). \n url: ${url} status: ${response.status}`);
-
-        db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
+        const reason = `scrapIG failed :(, reason: ${err.message}, url: ${url}`;
+        console.error(reason);
+        db.get('ERROR').splice(9, 1, { message: reason, method: 'scrapIG', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
         return {};
     }
 }
@@ -102,6 +103,5 @@ async function scrapIGs(urls = []) {
         console.error('scrapping failed :), reason: ', err.message);
     }
 }
-
 
 export { scrapIGs };

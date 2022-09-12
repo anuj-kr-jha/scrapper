@@ -61,13 +61,17 @@ export const c = {
         return res.json(errors);
     },
 
-    reset: async (req, res, next) => {
+    resetAll: async (req, res, next) => {
         db.set('ERROR', []).write();
+        db.set('MYFXBOOK', []).write();
+        db.set('IG', []).write();
+        db.set('DAILYFX', []).write();
+        db.set('FINAL', []).write();
 
-        // db.set('MYFXBOOK', []).write();
-        // db.set('IG', []).write();
-        // db.set('DAILYFX', []).write();
-        // db.set('FINAL', []).write();
+        return res.send('ok');
+    },
+    resetLog: async (req, res, next) => {
+        db.set('ERROR', []).write();
 
         return res.send('ok');
     },

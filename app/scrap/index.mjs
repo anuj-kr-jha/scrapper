@@ -7,8 +7,9 @@ async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
         const final_igs = {};
         const final_data = {};
         const final_myFxBooks = {};
-        const final_dailyFxs = {}; // this contain data not available in ig
+        const final_dailyFxs = {};
 
+        // this contain data not available in ig
         for (const [myFxBooksKey, myFxBooksVal] of Object.entries(myFxBooks)) {
             const short = myFxBooksVal.percent;
             const long = 1 - short;
@@ -29,7 +30,7 @@ async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
             const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
             // console.log(igKey)
 
-            const ssi_signal = signal != 'FLAT' ? signal : (final_myFxBooks[igKey] && final_myFxBooks[igKey].ssi_signal && final_myFxBooks[igKey].ssi_signal != 'FLAT') ? final_myFxBooks[igKey].ssi_signal : 'FLAT'
+            const ssi_signal = signal != 'FLAT' ? signal : final_myFxBooks[igKey] && final_myFxBooks[igKey].ssi_signal && final_myFxBooks[igKey].ssi_signal != 'FLAT' ? final_myFxBooks[igKey].ssi_signal : 'FLAT';
             final_igs[igKey] = {
                 currency: igVal.currency,
                 percent: igVal.percent.toFixed(2),
@@ -45,18 +46,18 @@ async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
         for (const [dailyFxKey, dailyFxVal] of Object.entries(dailyFxs)) {
             final_dailyFxs[dailyFxKey] = {
                 currency: dailyFxVal.currency,
-                oi_signal: dailyFxVal.trading_bias,
-                // oi_signal <- trading_bias
+                oi_signal: dailyFxVal.trading_bias, // oi_signal <- trading_bias
                 net_long_percent: dailyFxVal.net_long_percent,
                 net_short_percent: dailyFxVal.net_short_percent,
                 change_in_longs: dailyFxVal.change_in_longs,
                 change_in_shorts: dailyFxVal.change_in_shorts,
-                change_in_io: dailyFxVal.change_in_io,
+                change_in_oi: dailyFxVal.change_in_oi,
             };
         }
 
+        // -------- final data calculation started here --------
+        // calculating oi_signal from dailyFx and rest from ig
         for (const [igKey, igVal] of Object.entries(final_igs)) {
-
             const oi_signal = final_dailyFxs[igKey] && final_dailyFxs[igKey].oi_signal ? final_dailyFxs[igKey].oi_signal : 'NA';
             final_data[igKey] = {
                 currency: igVal.currency,
@@ -65,10 +66,13 @@ async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
                 ssi_signal: igVal.ssi_signal,
                 oi_signal: oi_signal,
             };
-        } // add missing_data(from ig) to  final_data (from myFxBook)
+        }
 
+        // add missing_data(from ig) to  final_data (from myFxBook)
+        // calculating oi_signal from dailyFx and rest from final_myFxBooks
         for (const [key, val] of Object.entries(final_myFxBooks)) {
             if (Object.keys(final_igs).includes(key)) continue;
+
             const short = val.percent;
             const long = 1 - short;
             const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
@@ -82,12 +86,7 @@ async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
             };
         }
 
-        return {
-            final_igs,
-            final_dailyFxs,
-            final_myFxBooks,
-            final_data,
-        };
+        return { final_igs, final_dailyFxs, final_myFxBooks, final_data };
     } catch (err) {
         console.error('Error in calculateFinal ', err.messge, err.stack);
 
@@ -106,7 +105,7 @@ async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
 
 export async function scrapAndSave() {
     try {
-        const t0 = Date.now();
+        // const t0 = performance.now();
 
         const { factor, ig_urls, myFxBook_urls, dailyFx_url } = getConstant(0);
 
@@ -126,8 +125,8 @@ export async function scrapAndSave() {
         if (!dailyFxs) throw new Error('Scrapping DailyFxs failed');
         if (!myFxBooks) throw new Error('Scrapping MyFxBooks failed');
 
-        const t1 = Date.now();
-        console.info('ms(scrap): ', t1 - t0);
+        // const t1 = performance.now();
+        // console.info('ms(scrap): ', t1 - t0);
 
         const { final_igs, final_dailyFxs, final_myFxBooks, final_data } = await calculateFinal(igs, dailyFxs, myFxBooks, factor || 0.3);
 
@@ -151,8 +150,8 @@ export async function scrapAndSave() {
         db.get('MYFXBOOK').splice(1).write();
         db.get('FINAL').splice(1).write();
 
-        const t2 = Date.now();
-        console.info('ms(save): ', t2 - t1);
+        // const t2 = Date.now();
+        // console.info('ms(save): ', t2 - t1);
     } catch (err) {
         console.error(`Error in scrapAndSave ${err.message}`);
 
@@ -160,3 +159,10 @@ export async function scrapAndSave() {
         await db.write();
     }
 }
+
+// myFxBooks : independent
+// igs*: ssi_signal of igs depends on final_myFxBooks[igKey]?.ssi_signal
+// dailyFxs: independent
+// igs*: oi_signal of igs depends on final_dailyFxs[igKey]?.oi_signal ?? 'NA';
+
+// final data => final_igs + final_myFxBooks

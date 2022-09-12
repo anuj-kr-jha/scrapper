@@ -1,8 +1,9 @@
 import morgan from 'morgan';
-import { Router } from 'express';
+import express from 'express';
 import { adminRoute } from './admin/index.mjs';
 import { otherRoute } from './other/index.mjs';
 
+const { Router } = express;
 const router = Router();
 
 if (process.env.NODE_ENV == 'dev') router.use(morgan('tiny'));
