@@ -8,6 +8,5 @@ const router = Router();
 router.get('/ping', c.ping, c.send);
 router.get('/recent', c.recent, c.json);
 router.get('/recent_old', c.recent_old, c.json);
-router.get('/scrap', c.scrap_now, c.json);
 
 export { router as otherRoute };

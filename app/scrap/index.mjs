@@ -1,168 +1,192 @@
-import { scrapIGs } from './lib/ig.mjs';
+import { scrapIG } from './lib/ig.mjs';
 import { scrapDailyFxTable } from './lib/dailyFx.mjs';
-import { scrapMyFxs } from './lib/myfxbook.mjs';
-
-async function calculateFinal(igs, dailyFxs, myFxBooks, factor) {
-    try {
-        const final_igs = {};
-        const final_data = {};
-        const final_myFxBooks = {};
-        const final_dailyFxs = {};
-
-        // this contain data not available in ig
-        for (const [myFxBooksKey, myFxBooksVal] of Object.entries(myFxBooks)) {
-            const short = myFxBooksVal.percent;
-            const long = 1 - short;
-            const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
-            final_myFxBooks[myFxBooksKey] = {
-                currency: myFxBooksVal.currency,
-                percent: myFxBooksVal.percent.toFixed(2),
-                // calculated
-                long: long.toFixed(2),
-                short: short.toFixed(2),
-                ssi_signal: signal,
-            };
-        }
-
-        for (const [igKey, igVal] of Object.entries(igs)) {
-            const long = igVal.longShort == 'long' ? igVal.percent : 1 - igVal.percent;
-            const short = 1 - long;
-            const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
-            // console.log(igKey)
-
-            const ssi_signal = signal != 'FLAT' ? signal : final_myFxBooks[igKey] && final_myFxBooks[igKey].ssi_signal && final_myFxBooks[igKey].ssi_signal != 'FLAT' ? final_myFxBooks[igKey].ssi_signal : 'FLAT';
-            final_igs[igKey] = {
-                currency: igVal.currency,
-                percent: igVal.percent.toFixed(2),
-                longShort: igVal.longShort,
-                // calculated
-                long: long.toFixed(2),
-                short: short.toFixed(2),
-                signal: signal,
-                ssi_signal: ssi_signal,
-            };
-        }
-
-        for (const [dailyFxKey, dailyFxVal] of Object.entries(dailyFxs)) {
-            final_dailyFxs[dailyFxKey] = {
-                currency: dailyFxVal.currency,
-                oi_signal: dailyFxVal.trading_bias, // oi_signal <- trading_bias
-                net_long_percent: dailyFxVal.net_long_percent,
-                net_short_percent: dailyFxVal.net_short_percent,
-                change_in_longs: dailyFxVal.change_in_longs,
-                change_in_shorts: dailyFxVal.change_in_shorts,
-                change_in_oi: dailyFxVal.change_in_oi,
-            };
-        }
-
-        // -------- final data calculation started here --------
-        // calculating oi_signal from dailyFx and rest from ig
-        for (const [igKey, igVal] of Object.entries(final_igs)) {
-            const oi_signal = final_dailyFxs[igKey] && final_dailyFxs[igKey].oi_signal ? final_dailyFxs[igKey].oi_signal : 'NA';
-            final_data[igKey] = {
-                currency: igVal.currency,
-                long: parseFloat(igVal.long).toFixed(2),
-                short: parseFloat(igVal.short).toFixed(2),
-                ssi_signal: igVal.ssi_signal,
-                oi_signal: oi_signal,
-            };
-        }
-
-        // add missing_data(from ig) to  final_data (from myFxBook)
-        // calculating oi_signal from dailyFx and rest from final_myFxBooks
-        for (const [key, val] of Object.entries(final_myFxBooks)) {
-            if (Object.keys(final_igs).includes(key)) continue;
-
-            const short = val.percent;
-            const long = 1 - short;
-            const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
-            const oi_signal = final_dailyFxs[key] && final_dailyFxs[key].oi_signal ? final_dailyFxs[key].oi_signal : 'NA';
-            final_data[key] = {
-                currency: val.currency,
-                long: val.long,
-                short: val.short,
-                ssi_signal: signal,
-                oi_signal: oi_signal,
-            };
-        }
-
-        return { final_igs, final_dailyFxs, final_myFxBooks, final_data };
-    } catch (err) {
-        console.error('Error in calculateFinal ', err.messge, err.stack);
-
-        db.get('ERROR')
-            .splice(9, 1, {
-                message: err.message,
-                method: 'calculateFinal',
-                createdAt: new Date().toISOString(),
-                trace: err.stack,
-            })
-            .write();
-
-        return {};
-    }
-}
+import { scrapMyFx } from './lib/myfxbook.mjs';
 
 export async function scrapAndSave() {
-    try {
-        // const t0 = performance.now();
+  try {
+    const pattern = getConstant(0).interval_pattern || '*/10 * * * * *'; // default: every 10 sec
+    scheduleJob('scrap-ig-myfxbook-dailyfx', pattern, async () => {
+      const { factor, ig_urls, myFxBook_urls, dailyFx_url, ig_counter, myFxBook_counter } = globalThis.getConstant(0);
 
-        const { factor, ig_urls, myFxBook_urls, dailyFx_url } = getConstant(0);
+      if (!factor) throw new Error('Factor is not defined');
+      if (!ig_urls) throw new Error('IG_URLs is not defined');
+      if (!myFxBook_urls) throw new Error('MYFXBOOK_URLs is not defined');
+      if (!dailyFx_url) throw new Error('DAILYFX_URL is not defined');
 
-        if (!factor) throw new Error('Factor is not defined');
-        if (!ig_urls) throw new Error('IG_URLs is not defined');
-        if (!myFxBook_urls) throw new Error('MYFXBOOK_URLs is not defined');
-        if (!dailyFx_url) throw new Error('DAILYFX_URL is not defined');
+      const ig_counter_min = 0;
+      const ig_counter_max = ig_urls.length - 1;
+      const myFxBook_counter_min = 0;
+      const myFxBook_counter_max = myFxBook_urls.length - 1;
 
-        const [igs, dailyFxs, myFxBooks] = await Promise.all([
-            scrapIGs(ig_urls),
-            scrapDailyFxTable(dailyFx_url),
-            scrapMyFxs(myFxBook_urls),
-            //
-        ]);
+      const [ig, myfxbook, dailyfxObj] = await Promise.all([
+        scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]),
+        scrapMyFx(myFxBook_urls[myFxBook_counter][0], myFxBook_urls[myFxBook_counter][1]),
+        scrapDailyFxTable(dailyFx_url),
+        //
+      ]);
 
-        if (!igs) throw new Error('Scrapping IGs failed');
-        if (!dailyFxs) throw new Error('Scrapping DailyFxs failed');
-        if (!myFxBooks) throw new Error('Scrapping MyFxBooks failed');
+      // console.log('ig', ig);
+      db.get('RAW_IG').value()[ig_counter] = { ...ig, createdAt: new Date().toISOString() };
+      db.get('RAW_IG').write();
 
-        // const t1 = performance.now();
-        // console.info('ms(scrap): ', t1 - t0);
+      // console.log('myfxbook', myfxbook);
+      db.get('RAW_MYFXBOOK').value()[myFxBook_counter] = { ...myfxbook, createdAt: new Date().toISOString() };
+      db.get('RAW_MYFXBOOK').write();
 
-        const { final_igs, final_dailyFxs, final_myFxBooks, final_data } = await calculateFinal(igs, dailyFxs, myFxBooks, factor || 0.3);
+      const dailyfx = Object.values(dailyfxObj).map((x) => ({ ...x, createdAt: new Date().toISOString() }));
 
-        if (!final_igs) throw new Error('Calculating final_igs failed');
-        if (!final_dailyFxs) throw new Error('Calculating final_dailyFxs failed');
-        if (!final_myFxBooks) throw new Error('Calculating final_myFxBooks failed');
-        if (!final_data) throw new Error('Calculating final_data failed');
+      // console.log('dailyfx', dailyfx);
+      db.get('RAW_DAILYFX').value().length = 0;
+      db.get('RAW_DAILYFX')
+        .value()
+        .push(...dailyfx);
+      db.get('RAW_DAILYFX').write();
 
-        const _igs = Object.values(final_igs);
-        const _dailyFxs = Object.values(final_dailyFxs);
-        const _myFxBooks = Object.values(final_myFxBooks);
-        const _finalData = Object.values(final_data);
+      db.get('CONSTANT').value()[0]['ig_counter'] =
+        db.get('CONSTANT').value()[0]['ig_counter'] + 1 > ig_counter_max ? ig_counter_min : db.get('CONSTANT').value()[0]['ig_counter'] + 1;
+      db.get('CONSTANT').value()[0]['myFxBook_counter'] =
+        db.get('CONSTANT').value()[0]['myFxBook_counter'] + 1 > myFxBook_counter_max ? myFxBook_counter_min : db.get('CONSTANT').value()[0]['myFxBook_counter'] + 1;
+      db.get('CONSTANT').write();
+      console.log('done', new Date().toLocaleTimeString());
+    });
+  } catch (err) {
+    console.error('Error in calculateFinal ', err.message, err.stack);
 
-        db.get('IG').unshift({ FX: _igs, createdAt: new Date().toISOString() }).write();
-        db.get('DAILYFX').unshift({ FX: _dailyFxs, createdAt: new Date().toISOString() }).write();
-        db.get('MYFXBOOK').unshift({ FX: _myFxBooks, createdAt: new Date().toISOString() }).write();
-        db.get('FINAL').unshift({ FX: _finalData, createdAt: new Date().toISOString() }).write();
-
-        db.get('IG').splice(1).write();
-        db.get('DAILYFX').splice(1).write();
-        db.get('MYFXBOOK').splice(1).write();
-        db.get('FINAL').splice(1).write();
-
-        // const t2 = Date.now();
-        // console.info('ms(save): ', t2 - t1);
-    } catch (err) {
-        console.error(`Error in scrapAndSave ${err.message}`);
-
-        db.get('ERROR').splice(9, 1, { message: err.message, method: 'scrapAndSave', createdAt: new Date().toISOString(), trace: err.stack });
-        await db.write();
+    if (db.get('ERROR').value().length > 10) {
+      db.get('ERROR')
+        .splice(0, db.get('ERROR').value().length - 10)
+        .write();
     }
+    db.get('ERROR').push({ message: err.message, method: 'calculateFinal', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
+  }
 }
 
-// myFxBooks : independent
-// igs*: ssi_signal of igs depends on final_myFxBooks[igKey]?.ssi_signal
-// dailyFxs: independent
-// igs*: oi_signal of igs depends on final_dailyFxs[igKey]?.oi_signal ?? 'NA';
+export function calculate() {
+  const ig_keys = getConstant(0)['ig_urls'].map((x) => x[1]);
+  const myFxBook_keys = getConstant(0)['myFxBook_urls'].map((x) => x[1]);
+  const factor = getConstant(0)['factor'] || 0.3;
+  /** @type {string[]} keys */
+  const keys = Array.from(new Set([...ig_keys, ...myFxBook_keys]));
+  // console.log(keys, keys.length);
 
-// final data => final_igs + final_myFxBooks
+  /** @type {Array<Record<'currency'|'long' | 'short'| 'ssi_signal' | 'oi_signal', any>>} final */
+  const final = [];
+  for (const key of keys) {
+    const res = { currency: key, long: '0', short: '0', ssi_signal: 'NA', oi_signal: 'NA' };
+
+    // actual scrapped data
+    /** @type {undefined | {currency: string, percent: number, longShort: string, status: 0 | 1}} */
+    let raw_ig = db
+      .get('RAW_IG')
+      .value()
+      .find((c) => c && c.currency === key);
+    /** @type {undefined | {currency: string, shortPercent: number, status: 0 | 1}} */
+    let raw_myfxbook = db
+      .get('RAW_MYFXBOOK')
+      .value()
+      .find((c) => c && c.currency === key);
+    /** @type {undefined | {currency: string, trading_bias: string, net_long_percent: number, net_short_percent: number, change_in_longs: { Daily: number, Weekly: number }, change_in_shorts: { Daily: number, Weekly: number }, change_in_oi: { Daily: number, Weekly: number }}} */
+    let raw_dailyfx = db
+      .get('RAW_DAILYFX')
+      .value()
+      .find((c) => c && c.currency === key);
+    //
+
+    // ############ scrapped data transformation ############
+    // --------------------- MYFXBOOK -----------------------
+    const final_myfxbook = { currency: key, percent: '0.00', long: '0.00', short: '0.00', ssi_signal: '' };
+    {
+      let long = 0;
+      let short = 0;
+      if (raw_myfxbook) {
+        if (typeof raw_myfxbook.shortPercent === 'number' && raw_myfxbook.status) {
+          short = raw_myfxbook.shortPercent;
+          long = 1 - short;
+          //
+          final_myfxbook.percent = raw_myfxbook.shortPercent.toFixed(2);
+        }
+      }
+      const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
+      //
+      final_myfxbook.long = long.toFixed(2);
+      final_myfxbook.short = short.toFixed(2);
+      final_myfxbook.ssi_signal = signal;
+    }
+    // ------------------------------------------------------
+
+    // ------------------------ IG --------------------------
+    const final_ig = { currency: key, percent: '0.00', longShort: 'NA', long: '0.00', short: '0.00', signal: '', ssi_signal: '' };
+    {
+      let long = 0;
+      let short = 0;
+      if (raw_ig) {
+        // here no need to check status bcz for fail case longShort -> 'NA'
+        if (raw_ig.longShort === 'long') {
+          long = raw_ig.percent;
+          short = 1 - long;
+        } else if (raw_ig.longShort === 'short') {
+          short = raw_ig.percent;
+          long = 1 - short;
+          //
+          final_ig.percent = raw_ig.percent.toFixed(2);
+          final_ig.longShort = raw_ig.longShort;
+        }
+      }
+      const signal = Math.abs(long - short) > factor ? (long > short ? 'BEARISH' : 'BULLISH') : 'FLAT';
+      /** @type { "BEARISH" | "BULLISH" | "FLAT"} */
+      let ssi_signal = 'FLAT';
+      if (signal !== 'FLAT') ssi_signal = signal;
+      else if (final_myfxbook.ssi_signal !== 'FLAT') ssi_signal = final_myfxbook.ssi_signal;
+      //
+      final_ig.long = long.toFixed(2);
+      final_ig.short = short.toFixed(2);
+      final_ig.signal = signal;
+      final_ig.ssi_signal = ssi_signal;
+    }
+    // ------------------------------------------------------
+
+    // ---------------------- DAILYFX -----------------------
+    const final_dailyfx = {
+      currency: key,
+      oi_signal: raw_dailyfx ? raw_dailyfx.trading_bias : 'NA',
+      net_long_percent: raw_dailyfx ? raw_dailyfx.net_long_percent : 0,
+      net_short_percent: raw_dailyfx ? raw_dailyfx.net_short_percent : 0,
+      change_in_longs: raw_dailyfx ? raw_dailyfx.change_in_longs : { Daily: 0, Weekly: 0 },
+      change_in_shorts: raw_dailyfx ? raw_dailyfx.change_in_shorts : { Daily: 0, Weekly: 0 },
+      change_in_oi: raw_dailyfx ? raw_dailyfx.change_in_oi : { Daily: 0, Weekly: 0 },
+    };
+    // ------------------------------------------------------
+
+    // ######################################################
+
+    // ############# FINAL RESPONSE GENERATION  #############
+    // --------------- OI SIGNAL FROM DAILYFX ---------------
+    let oi_signal = 'NA';
+    if (raw_dailyfx) oi_signal = final_dailyfx.oi_signal;
+    //
+    res.long = final_ig.long;
+    res.short = final_ig.short;
+    res.ssi_signal = final_ig.ssi_signal;
+    res.oi_signal = oi_signal;
+
+    // console.log(raw_ig.status); // 0 : not found(contains default val), 1: found(contains exact val)
+
+    // when currency not found in ig (meaning it will have default value) so, fetch from myfxbook
+    if (!raw_ig || !raw_ig.status) {
+      res.long = final_myfxbook.long;
+      res.short = final_myfxbook.short;
+      res.ssi_signal = final_myfxbook.ssi_signal;
+      res.oi_signal = oi_signal;
+    }
+
+    // ------------------------------------------------------
+    // ------------------------------------------------------
+    // ------------------------------------------------------
+    // ######################################################
+
+    final.push(res);
+  }
+
+  // console.log(final);
+  return final;
+}
