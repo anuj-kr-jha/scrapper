@@ -27,7 +27,7 @@ export async function scrapMyFx(url, name, log) {
     throw new Error(`STATUS(response.status) !== 200`);
   } catch (err) {
     const reason = `scrapMyFx failed :(, reason: ${err.message}, url: ${url}`;
-    console.error(reason);
+    console.red('❌ ', reason);
     db.get('ERROR').shift().write();
     db.get('ERROR').push({ message: reason, method: 'scrapMyFx', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
     if (db.get('ERROR').value().length > 10) {

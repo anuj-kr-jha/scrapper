@@ -47,7 +47,8 @@ export async function scrapAndSave() {
       db.get('CONSTANT').value()[0]['myFxBook_counter'] =
         db.get('CONSTANT').value()[0]['myFxBook_counter'] + 1 > myFxBook_counter_max ? myFxBook_counter_min : db.get('CONSTANT').value()[0]['myFxBook_counter'] + 1;
       db.get('CONSTANT').write();
-      console.log('done', new Date().toLocaleTimeString());
+      console.green('✅', new Date().toLocaleTimeString(), ig_urls[ig_counter][0], ig);
+      console.green('✅', new Date().toLocaleTimeString(), myFxBook_urls[myFxBook_counter][0], myfxbook);
     });
   } catch (err) {
     console.error('Error in calculateFinal ', err.message, err.stack);

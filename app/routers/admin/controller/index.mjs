@@ -32,7 +32,7 @@ export const c = {
   },
   update: async (req, res, next) => {
     try {
-      const { factor, ig_urls, myFxBook_urls, dailyFx_url, interval_pattern } = req.body;
+      const { factor, ig_urls, myFxBook_urls, dailyFx_url, interval_pattern, interval_excel } = req.body;
       const old_constant = getConstant(0);
       let ig_counter = old_constant.ig_counter || 0; // -1 resume, 0 stop
       let myFxBook_counter = old_constant.myFxBook_counter || 0; // -1 resume, 0 stop
@@ -51,6 +51,7 @@ export const c = {
         ig_counter: ig_counter,
         myFxBook_counter: myFxBook_counter,
         interval_pattern: interval_pattern || old_constant.interval_pattern,
+        interval_excel: interval_excel || old_constant.interval_excel,
         dailyFx_url: dailyFx_url || old_constant.dailyFx_url,
         ig_urls: ig_urls && ig_urls.length > 0 ? ig_urls : old_constant.ig_urls,
         myFxBook_urls: myFxBook_urls && myFxBook_urls.length > 0 ? myFxBook_urls : old_constant.myFxBook_urls,

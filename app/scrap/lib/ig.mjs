@@ -28,7 +28,7 @@ export async function scrapIG(url, name, log) {
     throw new Error(`STATUS(response.status) !== 200`);
   } catch (err) {
     const reason = `scrapIG failed :(, reason: ${err.message}, url: ${url}`;
-    console.error(reason);
+    console.red('❌ ', reason);
     if (db.get('ERROR').value().length > 10) {
       db.get('ERROR')
         .splice(0, db.get('ERROR').value().length - 10)

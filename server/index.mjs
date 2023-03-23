@@ -33,8 +33,13 @@ class Server {
   }
 
   async setupServer() {
-    this.httpServer.timeout = 120e3; // 120*1000
-    this.httpServer.listen(process.env.PORT, () => console.log(`Spinning on ${process.env.PORT} 🌀`));
+    return new Promise((res, rej) => {
+      this.httpServer.timeout = 120e3; // 120*1000
+      this.httpServer.listen(process.env.PORT, () => {
+        console.log(`Spinning on ${process.env.PORT} 🌀`);
+        res();
+      });
+    });
   }
 }
 
