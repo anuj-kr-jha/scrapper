@@ -1,6 +1,140 @@
 import { scrapIG } from './lib/ig.mjs';
 import { scrapDailyFxTable } from './lib/dailyFx.mjs';
 import { scrapMyFx } from './lib/myfxbook.mjs';
+import { createWorkbook } from '../../app/util/index.mjs';
+
+function resetDb() {
+  db.get('RAW_IG')
+    .value()
+    .forEach((doc) => {
+      if (doc && doc.percent) doc.percent = 0;
+      if (doc && doc.longShort) doc.longShort = 'NA';
+      if (doc && doc.status) doc.status = 0;
+      if (doc && doc.createdAt) doc.createdAt = new Date();
+    });
+  db.get('RAW_IG').write();
+  //
+  db.get('RAW_MYFXBOOK')
+    .value()
+    .forEach((doc) => {
+      if (doc && doc.shortPercent) doc.shortPercent = 0;
+      if (doc && doc.status) doc.status = 0;
+      if (doc && doc.createdAt) doc.createdAt = new Date();
+    });
+  db.get('RAW_MYFXBOOK').write();
+  //
+  db.get('RAW_DAILYFX')
+    .value()
+    .forEach((doc) => {
+      if (doc && doc.net_long_percent) doc.net_long_percent = 0;
+      if (doc && doc.net_short_percent) doc.net_short_percent = 0;
+      if (doc && doc.change_in_longs)
+        doc.change_in_longs = {
+          Daily: 0,
+          Weekly: 0,
+        };
+      if (doc && doc.change_in_shorts)
+        doc.change_in_shorts = {
+          Daily: 0,
+          Weekly: 0,
+        };
+      if (doc && doc.change_in_oi)
+        doc.change_in_oi = {
+          Daily: 0,
+          Weekly: 0,
+        };
+      if (doc && doc.createdAt) doc.createdAt = new Date();
+    });
+  db.get('RAW_DAILYFX').write();
+}
+
+export async function scrapAndSaveOnce() {
+  try {
+    let { factor, ig_urls, myFxBook_urls, dailyFx_url, ig_counter, myFxBook_counter, interval } = globalThis.getConstant(0);
+
+    if (!factor) throw new Error('Factor is not defined');
+    if (!ig_urls) throw new Error('IG_URLs is not defined');
+    if (!myFxBook_urls) throw new Error('MYFXBOOK_URLs is not defined');
+    if (!dailyFx_url) throw new Error('DAILYFX_URL is not defined');
+
+    resetDb();
+
+    ig_counter = 62;
+    myFxBook_counter = 34;
+    const ig_counter_max = ig_urls.length - 1;
+    const myFxBook_counter_max = myFxBook_urls.length - 1;
+    setInterval(async () => {
+      try {
+        console.log('scrapping 1');
+        const promises = [];
+        if (ig_counter <= ig_counter_max) promises.push(scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]));
+        else promises.push(Promise.resolve(null));
+        if (myFxBook_counter <= myFxBook_counter_max) promises.push(scrapMyFx(myFxBook_urls[myFxBook_counter][0], myFxBook_urls[myFxBook_counter][1]));
+        else promises.push(Promise.resolve(null));
+        promises.push(scrapDailyFxTable(dailyFx_url));
+
+        const [ig, myfxbook, dailyfxObj] = await Promise.all(promises);
+        if (ig) {
+          // console.log('ig', ig);
+          db.get('RAW_IG').value()[ig_counter] = { ...ig, createdAt: new Date().toISOString() };
+          db.get('RAW_IG').write();
+        }
+
+        if (myfxbook) {
+          // console.log('myfxbook', myfxbook);
+          db.get('RAW_MYFXBOOK').value()[myFxBook_counter] = { ...myfxbook, createdAt: new Date().toISOString() };
+          db.get('RAW_MYFXBOOK').write();
+        }
+        if (dailyfxObj) {
+          const dailyfx = Object.values(dailyfxObj).map((x) => ({ ...x, createdAt: new Date().toISOString() }));
+
+          // console.log('dailyfx', dailyfx);
+          db.get('RAW_DAILYFX').value().length = 0;
+          db.get('RAW_DAILYFX')
+            .value()
+            .push(...dailyfx);
+          db.get('RAW_DAILYFX').write();
+        }
+
+        //
+        db.get('CONSTANT').value()[0]['ig_counter'] = ig_counter;
+        db.get('CONSTANT').value()[0]['myFxBook_counter'] = myFxBook_counter;
+        db.get('CONSTANT').write();
+
+        console.log('scrapping 2');
+
+        //
+        ig_counter++;
+        myFxBook_counter++;
+
+        // const ig_url = ig_urls[ig_counter][0];
+        // const myFxBook_url = ig_urls[ig_counter][0];
+
+        //
+        console.green('✅', new Date().toLocaleTimeString(), ig, `ig [${ig_counter}/${ig_counter_max}]`);
+        console.green('✅', new Date().toLocaleTimeString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
+
+        //
+        console.log({ ig_counter, ig_counter_max, myFxBook_counter, myFxBook_counter_max });
+        if (ig_counter > ig_counter_max && myFxBook_counter > myFxBook_counter_max) {
+          console.green(`All done, generating excel :)`);
+          await createWorkbook();
+          console.red('exiting...');
+          process.exit(0);
+        }
+      } catch (e) {}
+    }, interval * 1000 * 60);
+  } catch (err) {
+    console.red('Error in scrapAndSaveOnce ', err.message, err.stack);
+
+    if (db.get('ERROR').value().length > 10) {
+      db.get('ERROR')
+        .splice(0, db.get('ERROR').value().length - 10)
+        .write();
+    }
+    db.get('ERROR').push({ message: err.message, method: 'calculateFinal', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
+  }
+}
 
 export async function scrapAndSave() {
   try {
@@ -51,7 +185,7 @@ export async function scrapAndSave() {
       console.green('✅', new Date().toLocaleTimeString(), myFxBook_urls[myFxBook_counter][0], myfxbook);
     });
   } catch (err) {
-    console.error('Error in calculateFinal ', err.message, err.stack);
+    console.red('Error in scrapAndSave ', err.message, err.stack);
 
     if (db.get('ERROR').value().length > 10) {
       db.get('ERROR')

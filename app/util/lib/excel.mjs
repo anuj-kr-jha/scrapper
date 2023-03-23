@@ -21,7 +21,7 @@ function getFileName() {
   // Set the filename with the timestamp
   return `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
 }
-export default async function createWorkbook() {
+export async function createWorkbook() {
   let rawData;
   try {
     rawData = JSON.parse(fs.readFileSync('db.json', 'utf8'));
@@ -89,6 +89,6 @@ export default async function createWorkbook() {
   } catch (e) {
     console.red('Error on createWorkbook', e.message);
   } finally {
-    setTimeout(createWorkbook, rawData.CONSTANT[0].interval_excel);
+    // setTimeout(createWorkbook, rawData.CONSTANT[0].interval_excel);
   }
 }
