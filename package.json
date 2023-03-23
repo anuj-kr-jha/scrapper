@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon ./index.mjs --ignore '*.json'",
     "preinstall": "npm i -g forever",
+    "start": "node ./index.mjs",
     "launch": "forever start ./index.mjs",
     "restart": "forever restart 0 ",
     "stop": "forever stop 0 ",
