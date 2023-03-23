@@ -59,13 +59,12 @@ export async function scrapAndSaveOnce() {
 
     resetDb();
 
-    ig_counter = 62;
-    myFxBook_counter = 34;
+    ig_counter = 0;
+    myFxBook_counter = 0;
     const ig_counter_max = ig_urls.length - 1;
     const myFxBook_counter_max = myFxBook_urls.length - 1;
     setInterval(async () => {
       try {
-        console.log('scrapping 1');
         const promises = [];
         if (ig_counter <= ig_counter_max) promises.push(scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]));
         else promises.push(Promise.resolve(null));
@@ -101,8 +100,6 @@ export async function scrapAndSaveOnce() {
         db.get('CONSTANT').value()[0]['myFxBook_counter'] = myFxBook_counter;
         db.get('CONSTANT').write();
 
-        console.log('scrapping 2');
-
         //
         ig_counter++;
         myFxBook_counter++;
@@ -115,7 +112,6 @@ export async function scrapAndSaveOnce() {
         console.green('✅', new Date().toLocaleTimeString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
 
         //
-        console.log({ ig_counter, ig_counter_max, myFxBook_counter, myFxBook_counter_max });
         if (ig_counter > ig_counter_max && myFxBook_counter > myFxBook_counter_max) {
           console.green(`All done, generating excel :)`);
           await createWorkbook();
