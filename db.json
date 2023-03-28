@@ -2,9 +2,7 @@
   "CONSTANT": [
     {
       "factor": 0.3,
-      "ig_counter": 63,
-      "myFxBook_counter": 63,
-      "interval_pattern": "*/10 * * * * *",
+      "repeat_at": ["06:00", "14:00", "22:00"],
       "interval": 1,
       "dailyFx_url": "https://www.dailyfx.com/sentiment-report",
       "ig_urls": [
@@ -111,7 +109,9 @@
         ["https://www.myfxbook.com/community/outlook/XAUEUR", "XAUEUR"],
         ["https://www.myfxbook.com/community/outlook/XAUAUD", "XAUAUD"]
       ],
-      "created_at": "2023-03-23T19:11:24.050Z"
+      "created_at": "2023-03-28T18:02:16.695Z",
+      "ig_counter": 63,
+      "myFxBook_counter": 63
     }
   ],
   "RAW_IG": [
@@ -120,448 +120,448 @@
       "percent": 0.58,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:17.307Z"
+      "createdAt": "2023-03-28T18:57:37.488Z"
     },
     {
       "currency": "GBPUSD",
       "percent": 0.61,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:20.104Z"
+      "createdAt": "2023-03-28T18:57:40.431Z"
     },
     {
       "currency": "USDJPY",
-      "percent": 0.53,
+      "percent": 0.51,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:22.975Z"
+      "createdAt": "2023-03-28T18:57:43.310Z"
     },
     {
       "currency": "GBPJPY",
-      "percent": 0.65,
+      "percent": 0.64,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:25.849Z"
+      "createdAt": "2023-03-28T18:57:46.520Z"
     },
     {
       "currency": "USDCAD",
       "percent": 0.53,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:28.715Z"
+      "createdAt": "2023-03-28T18:57:49.637Z"
     },
     {
       "currency": "EURAUD",
-      "percent": 0.8,
+      "percent": 0.79,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:31.595Z"
+      "createdAt": "2023-03-28T18:57:52.509Z"
     },
     {
       "currency": "EURJPY",
       "percent": 0.65,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:34.486Z"
+      "createdAt": "2023-03-28T18:57:55.250Z"
     },
     {
       "currency": "AUDCAD",
       "percent": 0.51,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:37.044Z"
+      "createdAt": "2023-03-28T18:57:57.905Z"
     },
     {
       "currency": "AUDJPY",
-      "percent": 0.54,
+      "percent": 0.56,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:39.445Z"
+      "createdAt": "2023-03-28T18:58:00.549Z"
     },
     {
       "currency": "AUDNZD",
-      "percent": 0.64,
+      "percent": 0.63,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:41.838Z"
+      "createdAt": "2023-03-28T18:58:02.991Z"
     },
     {
       "currency": "AUDUSD",
       "percent": 0.64,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:44.707Z"
+      "createdAt": "2023-03-28T18:58:05.635Z"
     },
     {
       "currency": "CADJPY",
-      "percent": 0.54,
+      "percent": 0.55,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:47.080Z"
+      "createdAt": "2023-03-28T18:58:08.015Z"
     },
     {
       "currency": "EURCAD",
-      "percent": 0.66,
+      "percent": 0.68,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:49.949Z"
+      "createdAt": "2023-03-28T18:58:10.967Z"
     },
     {
       "currency": "EURCHF",
       "percent": 0.51,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:52.842Z"
+      "createdAt": "2023-03-28T18:58:13.674Z"
     },
     {
       "currency": "EURGBP",
-      "percent": 0.51,
+      "percent": 0.52,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:55.747Z"
+      "createdAt": "2023-03-28T18:58:16.967Z"
     },
     {
       "currency": "EURNZD",
-      "percent": 0.72,
+      "percent": 0.7,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:28:58.632Z"
+      "createdAt": "2023-03-28T18:58:19.861Z"
     },
     {
       "currency": "EURZAR",
       "percent": 0.58,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:01.020Z"
+      "createdAt": "2023-03-28T18:58:22.831Z"
     },
     {
       "currency": "GBPCAD",
-      "percent": 0.77,
+      "percent": 0.76,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:03.890Z"
+      "createdAt": "2023-03-28T18:58:25.726Z"
     },
     {
       "currency": "GBPCHF",
       "percent": 0.62,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:06.423Z"
+      "createdAt": "2023-03-28T18:58:28.429Z"
     },
     {
       "currency": "NZDCAD",
       "percent": 0.52,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:09.612Z"
+      "createdAt": "2023-03-28T18:58:31.083Z"
     },
     {
       "currency": "NZDJPY",
       "percent": 0.51,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:12.484Z"
+      "createdAt": "2023-03-28T18:58:33.797Z"
     },
     {
       "currency": "NZDUSD",
-      "percent": 0.62,
+      "percent": 0.61,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:15.353Z"
+      "createdAt": "2023-03-28T18:58:36.500Z"
     },
     {
       "currency": "USDCHF",
-      "percent": 0.76,
+      "percent": 0.75,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:17.748Z"
+      "createdAt": "2023-03-28T18:58:39.143Z"
     },
     {
       "currency": "CHFJPY",
-      "percent": 0.7,
-      "longShort": "long",
+      "percent": 0.75,
+      "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:20.704Z"
+      "createdAt": "2023-03-28T18:58:41.774Z"
     },
     {
       "currency": "AUDCHF",
-      "percent": 0.67,
+      "percent": 0.66,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:23.359Z"
+      "createdAt": "2023-03-28T18:58:44.248Z"
     },
     {
       "currency": "GBPNZD",
       "percent": 0.66,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:25.791Z"
+      "createdAt": "2023-03-28T18:58:47.125Z"
     },
     {
       "currency": "NZDCHF",
       "percent": 0.61,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:28.500Z"
+      "createdAt": "2023-03-28T18:58:49.850Z"
     },
     {
       "currency": "CADCHF",
       "percent": 0.84,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:31.548Z"
+      "createdAt": "2023-03-28T18:58:52.599Z"
     },
     {
       "currency": "GBPAUD",
-      "percent": 0.71,
+      "percent": 0.7,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:34.402Z"
+      "createdAt": "2023-03-28T18:58:55.246Z"
     },
     {
       "currency": "USDZAR",
-      "percent": 0.73,
+      "percent": 0.72,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:37.370Z"
+      "createdAt": "2023-03-28T18:58:58.192Z"
     },
     {
       "currency": "USDNOK",
       "percent": 0.81,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:40.219Z"
+      "createdAt": "2023-03-28T18:59:00.925Z"
     },
     {
       "currency": "USDSEK",
-      "percent": 0.63,
+      "percent": 0.52,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:43.081Z"
+      "createdAt": "2023-03-28T18:59:03.654Z"
     },
     {
       "currency": "XAUUSD",
-      "percent": 0.62,
+      "percent": 0.61,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:45.944Z"
+      "createdAt": "2023-03-28T18:59:06.306Z"
     },
     {
       "currency": "XAGUSD",
       "percent": 0.83,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:48.906Z"
+      "createdAt": "2023-03-28T18:59:09.021Z"
     },
     {
       "currency": "USDDKK",
-      "percent": 0.56,
-      "longShort": "long",
+      "percent": 0.57,
+      "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:51.756Z"
+      "createdAt": "2023-03-28T18:59:11.676Z"
     },
     {
       "currency": "USDSGD",
       "percent": 0.66,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:54.377Z"
+      "createdAt": "2023-03-28T18:59:14.622Z"
     },
     {
       "currency": "BCOUSD",
       "percent": 0.76,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:29:57.339Z"
+      "createdAt": "2023-03-28T18:59:17.512Z"
     },
     {
       "currency": "WTICOUSD",
       "percent": 0.66,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:00.526Z"
+      "createdAt": "2023-03-28T18:59:20.629Z"
     },
     {
       "currency": "XCUUSD",
-      "percent": 0.76,
+      "percent": 0.82,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:03.394Z"
+      "createdAt": "2023-03-28T18:59:23.614Z"
     },
     {
       "currency": "XPTUSD",
       "percent": 0.86,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:05.764Z"
+      "createdAt": "2023-03-28T18:59:26.267Z"
     },
     {
       "currency": "NATGASUSD",
       "percent": 0.96,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:08.085Z"
+      "createdAt": "2023-03-28T18:59:29.206Z"
     },
     {
       "currency": "HEOUSD",
-      "percent": 0.76,
+      "percent": 0.75,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:11.105Z"
+      "createdAt": "2023-03-28T18:59:32.040Z"
     },
     {
       "currency": "GASUSD",
-      "percent": 0.8,
+      "percent": 0.92,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:14.055Z"
+      "createdAt": "2023-03-28T18:59:34.689Z"
     },
     {
       "currency": "SUGARUSD",
       "percent": 0.55,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:16.916Z"
+      "createdAt": "2023-03-28T18:59:37.341Z"
     },
     {
       "currency": "US30USD",
-      "percent": 0.52,
-      "longShort": "short",
+      "percent": 0.51,
+      "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:19.780Z"
+      "createdAt": "2023-03-28T18:59:40.335Z"
     },
     {
       "currency": "US2000USD",
-      "percent": 0.72,
+      "percent": 0.73,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:22.574Z"
+      "createdAt": "2023-03-28T18:59:43.065Z"
     },
     {
       "currency": "NAS100USD",
       "percent": 0.54,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:25.593Z"
+      "createdAt": "2023-03-28T18:59:45.813Z"
     },
     {
       "currency": "SPX500USD",
-      "percent": 0.56,
+      "percent": 0.55,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:28.797Z"
+      "createdAt": "2023-03-28T18:59:48.540Z"
     },
     {
       "currency": "UK100GBP",
-      "percent": 0.58,
+      "percent": 0.59,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:32.340Z"
+      "createdAt": "2023-03-28T18:59:51.191Z"
     },
     {
       "currency": "JP225USD",
       "percent": 0.53,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:35.090Z"
+      "createdAt": "2023-03-28T18:59:53.580Z"
     },
     {
       "currency": "IN50USD",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2023-03-28T17:30:37.286Z"
+      "createdAt": "2023-03-28T18:59:56.142Z"
     },
     {
       "currency": "DE30EUR",
-      "percent": 0.66,
+      "percent": 0.67,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:40.174Z"
+      "createdAt": "2023-03-28T18:59:59.034Z"
     },
     {
       "currency": "AU200AUD",
       "percent": 0.67,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:42.789Z"
+      "createdAt": "2023-03-28T19:00:01.975Z"
     },
     {
       "currency": "EUR50EUR",
       "percent": 0.82,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:45.439Z"
+      "createdAt": "2023-03-28T19:00:04.706Z"
     },
     {
       "currency": "FR40EUR",
-      "percent": 0.68,
+      "percent": 0.67,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:48.391Z"
+      "createdAt": "2023-03-28T19:00:07.044Z"
     },
     {
       "currency": "HK33HKD",
-      "percent": 0.92,
+      "percent": 0.91,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:51.022Z"
+      "createdAt": "2023-03-28T19:00:09.385Z"
     },
     {
       "currency": "TWIXUSD",
       "percent": 0.68,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:53.760Z"
+      "createdAt": "2023-03-28T19:00:12.040Z"
     },
     {
       "currency": "NL25EUR",
-      "percent": 0.56,
+      "percent": 0.55,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:56.391Z"
+      "createdAt": "2023-03-28T19:00:14.301Z"
     },
     {
       "currency": "FANG",
-      "percent": 0.64,
+      "percent": 0.65,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:30:59.410Z"
+      "createdAt": "2023-03-28T19:00:17.203Z"
     },
     {
       "currency": "VIX",
       "percent": 0.57,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:31:02.149Z"
+      "createdAt": "2023-03-28T19:00:20.094Z"
     },
     {
       "currency": "ALU",
       "percent": 0.94,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:31:04.685Z"
+      "createdAt": "2023-03-28T19:00:22.740Z"
     },
     {
       "currency": "LEAD",
       "percent": 0.97,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:31:07.311Z"
+      "createdAt": "2023-03-28T19:00:25.512Z"
     },
     {
       "currency": "ZINC",
       "percent": 0.86,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:31:10.027Z"
+      "createdAt": "2023-03-28T19:00:28.432Z"
     },
     {
       "currency": "GASOLINE",
-      "percent": 0.83,
+      "percent": 0.76,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2023-03-28T17:31:12.907Z"
+      "createdAt": "2023-03-28T19:00:31.089Z"
     }
   ],
   "RAW_MYFXBOOK": [
@@ -569,217 +569,217 @@
       "currency": "EURUSD",
       "shortPercent": 0.76,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:17.308Z"
+      "createdAt": "2023-03-28T18:57:37.489Z"
     },
     {
       "currency": "GBPUSD",
       "shortPercent": 0.74,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:20.107Z"
+      "createdAt": "2023-03-28T18:57:40.432Z"
     },
     {
       "currency": "USDJPY",
-      "shortPercent": 0.48,
+      "shortPercent": 0.47,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:22.975Z"
+      "createdAt": "2023-03-28T18:57:43.311Z"
     },
     {
       "currency": "GBPJPY",
-      "shortPercent": 0.6,
+      "shortPercent": 0.57,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:25.850Z"
+      "createdAt": "2023-03-28T18:57:46.527Z"
     },
     {
       "currency": "USDCAD",
-      "shortPercent": 0.51,
+      "shortPercent": 0.49,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:28.716Z"
+      "createdAt": "2023-03-28T18:57:49.638Z"
     },
     {
       "currency": "EURAUD",
       "shortPercent": 0.8,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:31.596Z"
+      "createdAt": "2023-03-28T18:57:52.511Z"
     },
     {
       "currency": "EURJPY",
-      "shortPercent": 0.68,
+      "shortPercent": 0.66,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:34.487Z"
+      "createdAt": "2023-03-28T18:57:55.251Z"
     },
     {
       "currency": "AUDCAD",
       "shortPercent": 0.5,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:37.045Z"
+      "createdAt": "2023-03-28T18:57:57.906Z"
     },
     {
       "currency": "AUDJPY",
       "shortPercent": 0.33,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:39.446Z"
+      "createdAt": "2023-03-28T18:58:00.550Z"
     },
     {
       "currency": "AUDNZD",
       "shortPercent": 0.27,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:41.839Z"
+      "createdAt": "2023-03-28T18:58:02.992Z"
     },
     {
       "currency": "AUDUSD",
-      "shortPercent": 0.58,
+      "shortPercent": 0.59,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:44.708Z"
+      "createdAt": "2023-03-28T18:58:05.636Z"
     },
     {
       "currency": "CADJPY",
       "shortPercent": 0.44,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:47.081Z"
+      "createdAt": "2023-03-28T18:58:08.016Z"
     },
     {
       "currency": "EURCAD",
       "shortPercent": 0.69,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:49.950Z"
+      "createdAt": "2023-03-28T18:58:10.968Z"
     },
     {
       "currency": "EURCHF",
-      "shortPercent": 0.84,
+      "shortPercent": 0.82,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:52.843Z"
+      "createdAt": "2023-03-28T18:58:13.675Z"
     },
     {
       "currency": "EURGBP",
-      "shortPercent": 0.32,
+      "shortPercent": 0.33,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:55.748Z"
+      "createdAt": "2023-03-28T18:58:16.968Z"
     },
     {
       "currency": "EURNZD",
       "shortPercent": 0.79,
       "status": 1,
-      "createdAt": "2023-03-28T17:28:58.633Z"
+      "createdAt": "2023-03-28T18:58:19.862Z"
     },
     {
       "currency": "EURZAR",
       "shortPercent": 0.8,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:01.022Z"
+      "createdAt": "2023-03-28T18:58:22.832Z"
     },
     {
       "currency": "GBPCAD",
-      "shortPercent": 0.69,
+      "shortPercent": 0.68,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:03.891Z"
+      "createdAt": "2023-03-28T18:58:25.727Z"
     },
     {
       "currency": "GBPCHF",
-      "shortPercent": 0.52,
+      "shortPercent": 0.53,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:06.424Z"
+      "createdAt": "2023-03-28T18:58:28.430Z"
     },
     {
       "currency": "NZDCAD",
-      "shortPercent": 0.67,
+      "shortPercent": 0.66,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:09.613Z"
+      "createdAt": "2023-03-28T18:58:31.084Z"
     },
     {
       "currency": "NZDJPY",
-      "shortPercent": 0.49,
+      "shortPercent": 0.4,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:12.487Z"
+      "createdAt": "2023-03-28T18:58:33.799Z"
     },
     {
       "currency": "NZDUSD",
-      "shortPercent": 0.68,
+      "shortPercent": 0.69,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:15.354Z"
+      "createdAt": "2023-03-28T18:58:36.501Z"
     },
     {
       "currency": "USDCHF",
       "shortPercent": 0.26,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:17.749Z"
+      "createdAt": "2023-03-28T18:58:39.145Z"
     },
     {
       "currency": "CHFJPY",
-      "shortPercent": 0.5,
+      "shortPercent": 0.44,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:20.705Z"
+      "createdAt": "2023-03-28T18:58:41.775Z"
     },
     {
       "currency": "AUDCHF",
       "shortPercent": 0.22,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:23.360Z"
+      "createdAt": "2023-03-28T18:58:44.249Z"
     },
     {
       "currency": "GBPNZD",
-      "shortPercent": 0.69,
+      "shortPercent": 0.71,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:25.792Z"
+      "createdAt": "2023-03-28T18:58:47.126Z"
     },
     {
       "currency": "NZDCHF",
       "shortPercent": 0.58,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:28.501Z"
+      "createdAt": "2023-03-28T18:58:49.851Z"
     },
     {
       "currency": "CADCHF",
-      "shortPercent": 0.11,
+      "shortPercent": 0.12,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:31.549Z"
+      "createdAt": "2023-03-28T18:58:52.600Z"
     },
     {
       "currency": "GBPAUD",
-      "shortPercent": 0.79,
+      "shortPercent": 0.78,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:34.402Z"
+      "createdAt": "2023-03-28T18:58:55.247Z"
     },
     {
       "currency": "USDZAR",
-      "shortPercent": 0.79,
+      "shortPercent": 0.78,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:37.371Z"
+      "createdAt": "2023-03-28T18:58:58.193Z"
     },
     {
       "currency": "USDNOK",
       "shortPercent": 0.24,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:40.220Z"
+      "createdAt": "2023-03-28T18:59:00.926Z"
     },
     {
       "currency": "USDSEK",
       "shortPercent": 0.16,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:43.082Z"
+      "createdAt": "2023-03-28T18:59:03.655Z"
     },
     {
       "currency": "XAGUSD",
-      "shortPercent": 0.74,
+      "shortPercent": 0.76,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:45.945Z"
+      "createdAt": "2023-03-28T18:59:06.307Z"
     },
     {
       "currency": "XAUUSD",
-      "shortPercent": 0.61,
+      "shortPercent": 0.64,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:48.907Z"
+      "createdAt": "2023-03-28T18:59:09.022Z"
     },
     {
       "currency": "XAUEUR",
-      "shortPercent": 0.59,
+      "shortPercent": 0.61,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:51.757Z"
+      "createdAt": "2023-03-28T18:59:11.677Z"
     },
     {
       "currency": "XAUAUD",
       "shortPercent": 0.47,
       "status": 1,
-      "createdAt": "2023-03-28T17:29:54.378Z"
+      "createdAt": "2023-03-28T18:59:14.623Z"
     }
   ],
   "RAW_DAILYFX": [
@@ -800,7 +800,7 @@
         "Daily": 0.051100000000000007,
         "Weekly": 0.024900000000000002
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "AUDUSD",
@@ -819,7 +819,7 @@
         "Daily": 0.0013,
         "Weekly": 0.0524
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "WTICOUSD",
@@ -838,7 +838,7 @@
         "Daily": -0.0353,
         "Weekly": -0.1014
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "BCOUSD",
@@ -857,7 +857,7 @@
         "Daily": -0.0353,
         "Weekly": -0.1014
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "DE30EUR",
@@ -876,7 +876,7 @@
         "Daily": -0.0002,
         "Weekly": -0.0369
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "EURCHF",
@@ -895,7 +895,7 @@
         "Daily": -0.0385,
         "Weekly": -0.1162
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "EURGBP",
@@ -914,7 +914,7 @@
         "Daily": -0.0166,
         "Weekly": -0.0269
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "EURJPY",
@@ -933,7 +933,7 @@
         "Daily": 0.0108,
         "Weekly": 0.0587
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "EURUSD",
@@ -952,7 +952,7 @@
         "Daily": 0.0706,
         "Weekly": 0.0197
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "FR40EUR",
@@ -971,7 +971,7 @@
         "Daily": 0.047599999999999996,
         "Weekly": 0.0127
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "UK100GBP",
@@ -990,7 +990,7 @@
         "Daily": -0.0003,
         "Weekly": -0.013999999999999999
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "GBPJPY",
@@ -1009,7 +1009,7 @@
         "Daily": 0.0143,
         "Weekly": 0.1124
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "GBPUSD",
@@ -1028,7 +1028,7 @@
         "Daily": 0.0512,
         "Weekly": 0.07690000000000001
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "XAUUSD",
@@ -1047,7 +1047,7 @@
         "Daily": 0.0593,
         "Weekly": 0.0966
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "NZDUSD",
@@ -1066,7 +1066,7 @@
         "Daily": 0.060899999999999996,
         "Weekly": 0.0941
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "XAGUSD",
@@ -1085,7 +1085,7 @@
         "Daily": 0.0023,
         "Weekly": -0.0334
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "SPX500USD",
@@ -1104,7 +1104,7 @@
         "Daily": 0.0444,
         "Weekly": 0.0546
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "NAS100USD",
@@ -1123,7 +1123,7 @@
         "Daily": 0.0444,
         "Weekly": 0.0546
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "USDCAD",
@@ -1142,7 +1142,7 @@
         "Daily": 0.0654,
         "Weekly": 0.1329
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "USDCHF",
@@ -1161,7 +1161,7 @@
         "Daily": -0.056100000000000004,
         "Weekly": 0.08539999999999999
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "USDJPY",
@@ -1180,7 +1180,7 @@
         "Daily": -0.018000000000000002,
         "Weekly": 0.028999999999999998
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     },
     {
       "currency": "US30USD",
@@ -1199,7 +1199,7 @@
         "Daily": 0.0242,
         "Weekly": -0.0168
       },
-      "createdAt": "2023-03-28T17:31:12.908Z"
+      "createdAt": "2023-03-28T19:00:31.090Z"
     }
   ],
   "ERROR": [
@@ -1217,6 +1217,21 @@
       "message": "scrapIG failed :(, reason: Request failed with status code 404, url: https://www.ig.com/ae/indices/markets-indices/india-50",
       "method": "scrapIG",
       "createdAt": "3/28/2023, 11:00:37 PM"
+    },
+    {
+      "message": "scrapIG failed :(, reason: Request failed with status code 404, url: https://www.ig.com/ae/indices/markets-indices/india-50",
+      "method": "scrapIG",
+      "createdAt": "3/28/2023, 11:52:50 PM"
+    },
+    {
+      "message": "scrapIG failed :(, reason: Request failed with status code 404, url: https://www.ig.com/ae/indices/markets-indices/india-50",
+      "method": "scrapIG",
+      "createdAt": "3/29/2023, 12:03:23 AM"
+    },
+    {
+      "message": "scrapIG failed :(, reason: Request failed with status code 404, url: https://www.ig.com/ae/indices/markets-indices/india-50",
+      "method": "scrapIG",
+      "createdAt": "3/28/2023, 9:59:56 PM"
     }
   ],
   "FINAL": [],

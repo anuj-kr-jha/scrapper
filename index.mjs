@@ -1,6 +1,6 @@
 import './env.mjs';
 import nsh from 'node-schedule';
-import { init_lowdb } from './app/util/index.mjs';
+import { createWorkbook, init_lowdb } from './app/util/index.mjs';
 import { server } from './server/index.mjs';
 import { scrapAndSaveOnce } from './app/scrap/index.mjs';
 
@@ -21,9 +21,13 @@ process.once('unhandledRejection', (ex) => exception(ex, 'unhandledRejection'));
     await init_lowdb();
     await server.initialize();
     await scrapAndSaveOnce();
+    await createWorkbook();
   } catch (err) {
     console.info(':-(');
     console.error(`reason: ${err.message}, stack: ${err.stack}`);
     db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
+  } finally {
+    console.cyan('exiting ...');
+    process.exit(0);
   }
 })();

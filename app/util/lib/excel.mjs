@@ -22,6 +22,8 @@ function getFileName() {
   return `${year}-${month}-${day}_${hours}-${minutes}-${seconds}`;
 }
 export async function createWorkbook() {
+  console.green(`Generating excel :)`);
+
   let rawData;
   try {
     rawData = JSON.parse(fs.readFileSync('db.json', 'utf8'));

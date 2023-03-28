@@ -49,153 +49,92 @@ function resetDb() {
 }
 
 export async function scrapAndSaveOnce() {
-  try {
-    let { factor, ig_urls, myFxBook_urls, dailyFx_url, ig_counter, myFxBook_counter, interval } = globalThis.getConstant(0);
-
-    if (!factor) throw new Error('Factor is not defined');
-    if (!ig_urls) throw new Error('IG_URLs is not defined');
-    if (!myFxBook_urls) throw new Error('MYFXBOOK_URLs is not defined');
-    if (!dailyFx_url) throw new Error('DAILYFX_URL is not defined');
-
-    resetDb();
-
-    ig_counter = 0;
-    myFxBook_counter = 0;
-    const ig_counter_max = ig_urls.length - 1; // 64-1
-    const myFxBook_counter_max = myFxBook_urls.length - 1; // 36-1
-
-    const scrap = async () => {
-      try {
-        const promises = [];
-        if (ig_counter <= ig_counter_max) promises.push(scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]));
-        else promises.push(Promise.resolve(null));
-        if (myFxBook_counter <= myFxBook_counter_max) promises.push(scrapMyFx(myFxBook_urls[myFxBook_counter][0], myFxBook_urls[myFxBook_counter][1]));
-        else promises.push(Promise.resolve(null));
-        promises.push(scrapDailyFxTable(dailyFx_url));
-
-        const [ig, myfxbook, dailyfxObj] = await Promise.all(promises);
-        if (ig) {
-          // console.log('ig', ig);
-          db.get('RAW_IG').value()[ig_counter] = { ...ig, createdAt: new Date().toISOString() };
-          db.get('RAW_IG').write();
-        }
-
-        if (myfxbook) {
-          // console.log('myfxbook', myfxbook);
-          db.get('RAW_MYFXBOOK').value()[myFxBook_counter] = { ...myfxbook, createdAt: new Date().toISOString() };
-          db.get('RAW_MYFXBOOK').write();
-        }
-        if (dailyfxObj) {
-          const dailyfx = Object.values(dailyfxObj).map((x) => ({ ...x, createdAt: new Date().toISOString() }));
-
-          // console.log('dailyfx', dailyfx);
-          db.get('RAW_DAILYFX').value().length = 0;
-          db.get('RAW_DAILYFX')
-            .value()
-            .push(...dailyfx);
-          db.get('RAW_DAILYFX').write();
-        }
-
-        //
-        db.get('CONSTANT').value()[0]['ig_counter'] = ig_counter;
-        db.get('CONSTANT').value()[0]['myFxBook_counter'] = myFxBook_counter;
-        db.get('CONSTANT').write();
-
-        // const ig_url = ig_urls[ig_counter][0];
-        // const myFxBook_url = ig_urls[ig_counter][0];
-
-        //
-        if (ig_counter <= ig_counter_max) console.green('✅', new Date().toLocaleTimeString(), ig, `ig [${ig_counter}/${ig_counter_max}]`);
-        if (myFxBook_counter <= myFxBook_counter_max) console.green('✅', new Date().toLocaleTimeString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
-
-        //
-        ig_counter++;
-        myFxBook_counter++;
-
-        //
-        if (ig_counter > ig_counter_max && myFxBook_counter > myFxBook_counter_max) {
-          console.green(`All done, generating excel :)`);
-          await createWorkbook();
-          console.red('exiting...');
-          process.exit(0);
-        }
-      } catch (e) {
-        console.red(`error on scrap`, e.message);
-      } finally {
-        setTimeout(scrap, interval * 1000 * 60);
-      }
-    };
-    setTimeout(scrap, interval * 1000 * 60);
-  } catch (err) {
-    console.red('Error in scrapAndSaveOnce ', err.message, err.stack);
-
-    if (db.get('ERROR').value().length > 10) {
-      db.get('ERROR')
-        .splice(0, db.get('ERROR').value().length - 10)
-        .write();
-    }
-    db.get('ERROR').push({ message: err.message, method: 'calculateFinal', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
-  }
-}
-
-export async function scrapAndSave() {
-  try {
-    const pattern = getConstant(0).interval_pattern || '*/10 * * * * *'; // default: every 10 sec
-    scheduleJob('scrap-ig-myfxbook-dailyfx', pattern, async () => {
-      const { factor, ig_urls, myFxBook_urls, dailyFx_url, ig_counter, myFxBook_counter } = globalThis.getConstant(0);
+  return new Promise((res, rej) => {
+    try {
+      let { factor, ig_urls, myFxBook_urls, dailyFx_url, ig_counter, myFxBook_counter, interval } = globalThis.getConstant(0);
 
       if (!factor) throw new Error('Factor is not defined');
       if (!ig_urls) throw new Error('IG_URLs is not defined');
       if (!myFxBook_urls) throw new Error('MYFXBOOK_URLs is not defined');
       if (!dailyFx_url) throw new Error('DAILYFX_URL is not defined');
 
-      const ig_counter_min = 0;
-      const ig_counter_max = ig_urls.length - 1;
-      const myFxBook_counter_min = 0;
-      const myFxBook_counter_max = myFxBook_urls.length - 1;
+      resetDb();
 
-      const [ig, myfxbook, dailyfxObj] = await Promise.all([
-        scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]),
-        scrapMyFx(myFxBook_urls[myFxBook_counter][0], myFxBook_urls[myFxBook_counter][1]),
-        scrapDailyFxTable(dailyFx_url),
-        //
-      ]);
+      ig_counter = 0;
+      myFxBook_counter = 0;
+      const ig_counter_max = ig_urls.length - 1; // 64-1
+      const myFxBook_counter_max = myFxBook_urls.length - 1; // 36-1
 
-      // console.log('ig', ig);
-      db.get('RAW_IG').value()[ig_counter] = { ...ig, createdAt: new Date().toISOString() };
-      db.get('RAW_IG').write();
+      const scrap = async () => {
+        try {
+          const promises = [];
+          if (ig_counter <= ig_counter_max) promises.push(scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]));
+          else promises.push(Promise.resolve(null));
+          if (myFxBook_counter <= myFxBook_counter_max) promises.push(scrapMyFx(myFxBook_urls[myFxBook_counter][0], myFxBook_urls[myFxBook_counter][1]));
+          else promises.push(Promise.resolve(null));
+          promises.push(scrapDailyFxTable(dailyFx_url));
 
-      // console.log('myfxbook', myfxbook);
-      db.get('RAW_MYFXBOOK').value()[myFxBook_counter] = { ...myfxbook, createdAt: new Date().toISOString() };
-      db.get('RAW_MYFXBOOK').write();
+          const [ig, myfxbook, dailyfxObj] = await Promise.all(promises);
+          if (ig) {
+            // console.log('ig', ig);
+            db.get('RAW_IG').value()[ig_counter] = { ...ig, createdAt: new Date().toISOString() };
+            db.get('RAW_IG').write();
+          }
 
-      const dailyfx = Object.values(dailyfxObj).map((x) => ({ ...x, createdAt: new Date().toISOString() }));
+          if (myfxbook) {
+            // console.log('myfxbook', myfxbook);
+            db.get('RAW_MYFXBOOK').value()[myFxBook_counter] = { ...myfxbook, createdAt: new Date().toISOString() };
+            db.get('RAW_MYFXBOOK').write();
+          }
+          if (dailyfxObj) {
+            const dailyfx = Object.values(dailyfxObj).map((x) => ({ ...x, createdAt: new Date().toISOString() }));
 
-      // console.log('dailyfx', dailyfx);
-      db.get('RAW_DAILYFX').value().length = 0;
-      db.get('RAW_DAILYFX')
-        .value()
-        .push(...dailyfx);
-      db.get('RAW_DAILYFX').write();
+            // console.log('dailyfx', dailyfx);
+            db.get('RAW_DAILYFX').value().length = 0;
+            db.get('RAW_DAILYFX')
+              .value()
+              .push(...dailyfx);
+            db.get('RAW_DAILYFX').write();
+          }
 
-      db.get('CONSTANT').value()[0]['ig_counter'] =
-        db.get('CONSTANT').value()[0]['ig_counter'] + 1 > ig_counter_max ? ig_counter_min : db.get('CONSTANT').value()[0]['ig_counter'] + 1;
-      db.get('CONSTANT').value()[0]['myFxBook_counter'] =
-        db.get('CONSTANT').value()[0]['myFxBook_counter'] + 1 > myFxBook_counter_max ? myFxBook_counter_min : db.get('CONSTANT').value()[0]['myFxBook_counter'] + 1;
-      db.get('CONSTANT').write();
-      console.green('✅', new Date().toLocaleTimeString(), ig_urls[ig_counter][0], ig);
-      console.green('✅', new Date().toLocaleTimeString(), myFxBook_urls[myFxBook_counter][0], myfxbook);
-    });
-  } catch (err) {
-    console.red('Error in scrapAndSave ', err.message, err.stack);
+          //
+          db.get('CONSTANT').value()[0]['ig_counter'] = ig_counter;
+          db.get('CONSTANT').value()[0]['myFxBook_counter'] = myFxBook_counter;
+          db.get('CONSTANT').write();
 
-    if (db.get('ERROR').value().length > 10) {
-      db.get('ERROR')
-        .splice(0, db.get('ERROR').value().length - 10)
-        .write();
+          // const ig_url = ig_urls[ig_counter][0];
+          // const myFxBook_url = ig_urls[ig_counter][0];
+
+          //
+          if (ig_counter <= ig_counter_max) console.green('✅', new Date().toLocaleString(), ig, `ig [${ig_counter}/${ig_counter_max}]`);
+          if (myFxBook_counter <= myFxBook_counter_max) console.green('✅', new Date().toLocaleString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
+
+          //
+          ig_counter++;
+          myFxBook_counter++;
+
+          //
+          if (ig_counter > ig_counter_max && myFxBook_counter > myFxBook_counter_max) {
+            console.green(`All done :)`);
+            res();
+          } else setTimeout(scrap, interval * 1000 * 60);
+        } catch (e) {
+          console.red(`error on scrap`, e?.message);
+          rej(e?.message);
+        }
+      };
+      setTimeout(scrap, interval * 1000 * 60);
+    } catch (err) {
+      console.red('Error in scrapAndSaveOnce ', err.message, err.stack);
+
+      if (db.get('ERROR').value().length > 10) {
+        db.get('ERROR')
+          .splice(0, db.get('ERROR').value().length - 10)
+          .write();
+      }
+      db.get('ERROR').push({ message: err.message, method: 'calculateFinal', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
     }
-    db.get('ERROR').push({ message: err.message, method: 'calculateFinal', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
-  }
+  });
 }
 
 export function calculate() {
