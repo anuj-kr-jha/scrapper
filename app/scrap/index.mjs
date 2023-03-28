@@ -2,7 +2,7 @@ import { scrapIG } from './lib/ig.mjs';
 import { scrapDailyFxTable } from './lib/dailyFx.mjs';
 import { scrapMyFx } from './lib/myfxbook.mjs';
 
-function resetDb() {
+export function resetDb() {
   db.get('RAW_IG')
     .value()
     .forEach((doc) => {
@@ -57,7 +57,7 @@ export async function scrapAndSaveOnce() {
       if (!myFxBook_urls) throw new Error('MYFXBOOK_URLs is not defined');
       if (!dailyFx_url) throw new Error('DAILYFX_URL is not defined');
 
-      resetDb();
+      // resetDb();
 
       ig_counter = 0;
       myFxBook_counter = 0;
@@ -118,8 +118,8 @@ export async function scrapAndSaveOnce() {
             res();
           } else setTimeout(scrap, interval * 1000 * 60);
         } catch (e) {
-          console.red(`error on scrap`, e?.message);
-          rej(e?.message);
+          console.red(`error on scrap`, e.message);
+          rej(e.message);
         }
       };
       setTimeout(scrap, interval * 1000 * 60);
