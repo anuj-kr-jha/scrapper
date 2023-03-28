@@ -45,7 +45,7 @@ export const c = {
       return next();
     }
   },
-  calculated: async (req, res, next) => {
+  recent: async (req, res, next) => {
     try {
       const result = calculate();
       req.data = { err: false, _data: { FX: result }, info: '' };

@@ -1,7 +1,6 @@
 import { scrapIG } from './lib/ig.mjs';
 import { scrapDailyFxTable } from './lib/dailyFx.mjs';
 import { scrapMyFx } from './lib/myfxbook.mjs';
-import { createWorkbook } from '../../app/util/index.mjs';
 
 function resetDb() {
   db.get('RAW_IG')
