@@ -20,14 +20,14 @@ process.once('unhandledRejection', (ex) => exception(ex, 'unhandledRejection'));
   try {
     await init_lowdb();
     await server.initialize();
-    // await scrapAndSaveOnce();
-    // await createWorkbook();
+    await scrapAndSaveOnce();
+    await createWorkbook();
   } catch (err) {
     console.info(':-(');
     console.error(`reason: ${err.message}, stack: ${err.stack}`);
     db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
   } finally {
-    // console.cyan('exiting ...');
-    // process.exit(0);
+    console.cyan('exiting ...');
+    process.exit(0);
   }
 })();
