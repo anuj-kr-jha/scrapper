@@ -58,13 +58,16 @@ export const c = {
   },
   ig: async (req, res, next) => {
     try {
-      const IG = db.get('RAW_IG').map((x) => ({
-        currency: x.currency,
-        percent: x.percent,
-        longShort: x.longShort,
-        status: x.status,
-        createdAt: x.createdAt,
-      }));
+      const IG = db.get('RAW_IG').map((x) => {
+        const data = {};
+        data.currency = x.currency;
+        data.shortPercent = x.longShort == 'long' ? 1 - x.percent : x.percent;
+        // data.shortPercent = x.longShort == 'long' ? (1 - x.percent).toFixed(2) : x.percent;
+        data.status = x.status;
+        data.createdAt = x.createdAt;
+
+        return data;
+      });
       req.data = { err: false, _data: { IG }, info: '' };
     } catch (err) {
       req.data = { err: true, _data: null, info: err.message };
