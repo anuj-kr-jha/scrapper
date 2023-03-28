@@ -61,9 +61,10 @@ export async function scrapAndSaveOnce() {
 
     ig_counter = 0;
     myFxBook_counter = 0;
-    const ig_counter_max = ig_urls.length - 1;
-    const myFxBook_counter_max = myFxBook_urls.length - 1;
-    setInterval(async () => {
+    const ig_counter_max = ig_urls.length - 1; // 64-1
+    const myFxBook_counter_max = myFxBook_urls.length - 1; // 36-1
+
+    const scrap = async () => {
       try {
         const promises = [];
         if (ig_counter <= ig_counter_max) promises.push(scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]));
@@ -100,16 +101,16 @@ export async function scrapAndSaveOnce() {
         db.get('CONSTANT').value()[0]['myFxBook_counter'] = myFxBook_counter;
         db.get('CONSTANT').write();
 
-        //
-        ig_counter++;
-        myFxBook_counter++;
-
         // const ig_url = ig_urls[ig_counter][0];
         // const myFxBook_url = ig_urls[ig_counter][0];
 
         //
-        console.green('✅', new Date().toLocaleTimeString(), ig, `ig [${ig_counter}/${ig_counter_max}]`);
-        console.green('✅', new Date().toLocaleTimeString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
+        if (ig_counter <= ig_counter_max) console.green('✅', new Date().toLocaleTimeString(), ig, `ig [${ig_counter}/${ig_counter_max}]`);
+        if (myFxBook_counter <= myFxBook_counter_max) console.green('✅', new Date().toLocaleTimeString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
+
+        //
+        ig_counter++;
+        myFxBook_counter++;
 
         //
         if (ig_counter > ig_counter_max && myFxBook_counter > myFxBook_counter_max) {
@@ -118,8 +119,13 @@ export async function scrapAndSaveOnce() {
           console.red('exiting...');
           process.exit(0);
         }
-      } catch (e) {}
-    }, interval * 1000 * 60);
+      } catch (e) {
+        console.red(`error on scrap`, e.message);
+      } finally {
+        setTimeout(scrap, interval * 1000 * 60);
+      }
+    };
+    setTimeout(scrap, interval * 1000 * 60);
   } catch (err) {
     console.red('Error in scrapAndSaveOnce ', err.message, err.stack);
 
