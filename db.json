@@ -229,8 +229,8 @@
         ]
       ],
       "created_at": "2023-03-28T18:02:16.695Z",
-      "ig_counter": 11,
-      "myFxBook_counter": 11
+      "ig_counter": 6,
+      "myFxBook_counter": 6
     }
   ],
   "RAW_IG": [
@@ -239,133 +239,133 @@
       "percent": 0.53,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2026-07-05T09:53:54.590Z"
+      "createdAt": "2026-07-05T10:06:26.342Z"
     },
     {
       "currency": "USDNOK",
-      "percent": 0.51,
+      "percent": 0.52,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2026-07-05T09:54:07.957Z"
+      "createdAt": "2026-07-05T10:06:41.443Z"
     },
     {
       "currency": "USDSEK",
       "percent": 0.51,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2026-07-05T09:54:21.033Z"
+      "createdAt": "2026-07-05T10:06:55.457Z"
     },
     {
       "currency": "USDDKK",
       "percent": 0.69,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2026-07-05T09:54:34.278Z"
+      "createdAt": "2026-07-05T10:07:13.965Z"
     },
     {
       "currency": "USDSGD",
       "percent": 0.75,
       "longShort": "long",
       "status": 1,
-      "createdAt": "2026-07-05T09:54:46.725Z"
+      "createdAt": "2026-07-05T10:07:32.115Z"
     },
     {
       "currency": "GBPNOK",
       "percent": 0.67,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2026-07-05T09:55:00.084Z"
+      "createdAt": "2026-07-05T10:07:45.806Z"
     },
     {
       "currency": "EURNOK",
       "percent": 0.71,
       "longShort": "short",
       "status": 1,
-      "createdAt": "2026-07-05T09:55:12.355Z"
+      "createdAt": "2026-07-05T10:09:37.401Z"
     },
     {
       "currency": "EURSEK",
-      "percent": 0.54,
-      "longShort": "long",
-      "status": 1,
-      "createdAt": "2026-07-05T09:55:26.080Z"
+      "percent": 0,
+      "longShort": "NA",
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "GBPSEK",
-      "percent": 0.67,
-      "longShort": "short",
-      "status": 1,
-      "createdAt": "2026-07-05T09:55:44.302Z"
+      "percent": 0,
+      "longShort": "NA",
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "EURZAR",
-      "percent": 0.81,
-      "longShort": "short",
-      "status": 1,
-      "createdAt": "2026-07-05T09:56:00.004Z"
+      "percent": 0,
+      "longShort": "NA",
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "GBPZAR",
-      "percent": 0.64,
-      "longShort": "short",
-      "status": 1,
-      "createdAt": "2026-07-05T09:56:12.749Z"
+      "percent": 0,
+      "longShort": "NA",
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "XPTUSD",
-      "percent": 0.93,
-      "longShort": "long",
-      "status": 1,
-      "createdAt": "2026-07-05T09:56:26.298Z"
+      "percent": 0,
+      "longShort": "NA",
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "OILUSD",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "US500",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "NAS100",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "NIK225",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "DE40",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "US30",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     },
     {
       "currency": "GB100",
       "percent": 0,
       "longShort": "NA",
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.991Z"
+      "createdAt": "2026-07-05T10:05:45.909Z"
     }
   ],
   "RAW_MYFXBOOK": [
@@ -373,211 +373,211 @@
       "currency": "EURUSD",
       "shortPercent": 0.44,
       "status": 1,
-      "createdAt": "2026-07-05T09:53:54.590Z"
+      "createdAt": "2026-07-05T10:06:26.343Z"
     },
     {
       "currency": "GBPUSD",
       "shortPercent": 0.72,
       "status": 1,
-      "createdAt": "2026-07-05T09:54:07.957Z"
+      "createdAt": "2026-07-05T10:06:41.443Z"
     },
     {
       "currency": "USDJPY",
       "shortPercent": 0.71,
       "status": 1,
-      "createdAt": "2026-07-05T09:54:21.033Z"
+      "createdAt": "2026-07-05T10:06:55.458Z"
     },
     {
       "currency": "GBPJPY",
       "shortPercent": 0.63,
       "status": 1,
-      "createdAt": "2026-07-05T09:54:34.278Z"
+      "createdAt": "2026-07-05T10:07:13.965Z"
     },
     {
       "currency": "USDCAD",
       "shortPercent": 0.93,
       "status": 1,
-      "createdAt": "2026-07-05T09:54:46.726Z"
+      "createdAt": "2026-07-05T10:07:32.115Z"
     },
     {
       "currency": "EURAUD",
       "shortPercent": 0.41,
       "status": 1,
-      "createdAt": "2026-07-05T09:55:00.084Z"
+      "createdAt": "2026-07-05T10:07:45.806Z"
     },
     {
       "currency": "EURJPY",
       "shortPercent": 0.6,
       "status": 1,
-      "createdAt": "2026-07-05T09:55:12.355Z"
+      "createdAt": "2026-07-05T10:09:37.402Z"
     },
     {
       "currency": "AUDCAD",
-      "shortPercent": 0.69,
-      "status": 1,
-      "createdAt": "2026-07-05T09:55:26.080Z"
+      "shortPercent": 0,
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "AUDJPY",
-      "shortPercent": 0.51,
-      "status": 1,
-      "createdAt": "2026-07-05T09:55:44.302Z"
+      "shortPercent": 0,
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "AUDNZD",
-      "shortPercent": 0.84,
-      "status": 1,
-      "createdAt": "2026-07-05T09:56:00.005Z"
+      "shortPercent": 0,
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "AUDUSD",
-      "shortPercent": 0.48,
-      "status": 1,
-      "createdAt": "2026-07-05T09:56:12.749Z"
+      "shortPercent": 0,
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "CADJPY",
-      "shortPercent": 0.26,
-      "status": 1,
-      "createdAt": "2026-07-05T09:56:26.299Z"
+      "shortPercent": 0,
+      "status": 0,
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "EURCAD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "EURCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "EURGBP",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "EURNZD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "GBPCAD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "GBPCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "NZDCAD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "NZDJPY",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "NZDUSD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "USDCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "CHFJPY",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "AUDCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "GBPNZD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "NZDCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "CADCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "GBPAUD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAGUSD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAGAUD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAUUSD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAUEUR",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAUAUD",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAUGBP",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     },
     {
       "currency": "XAUCHF",
       "shortPercent": 0,
       "status": 0,
-      "createdAt": "2026-07-05T09:53:48.994Z"
+      "createdAt": "2026-07-05T10:05:45.912Z"
     }
   ],
   "ERROR": [
@@ -618,5 +618,5 @@
       "trace": "AxiosError: timeout of 30000ms exceeded\n    at createTimeoutError (file:///home/anuj/Downloads/Documents/Projects/ISS/scrapper/node_modules/axios/lib/adapters/http.js:608:16)\n    at RedirectableRequest.handleTimeout (file:///home/anuj/Downloads/Documents/Projects/ISS/scrapper/node_modules/axios/lib/adapters/http.js:1331:17)\n    at RedirectableRequest.emit (node:events:509:28)\n    at Timeout._onTimeout (/home/anuj/Downloads/Documents/Projects/ISS/scrapper/node_modules/follow-redirects/index.js:233:12)\n    at listOnTimeout (node:internal/timers:605:17)\n    at process.processTimers (node:internal/timers:541:7)\n    at Axios.request (file:///home/anuj/Downloads/Documents/Projects/ISS/scrapper/node_modules/axios/lib/core/Axios.js:46:41)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async postSessionResult (file:///home/anuj/Downloads/Documents/Projects/ISS/scrapper/app/scrap/index.mjs:15:7)\n    at async Timeout.scrap [as _onTimeout] (file:///home/anuj/Downloads/Documents/Projects/ISS/scrapper/app/scrap/index.mjs:123:13)"
     }
   ],
-  "MYFX_SESSION": "4FqaD9KL9N%2Bm1MvFxv7qF0sgfylDwY%2FetnxcM6hVUiUU6O0UMQXD0PEUIZzjc06EKiXjk7jb2QWPVdnPyXwAGg%3D%3D"
+  "MYFX_SESSION": "DBW5%2B9TMCO5bO%2FeVjeaTD8HMdvPRrqEuIImepIIlyMChQB6Vj7z3Lz0RFwx9ZkV5%2FoHMLc9zsLd17fMSCcU%2FKQ%3D%3D"
 }
