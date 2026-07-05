@@ -10,6 +10,5 @@ router.get('/recent_old', c.recent_old, c.json);
 router.get('/recent', c.recent, c.json);
 router.get('/recent/ig', c.ig, c.json);
 router.get('/recent/myfxbook', c.myfxbook, c.json);
-router.get('/recent/dailyfx', c.dailyfx, c.json);
 
 export { router as otherRoute };

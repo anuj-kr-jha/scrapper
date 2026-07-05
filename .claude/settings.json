@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node -e ' *)",
+      "Bash(node --check app/scrap/index.mjs)",
+      "Bash(node --check app/scrap/lib/myfxbook.mjs)",
+      "Bash(npm rm *)",
+      "Bash(node --check app/scrap/lib/ig.mjs)",
+      "Bash(fuser -k 4000/tcp)",
+      "Bash(pkill -9 -f \"node ./index.mjs\")",
+      "Bash(node -e \"const d=require\\('./db.json'\\); console.log\\('keys:', Object.keys\\(d\\)\\)\")",
+      "Bash(node --check app/util/lib/lowdb.mjs)",
+      "Bash(node --check app/routers/other/controller/index.mjs)"
+    ]
+  }
+}

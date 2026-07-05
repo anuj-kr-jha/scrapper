@@ -1,0 +1,94 @@
+### Scrapper API — REST Client test file (VS Code: humao.rest-client)
+### Click "Send Request" above any request below.
+
+@baseUrl = http://127.0.0.1:4000
+@token = scrap_2022
+
+############################################################
+# ROOT
+############################################################
+
+### health string
+GET {{baseUrl}}/
+
+
+############################################################
+# OTHER  (no auth)
+############################################################
+
+### ping
+GET {{baseUrl}}/other/ping
+
+### combined signals (full: currency, long, short, ssi_signal, oi_signal)
+GET {{baseUrl}}/other/recent
+
+### combined signals (no long/short)
+GET {{baseUrl}}/other/recent_old
+
+### raw IG data
+GET {{baseUrl}}/other/recent/ig
+
+### raw MyFXBook data
+GET {{baseUrl}}/other/recent/myfxbook
+
+
+############################################################
+# ADMIN  (header: token)
+############################################################
+
+### ping
+GET {{baseUrl}}/admin/ping
+token: {{token}}
+
+### error logs (last <=10)
+GET {{baseUrl}}/admin/error_logs
+token: {{token}}
+
+### update config — minimal (only fields you send are changed; rest kept)
+# rate limited: 10 req/min
+POST {{baseUrl}}/admin/update
+token: {{token}}
+Content-Type: application/json
+
+{
+  "factor": 0.3,
+  "interval": 60,
+  "repeat_at": ["06:00:00", "14:00:00", "22:00:00"]
+}
+
+### update config — with url lists (arrays only replace if non-empty)
+# each entry = [url, name]. name must match MyFXBook symbol for /recent merge.
+POST {{baseUrl}}/admin/update
+token: {{token}}
+Content-Type: application/json
+
+{
+  "factor": 0.3,
+  "interval": 60,
+  "repeat_at": ["06:00:00", "14:00:00", "22:00:00"],
+  "ig_urls": [
+    ["https://www.ig.com/ae/forex/markets-forex/eur-usd", "EURUSD"],
+    ["https://www.ig.com/ae/forex/markets-forex/gbp-usd", "GBPUSD"]
+  ],
+  "myFxBook_urls": [
+    ["https://www.myfxbook.com/community/outlook/EURUSD", "EURUSD"],
+    ["https://www.myfxbook.com/community/outlook/GBPUSD", "GBPUSD"]
+  ]
+}
+
+### clear ERROR log only
+POST {{baseUrl}}/admin/reset/log
+token: {{token}}
+
+### clear ALL raw data (ERROR + RAW_IG + RAW_MYFXBOOK)
+POST {{baseUrl}}/admin/reset/all
+token: {{token}}
+
+
+############################################################
+# AUTH CHECK  (expect body: "invalid token")
+############################################################
+
+### wrong token -> "invalid token"
+GET {{baseUrl}}/admin/ping
+token: wrong

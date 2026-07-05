@@ -1,16 +1,32 @@
 import axios from 'axios';
-import pLimit from 'p-limit';
 import pkg from 'cheerio';
 const { load } = pkg;
 
-export async function scrapIG(url, name, log) {
-  try {
-    const response = await axios.get(url, { timeout: 60e3, maxContentLength: 2e6 });
-    const html = await response.data;
+// look like a real browser to reduce block risk (IG sits behind a WAF)
+const HEADERS = {
+  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+  Accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'Accept-Language': 'en-US,en;q=0.9',
+};
 
-    if (response.status == 200) {
-      const $ = load(html);
-      let currency = name || $('.ma__title').text();
+const RETRIES = 2; // total attempts = RETRIES + 1
+
+function delay(ms) {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
+export async function scrapIG(url, name, log) {
+  let lastErr;
+  for (let attempt = 0; attempt <= RETRIES; attempt++) {
+    try {
+      if (attempt > 0) await delay(2000 * attempt); // backoff before retry
+
+      const response = await axios.get(url, { timeout: 60e3, maxContentLength: 2e6, headers: HEADERS });
+
+      if (response.status !== 200) throw new Error(`STATUS(${response.status}) !== 200`);
+
+      const $ = load(response.data);
+      const currency = name || $('.ma__title').text();
       const percent = $('.price-ticket__percent').text().slice(0, -1) / 100;
       const longShort = $('strong', '.information-popup').text();
 
@@ -19,22 +35,23 @@ export async function scrapIG(url, name, log) {
       if (!longShort) throw new Error(`longShort not found. url : ${url}`);
 
       const result = { currency, percent, longShort, status: 1 };
-
-      if (log) console.log('scrapping [ig] done :)');
-      if (log) console.log(result);
-
+      if (log) console.log('scrapping [ig] done :)', result);
       return result;
+    } catch (err) {
+      lastErr = err;
+      // retry only on transient errors: network failures, or recoverable HTTP status.
+      // NOT on permanent 4xx (404/400/401) or parse (data-shape) failures.
+      const status = err.response && err.response.status;
+      const transient = status
+        ? [403, 408, 429, 500, 502, 503, 504].includes(status)
+        : /timeout|ECONN|ETIMEDOUT|ENOTFOUND|socket|network|aborted/i.test(err.message || '');
+      if (attempt < RETRIES && transient) continue;
+      break;
     }
-    throw new Error(`STATUS(response.status) !== 200`);
-  } catch (err) {
-    const reason = `scrapIG failed :(, reason: ${err.message}, url: ${url}`;
-    console.red('❌ ', reason);
-    if (db.get('ERROR').value().length > 10) {
-      db.get('ERROR')
-        .splice(0, db.get('ERROR').value().length - 10)
-        .write();
-    }
-    db.get('ERROR').push({ message: reason, method: 'scrapIG', createdAt: new Date().toLocaleString(), trace: err.stack }).write();
-    return { currency: name, percent: 0, longShort: 'NA', status: 0 };
   }
+
+  const reason = `scrapIG failed :(, reason: ${lastErr && lastErr.message}, url: ${url}`;
+  console.red('❌ ', reason);
+  global.logError(reason, 'scrapIG', lastErr && lastErr.stack);
+  return { currency: name, percent: 0, longShort: 'NA', status: 0 };
 }

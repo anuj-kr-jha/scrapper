@@ -1,3 +1,5 @@
 package-lock.json
 node_modules
+.env
+excel
 # /app/util/lib/db.json

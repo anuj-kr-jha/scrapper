@@ -30,14 +30,13 @@ export const c = {
   },
   update: async (req, res, next) => {
     try {
-      const { factor, ig_urls, myFxBook_urls, dailyFx_url, interval_pattern, interval, repeat_at } = req.body;
+      const { factor, ig_urls, myFxBook_urls, interval_pattern, interval, repeat_at } = req.body;
       const old_constant = getConstant(0);
 
       const data = {
         factor: factor || old_constant.factor,
         interval: interval || old_constant.interval,
         repeat_at: repeat_at || old_constant.repeat_at,
-        dailyFx_url: dailyFx_url || old_constant.dailyFx_url,
         ig_urls: ig_urls && ig_urls.length > 0 ? ig_urls : old_constant.ig_urls,
         myFxBook_urls: myFxBook_urls && myFxBook_urls.length > 0 ? myFxBook_urls : old_constant.myFxBook_urls,
         created_at: new Date().toISOString(),
@@ -51,7 +50,7 @@ export const c = {
       console.error(`error on admin/update  reason: ${err.message}, trace: ${err.stack}`);
       req.data = { err: true, _data: null, info: err.message };
 
-      db.get('ERROR').splice(9, 1, { message: err.message, createdAt: new Date().toISOString(), trace: err.stack }).write();
+      global.logError(err.message, 'admin/update', err.stack);
     } finally {
       next();
     }
@@ -65,7 +64,6 @@ export const c = {
     db.set('ERROR', []).write();
     db.set('RAW_IG', []).write();
     db.set('RAW_MYFXBOOK', []).write();
-    db.set('RAW_DAILYFX', []).write();
 
     return res.send('ok');
   },

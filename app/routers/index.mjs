@@ -16,7 +16,8 @@ router.use('/admin', verifyToken, adminRoute);
 router.use('/other', otherRoute);
 
 function verifyToken(req, res, next) {
-  if (!req.headers || req.headers.token != 'scrap_2022') return res.send('invalid token');
+  const token = process.env.ADMIN_TOKEN || 'scrap_2022';
+  if (!req.headers || req.headers.token != token) return res.send('invalid token');
   next();
 }
 

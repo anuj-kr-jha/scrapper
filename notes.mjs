@@ -119,8 +119,3 @@
     XAUEUR,https://www.myfxbook.com/community/outlook/XAUEUR
     XAUAUD,https://www.myfxbook.com/community/outlook/XAUAUD
 */
-
-// {symbol, trading_bias(oi_signal) } net-long , net-short would be calculated at runtime
-/* dailyfx
-    https://www.dailyfx.com/sentiment-report
-*/
