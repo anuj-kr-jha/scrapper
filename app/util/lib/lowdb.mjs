@@ -5,7 +5,7 @@ const adapter = new FileSync('./db.json');
 const db = low(adapter);
 
 export async function init_lowdb() {
-  db.defaults({ CONSTANT: [], RAW_IG: [], RAW_MYFXBOOK: [], ERROR: [], MYFX_SESSION: '' }).write();
+  db.defaults({ CONSTANT: [], RAW_IG: [], RAW_MYFXBOOK: [], FINAL: [], ERROR: [], MYFX_SESSION: '' }).write();
   global.db = db;
   global.getConstant = (idx) => db.get('CONSTANT').value()[idx];
 

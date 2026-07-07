@@ -64,6 +64,7 @@ export const c = {
     db.set('ERROR', []).write();
     db.set('RAW_IG', []).write();
     db.set('RAW_MYFXBOOK', []).write();
+    db.set('FINAL', []).write();
 
     return res.send('ok');
   },

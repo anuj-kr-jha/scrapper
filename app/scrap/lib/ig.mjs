@@ -21,7 +21,7 @@ export async function scrapIG(url, name, log) {
     try {
       if (attempt > 0) await delay(2000 * attempt); // backoff before retry
 
-      const response = await axios.get(url, { timeout: 60e3, maxContentLength: 2e6, headers: HEADERS });
+      const response = await axios.get(url, { timeout: 30e3, maxContentLength: 2e6, headers: HEADERS, family: 4 });
 
       if (response.status !== 200) throw new Error(`STATUS(${response.status}) !== 200`);
 
@@ -41,16 +41,19 @@ export async function scrapIG(url, name, log) {
       lastErr = err;
       // retry only on transient errors: network failures, or recoverable HTTP status.
       // NOT on permanent 4xx (404/400/401) or parse (data-shape) failures.
+      // NOTE: network errors (ETIMEDOUT etc.) often have an empty message — check err.code too.
       const status = err.response && err.response.status;
+      const netStr = `${err.code || ''} ${err.message || ''}`;
       const transient = status
         ? [403, 408, 429, 500, 502, 503, 504].includes(status)
-        : /timeout|ECONN|ETIMEDOUT|ENOTFOUND|socket|network|aborted/i.test(err.message || '');
+        : /timeout|ECONN|ETIMEDOUT|ENOTFOUND|EAI_AGAIN|socket|network|aborted/i.test(netStr);
       if (attempt < RETRIES && transient) continue;
       break;
     }
   }
 
-  const reason = `scrapIG failed :(, reason: ${lastErr && lastErr.message}, url: ${url}`;
+  const detail = (lastErr && (lastErr.message || lastErr.code)) || 'unknown';
+  const reason = `scrapIG failed :(, reason: ${detail}, url: ${url}`;
   console.red('❌ ', reason);
   global.logError(reason, 'scrapIG', lastErr && lastErr.stack);
   return { currency: name, percent: 0, longShort: 'NA', status: 0 };

@@ -10,7 +10,9 @@
       "Bash(pkill -9 -f \"node ./index.mjs\")",
       "Bash(node -e \"const d=require\\('./db.json'\\); console.log\\('keys:', Object.keys\\(d\\)\\)\")",
       "Bash(node --check app/util/lib/lowdb.mjs)",
-      "Bash(node --check app/routers/other/controller/index.mjs)"
+      "Bash(node --check app/routers/other/controller/index.mjs)",
+      "Bash(node --check app/routers/admin/controller/index.mjs)",
+      "Bash(node --check app/util/lib/excel.mjs)"
     ]
   }
 }

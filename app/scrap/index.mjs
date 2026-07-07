@@ -1,14 +1,43 @@
+import fs from 'fs';
+import path from 'path';
 import axios from 'axios';
 import { scrapIG } from './lib/ig.mjs';
 import { fetchMyFxOutlook } from './lib/myfxbook.mjs';
+import { writeExcel } from '../util/lib/excel.mjs';
 
 const POSTBACK_URL = process.env.POSTBACK_URL || 'http://95.111.231.83/api/forex_ssi/myfxbook';
 const POSTBACK_RETRIES = 2; // total attempts = retries + 1
+const HISTORY_DIR = path.join(process.cwd(), 'history');
+
+// local (env.TZ) timestamp as yyyy-mm-ddThh:mm:ss  (process.env.TZ makes Date getters local)
+function localStamp() {
+  const d = new Date();
+  const p = (n) => String(n).padStart(2, '0');
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+}
+
+// save the postback payload to history/<local-timestamp>.{json,xlsx}. non-fatal.
+async function saveHistory(body) {
+  try {
+    if (!fs.existsSync(HISTORY_DIR)) fs.mkdirSync(HISTORY_DIR, { recursive: true });
+    const stamp = localStamp();
+    const jsonFile = path.join(HISTORY_DIR, `${stamp}.json`);
+    const xlsxFile = path.join(HISTORY_DIR, `${stamp}.xlsx`);
+    fs.writeFileSync(jsonFile, JSON.stringify(body, null, 2));
+    await writeExcel(body.MYFXBOOK, xlsxFile);
+    console.green('📁 history saved', jsonFile, '+', xlsxFile);
+  } catch (err) {
+    console.red('❌ ', `saveHistory failed: ${err.message}`);
+    global.logError(`saveHistory failed: ${err.message}`, 'saveHistory', err.stack);
+  }
+}
 
 // POST the computed signals (same body as GET /other/recent) to the external endpoint.
 // runs after every completed session. non-fatal: logs on failure, never throws.
 async function postSessionResult() {
   const body = { MYFXBOOK: calculate() };
+  db.set('FINAL', body.MYFXBOOK).write(); // store computed result (exactly what we POST)
+  await saveHistory(body); // persist the exact payload (json + xlsx) BEFORE posting
   for (let attempt = 0; attempt <= POSTBACK_RETRIES; attempt++) {
     try {
       if (attempt > 0) await new Promise((r) => setTimeout(r, 3000 * attempt));
@@ -43,6 +72,8 @@ export function resetDb() {
       if (doc && doc.createdAt) doc.createdAt = new Date();
     });
   db.get('RAW_MYFXBOOK').write();
+  //
+  db.set('FINAL', []).write(); // clear computed result
 }
 
 // guard: only one scrape session at a time (boot scrape + scheduler must not overlap)
