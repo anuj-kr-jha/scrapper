@@ -9,11 +9,12 @@ const POSTBACK_URL = process.env.POSTBACK_URL || 'http://95.111.231.83/api/forex
 const POSTBACK_RETRIES = 2; // total attempts = retries + 1
 const HISTORY_DIR = path.join(process.cwd(), 'history');
 
-// local (env.TZ) timestamp as yyyy-mm-ddThh:mm:ss  (process.env.TZ makes Date getters local)
+// local (env.TZ) timestamp as yyyy-mm-ddThh-mm-ss  (process.env.TZ makes Date getters local)
+// NOTE: time parts use '-' not ':' — Windows filenames cannot contain ':'.
 function localStamp() {
   const d = new Date();
   const p = (n) => String(n).padStart(2, '0');
-  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}`;
+  return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}T${p(d.getHours())}-${p(d.getMinutes())}-${p(d.getSeconds())}`;
 }
 
 // save the postback payload to history/<local-timestamp>.{json,xlsx}. non-fatal.
