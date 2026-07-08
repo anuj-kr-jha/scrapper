@@ -8,6 +8,9 @@ process.env.UV_THREADPOOL_SIZE = process.env.UV_THREADPOOL_SIZE || 1;
 
 process.env.CONCURRENCY_LIMIT = process.env.CONCURRENCY_LIMIT || 10;
 
+// run exactly one scrape on boot? 'true' (default) -> yes; 'false'/'0' -> only run at scheduled repeat_at times.
+process.env.SCRAP_ON_START = process.env.SCRAP_ON_START || 'true';
+
 const oEnv = {
   dev: {
     BASE_URL: `http://${process.env.HOST}:${process.env.PORT}`,
@@ -38,12 +41,23 @@ const colors = {
   white: '\x1b[37m',
 };
 
+// red/yellow -> stderr so pm2 writes them to error_file; rest -> stdout
+const errColors = new Set(['red', 'yellow']);
 Object.keys(colors).forEach((color) => {
   Object.defineProperty(global.console, color, {
     get:
       () =>
       (...args) => {
-        console.log(args.map((arg) => `${colors[color]}%s${colors.reset}`).join(' '), ...args);
+        const toErr = errColors.has(color);
+        const sink = toErr ? console.error : console.log;
+        // only emit ANSI when the target stream is an interactive terminal.
+        // pm2/redirected output isn't a TTY -> write plain text (no color codes in log files).
+        const isTTY = toErr ? process.stderr.isTTY : process.stdout.isTTY;
+        if (isTTY) {
+          sink(args.map(() => `${colors[color]}%s${colors.reset}`).join(' '), ...args);
+        } else {
+          sink(args.map(() => '%s').join(' '), ...args);
+        }
       },
   });
 });

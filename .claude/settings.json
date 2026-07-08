@@ -12,7 +12,30 @@
       "Bash(node --check app/util/lib/lowdb.mjs)",
       "Bash(node --check app/routers/other/controller/index.mjs)",
       "Bash(node --check app/routers/admin/controller/index.mjs)",
-      "Bash(node --check app/util/lib/excel.mjs)"
+      "Bash(node --check app/util/lib/excel.mjs)",
+      "Bash(pm2 jlist *)",
+      "Bash(node -e 'let d=\"\";process.stdin.on\\(\"data\",c=>d+=c\\).on\\(\"end\",\\(\\)=>{try{JSON.parse\\(d\\).forEach\\(p=>console.log\\(p.name,\"| script:\",p.pm2_env.pm_exec_path,\"| cwd:\",p.pm2_env.pm_cwd,\"| out:\",p.pm2_env.pm_out_log_path,\"| err:\",p.pm2_env.pm_err_log_path\\)\\)}catch\\(e\\){console.log\\(\"no pm2 json\"\\)}}\\)')",
+      "Bash(node --check ecosystem.config.cjs)",
+      "Bash(pm2 delete *)",
+      "Bash(pm2 start *)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 module:list)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 install *)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 set *)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 conf *)",
+      "Bash(node -e 'JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"package.json\",\"utf8\"\\)\\);console.log\\(\"package.json valid\"\\)')",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 jlist *)",
+      "Bash(node -e 'let d=\"\";process.stdin.on\\(\"data\",c=>d+=c\\).on\\(\"end\",\\(\\)=>{JSON.parse\\(d\\).filter\\(p=>p.name==\"scrapper\"\\).forEach\\(p=>{console.log\\(\"out:\",p.pm2_env.pm_out_log_path\\);console.log\\(\"err:\",p.pm2_env.pm_err_log_path\\)}\\)}\\)')",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 describe *)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 update *)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 list *)",
+      "Bash(node --input-type=module -e ' *)",
+      "Bash(/home/anuj/.local/share/fnm/node-versions/v12.18.3/installation/bin/pm2 restart *)",
+      "Bash(node -e 'JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"db.json\",\"utf8\"\\)\\); console.log\\(\"db.json valid, ERROR present:\", \"ERROR\" in JSON.parse\\(require\\(\"fs\"\\).readFileSync\\(\"db.json\",\"utf8\"\\)\\)\\)')",
+      "Bash(node -e 'let s=\"\";process.stdin.on\\(\"data\",d=>s+=d\\).on\\(\"end\",\\(\\)=>{try{const a=JSON.parse\\(s\\);a.forEach\\(p=>console.log\\(p.name,p.pm2_env.status,\"restarts:\",p.pm2_env.restart_time,\"uptime_ms_since:\",p.pm2_env.pm_uptime\\)\\)}catch\\(e\\){console.log\\(\"no pm2 json\"\\)}}\\)')",
+      "Bash(pm2 list *)",
+      "Bash(ps -o lstart= -p 611909)",
+      "Bash(node -e 'import\\(\"./app/util/lib/lowdb.mjs\"\\).then\\(m=>{console.log\\(\"read last:\",JSON.stringify\\(m.readErrorLog\\(3\\)\\)\\)}\\)')",
+      "Bash(node -e 'import\\(\"./app/util/lib/lowdb.mjs\"\\).then\\(m=>console.log\\(JSON.stringify\\(m.readErrorLog\\(\\),null,2\\)\\)\\)')"
     ]
   }
 }

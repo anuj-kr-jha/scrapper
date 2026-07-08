@@ -173,7 +173,9 @@ Base: `http://HOST:PORT` (default `http://127.0.0.1:4000`). Full details in [API
 | `RAW_IG` | last scraped IG rows |
 | `RAW_MYFXBOOK` | last scraped MyFXBook rows |
 | `MYFX_SESSION` | cached MyFXBook API session token |
-| `ERROR` | last 10 errors |
+| `FINAL` | last computed combined signals |
+
+Errors are **not** in `db.json` — they go to stderr, captured by pm2 in `logs/scrapper-error.log`. `GET /admin/error_logs` returns the last 10 lines of that file.
 
 ---
 

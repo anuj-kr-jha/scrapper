@@ -40,11 +40,17 @@ process.once('unhandledRejection', (ex) => exception(ex, 'unhandledRejection'));
       }
     }, 1000);
 
-    // initial scrape on boot — do NOT await, so the scheduler above stays live.
-    scrapAndSaveOnce().catch((e) => {
-      console.red(`initial scrape failed. reason: ${e.message || e}`);
-      global.logError(String(e && e.message ? e.message : e), 'initial_scrape', e && e.stack);
-    });
+    // initial scrape on boot — gated by SCRAP_ON_START (default true). do NOT await, so the scheduler above stays live.
+    const scrapOnStart = !['false', '0', 'no', 'off'].includes(String(process.env.SCRAP_ON_START).toLowerCase());
+    if (scrapOnStart) {
+      console.log('SCRAP_ON_START enabled — running one scrape on boot');
+      scrapAndSaveOnce().catch((e) => {
+        console.red(`initial scrape failed. reason: ${e.message || e}`);
+        global.logError(String(e && e.message ? e.message : e), 'initial_scrape', e && e.stack);
+      });
+    } else {
+      console.log('SCRAP_ON_START disabled — waiting for scheduled repeat_at times only');
+    }
   } catch (err) {
     console.info(':-(');
     console.error(`reason: ${err.message}, stack: ${err.stack}`);

@@ -17,6 +17,8 @@ const router = Router();
 router.get('/ping', c.ping, c.send);
 // router.post('/update', c.update, c.json);
 router.post('/update', rateLimiterUsingThirdParty, c.update, c.json);
+router.get('/urls', c.getUrls, c.json);
+router.post('/urls', rateLimiterUsingThirdParty, c.updateUrls, c.json);
 router.post('/reset/log', c.resetLog);
 router.post('/reset/all', c.resetAll);
 router.get('/error_logs', c.health_check);

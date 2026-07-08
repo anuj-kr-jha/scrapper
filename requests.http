@@ -44,8 +44,8 @@ token: {{token}}
 GET {{baseUrl}}/admin/error_logs
 token: {{token}}
 
-### update config — minimal (only fields you send are changed; rest kept)
-# rate limited: 10 req/min
+### update config — only fields you send are changed; rest kept
+# rate limited: 10 req/min. url lists NOT here anymore -> use /admin/urls below.
 POST {{baseUrl}}/admin/update
 token: {{token}}
 Content-Type: application/json
@@ -56,16 +56,17 @@ Content-Type: application/json
   "repeat_at": ["06:00:00", "14:00:00", "22:00:00"]
 }
 
-### update config — with url lists (arrays only replace if non-empty)
-# each entry = [url, name]. name must match MyFXBook symbol for /recent merge.
-POST {{baseUrl}}/admin/update
+### get url lists (from csvs/ig.csv + csvs/myfxbook.csv)
+GET {{baseUrl}}/admin/urls
+token: {{token}}
+
+### update url lists (rewrites the csv for each key sent; full replace, not merge)
+# rate limited: 10 req/min. each entry = [url, symbol]. no commas in url/symbol.
+POST {{baseUrl}}/admin/urls
 token: {{token}}
 Content-Type: application/json
 
 {
-  "factor": 0.3,
-  "interval": 60,
-  "repeat_at": ["06:00:00", "14:00:00", "22:00:00"],
   "ig_urls": [
     ["https://www.ig.com/ae/forex/markets-forex/eur-usd", "EURUSD"],
     ["https://www.ig.com/ae/forex/markets-forex/gbp-usd", "GBPUSD"]

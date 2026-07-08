@@ -5,7 +5,7 @@ Forex sentiment scraper. Scrapes IG, MyFXBook → stores in `db.json` → serves
 - **Base URL**: `http://127.0.0.1:4000` (`HOST`/`PORT` from [env.mjs](env.mjs))
 - **Format**: JSON unless noted
 - **CORS**: `Access-Control-Allow-Origin: *`, methods `GET, POST`, headers `X-Requested-With, content-type`
-- **Rate limit**: only `POST /admin/update` — 10 req/min/IP
+- **Rate limit**: `POST /admin/update` and `POST /admin/urls` — 10 req/min/IP
 
 ## Auth
 
@@ -97,6 +97,8 @@ Raw MyFXBook data.
 ### `POST /admin/update`
 Update scraper config. Rate limited 10/min. Stored as new `CONSTANT[0]` (old kept trimmed). Any omitted field keeps its old value.
 
+> URL lists are **not** set here anymore — they live in `csvs/ig.csv` + `csvs/myfxbook.csv`. Use `GET`/`POST /admin/urls` (below) or edit the CSV files directly.
+
 **Headers**: `token: scrap_2022`, `Content-Type: application/json`
 
 **Body** (all optional):
@@ -104,9 +106,7 @@ Update scraper config. Rate limited 10/min. Stored as new `CONSTANT[0]` (old kep
 {
   "factor": 0.3,
   "interval": 1,
-  "repeat_at": ["06:00:00", "14:00:00", "22:00:00"],
-  "ig_urls": [["https://www.ig.com/.../eur-usd", "EURUSD"]],
-  "myFxBook_urls": [["https://www.myfxbook.com/.../eurusd", "EURUSD"]]
+  "repeat_at": ["06:00:00", "14:00:00", "22:00:00"]
 }
 ```
 | Field | Type | Role |
@@ -114,29 +114,72 @@ Update scraper config. Rate limited 10/min. Stored as new `CONSTANT[0]` (old kep
 | `factor` | number | Signal threshold (`|long-short| > factor` → not FLAT) |
 | `interval` | number | Seconds between each scrape step (delay) |
 | `repeat_at` | string[] | Daily start times, exact `HH:MM:SS` (Asia/Bahrain) |
-| `ig_urls` | [url, name][] | IG pairs (only replaces if non-empty array) |
-| `myFxBook_urls` | [url, name][] | MyFXBook pairs (only replaces if non-empty array) |
 
 **Response**: the saved `CONSTANT[0]` object (JSON).
 
-### `GET /admin/error_logs`
-Last error log entries (max ~10).
+### `GET /admin/urls`
+Current IG + MyFXBook URL lists, read from `csvs/ig.csv` + `csvs/myfxbook.csv`.
 
 **Headers**: `token: scrap_2022`
 
 **Response**:
 ```json
-[ { "message": "...", "method": "scrapIG", "createdAt": "6/28/2026, ...", "trace": "..." } ]
+{
+  "ig_urls": [["https://www.ig.com/ae/forex/markets-forex/eur-usd", "EURUSD"]],
+  "myFxBook_urls": [["https://www.myfxbook.com/community/outlook/EURUSD", "EURUSD"]]
+}
+```
+- Each entry = `[url, symbol]`. `symbol` must match the MyFXBook symbol for the `/other/recent` merge.
+
+### `POST /admin/urls`
+Replace URL lists. Rate limited 10/min. Rewrites the CSV file(s) for whichever key(s) you send — each array **fully replaces** its file (not merged).
+
+**Headers**: `token: scrap_2022`, `Content-Type: application/json`
+
+**Body** (send `ig_urls`, `myFxBook_urls`, or both):
+```json
+{
+  "ig_urls": [
+    ["https://www.ig.com/ae/forex/markets-forex/eur-usd", "EURUSD"],
+    ["https://www.ig.com/ae/forex/markets-forex/gbp-usd", "GBPUSD"]
+  ],
+  "myFxBook_urls": [
+    ["https://www.myfxbook.com/community/outlook/EURUSD", "EURUSD"],
+    ["https://www.myfxbook.com/community/outlook/GBPUSD", "GBPUSD"]
+  ]
+}
+```
+| Field | Type | Role |
+|-------|------|------|
+| `ig_urls` | [url, symbol][] | Rewrites `csvs/ig.csv` (only if present) |
+| `myFxBook_urls` | [url, symbol][] | Rewrites `csvs/myfxbook.csv` (only if present) |
+
+**Rules**:
+- At least one of `ig_urls` / `myFxBook_urls` must be an array, else body `server error`.
+- Each entry must be `[url, symbol]`; both non-empty; **no commas** in url or symbol (CSV delimiter).
+
+**Response**: the saved lists, same shape as `GET /admin/urls`.
+
+### `GET /admin/error_logs`
+Last 10 real error lines from the stderr log (`logs/scrapper-error.log`, pm2 `error_file`). Node warnings (`ExperimentalWarning`, `DeprecationWarning`, `(node:pid)`) are filtered out. Missing file → `[]`. Not stored in `db.json`.
+
+**Headers**: `token: scrap_2022`
+
+**Response** (array of raw log lines):
+```json
+[
+  "2026-06-28T06:01:00: ❌  scrapIG failed :(, reason: Request failed with status code 404, url: ..."
+]
 ```
 
 ### `POST /admin/reset/log`
-Clear `ERROR` array.
+Truncate the error log (`logs/scrapper-error.log`).
 
 **Headers**: `token: scrap_2022`
 **Response** (`text/plain`): `ok`
 
 ### `POST /admin/reset/all`
-Clear `ERROR`, `RAW_IG`, `RAW_MYFXBOOK`.
+Truncate the error log (`logs/scrapper-error.log`) plus clear `RAW_IG`, `RAW_MYFXBOOK`, `FINAL` in `db.json`.
 
 **Headers**: `token: scrap_2022`
 **Response** (`text/plain`): `ok`
@@ -164,7 +207,7 @@ When a session completes (all steps done), the computed signals are POSTed to an
 - **URL**: `POSTBACK_URL` env (default `http://95.111.231.83/api/forex_ssi/myfxbook`)
 - **Method**: `POST`, `Content-Type: application/json`
 - **Body**: `{ "MYFXBOOK": [ {currency, shortPercent, status, createdAt}, ... ] }` (same array as GET /other/recent)
-- **Retry**: 2 retries w/ backoff; failure is logged (ERROR), never crashes the session.
+- **Retry**: 2 retries w/ backoff; failure is logged to stderr (`logs/scrapper-error.log`), never crashes the session.
 
 ---
 
