@@ -54,7 +54,7 @@
           "GBPZAR"
         ],
         [
-          "https://www.ig.com/ae/commodities/markets-commodities/platinum",
+          "https://www.ig.com/ae/forex/markets-forex/spot-platinum-mini-lcp-5oz",
           "XPTUSD"
         ],
         [
@@ -63,27 +63,27 @@
         ],
         [
           "https://www.ig.com/ae/indices/markets-indices/us-spx-500",
-          "US500"
+          "#US500"
         ],
         [
           "https://www.ig.com/ae/indices/markets-indices/us-tech-100",
-          "NAS100"
+          "#NAS100"
         ],
         [
           "https://www.ig.com/ae/indices/markets-indices/japan-225",
-          "NIK225"
+          "#NIK225"
         ],
         [
           "https://www.ig.com/ae/indices/markets-indices/germany-40",
-          "DE40"
+          "#DE40"
         ],
         [
           "https://www.ig.com/ae/indices/markets-indices/wall-street",
-          "US30"
+          "#US30"
         ],
         [
           "https://www.ig.com/ae/indices/markets-indices/ftse-100",
-          "GB100"
+          "#GB100"
         ]
       ],
       "myFxBook_urls": [
@@ -205,7 +205,7 @@
         ],
         [
           "https://www.myfxbook.com/community/outlook/XAGAUD",
-          "XAGAUD"
+          "XAGUSD"
         ],
         [
           "https://www.myfxbook.com/community/outlook/XAUUSD",
