@@ -4,3 +4,4 @@ node_modules
 excel
 history
 # /app/util/lib/db.json
+logs
