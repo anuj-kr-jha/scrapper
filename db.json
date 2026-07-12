@@ -7,14 +7,684 @@
         "14:00:00",
         "22:00:00"
       ],
-      "interval": 60,
+      "interval": 5,
       "created_at": "2023-03-28T18:02:16.695Z",
-      "ig_counter": 34,
-      "myFxBook_counter": 34
+      "ig_counter": 18,
+      "myFxBook_counter": 35
     }
   ],
-  "RAW_IG": [],
-  "RAW_MYFXBOOK": [],
-  "MYFX_SESSION": "9%2FdU3nZwth%2FjH240aXYndobVrOcvxZFMpKIfCXRFu1hgRfSnVJ7RdW4TXU%2B9hyj5tKjnBlWwJQ4xqNPqs2g09Q%3D%3D",
-  "FINAL": []
+  "RAW_IG": [
+    {
+      "currency": "USDZAR",
+      "percent": 0.55,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:10.981Z"
+    },
+    {
+      "currency": "USDNOK",
+      "percent": 0.53,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:18.054Z"
+    },
+    {
+      "currency": "USDSEK",
+      "percent": 0.55,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:24.992Z"
+    },
+    {
+      "currency": "USDDKK",
+      "percent": 0.64,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:31.425Z"
+    },
+    {
+      "currency": "USDSGD",
+      "percent": 0.75,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:38.379Z"
+    },
+    {
+      "currency": "GBPNOK",
+      "percent": 0.62,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:44.732Z"
+    },
+    {
+      "currency": "EURNOK",
+      "percent": 0.7,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:51.470Z"
+    },
+    {
+      "currency": "EURSEK",
+      "percent": 0.67,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:57.833Z"
+    },
+    {
+      "currency": "GBPSEK",
+      "percent": 0.54,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:04.186Z"
+    },
+    {
+      "currency": "EURZAR",
+      "percent": 0.83,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:10.537Z"
+    },
+    {
+      "currency": "GBPZAR",
+      "percent": 0.67,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:16.900Z"
+    },
+    {
+      "currency": "XPTUSD",
+      "percent": 0,
+      "longShort": "NA",
+      "status": 0,
+      "createdAt": "2026-07-12T01:18:23.189Z"
+    },
+    {
+      "currency": "OILUSD",
+      "percent": 0.76,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:29.768Z"
+    },
+    {
+      "currency": "#US500",
+      "percent": 0.59,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:36.244Z"
+    },
+    {
+      "currency": "#NAS100",
+      "percent": 0.55,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:43.200Z"
+    },
+    {
+      "currency": "#NIK225",
+      "percent": 0.54,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:50.169Z"
+    },
+    {
+      "currency": "#DE40",
+      "percent": 0.51,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:57.128Z"
+    },
+    {
+      "currency": "#US30",
+      "percent": 0.7,
+      "longShort": "short",
+      "status": 1,
+      "createdAt": "2026-07-12T01:19:03.892Z"
+    },
+    {
+      "currency": "#GB100",
+      "percent": 0.52,
+      "longShort": "long",
+      "status": 1,
+      "createdAt": "2026-07-12T01:19:10.950Z"
+    }
+  ],
+  "RAW_MYFXBOOK": [
+    {
+      "currency": "EURUSD",
+      "shortPercent": 0.39,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.758Z"
+    },
+    {
+      "currency": "GBPUSD",
+      "shortPercent": 0.67,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.767Z"
+    },
+    {
+      "currency": "USDJPY",
+      "shortPercent": 0.7,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.767Z"
+    },
+    {
+      "currency": "GBPJPY",
+      "shortPercent": 0.63,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "USDCAD",
+      "shortPercent": 0.8,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURAUD",
+      "shortPercent": 0.29,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURJPY",
+      "shortPercent": 0.61,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDCAD",
+      "shortPercent": 0.64,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDJPY",
+      "shortPercent": 0.55,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDNZD",
+      "shortPercent": 0.68,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDUSD",
+      "shortPercent": 0.54,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "CADJPY",
+      "shortPercent": 0.45,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURCAD",
+      "shortPercent": 0.29,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURCHF",
+      "shortPercent": 0.56,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURGBP",
+      "shortPercent": 0.08,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURNZD",
+      "shortPercent": 0.37,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "GBPCAD",
+      "shortPercent": 0.86,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "GBPCHF",
+      "shortPercent": 0.82,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDCAD",
+      "shortPercent": 0.88,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDJPY",
+      "shortPercent": 0.55,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDUSD",
+      "shortPercent": 0.5,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "USDCHF",
+      "shortPercent": 0.58,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "CHFJPY",
+      "shortPercent": 0.73,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "AUDCHF",
+      "shortPercent": 0.79,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "GBPNZD",
+      "shortPercent": 0.73,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDCHF",
+      "shortPercent": 0.75,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "CADCHF",
+      "shortPercent": 0.2,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "GBPAUD",
+      "shortPercent": 0.84,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAGUSD",
+      "shortPercent": 0.44,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAGAUD",
+      "shortPercent": 0,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUUSD",
+      "shortPercent": 0.51,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUEUR",
+      "shortPercent": 0.21,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUAUD",
+      "shortPercent": 0.4,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUGBP",
+      "shortPercent": 0,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUCHF",
+      "shortPercent": 0.03,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    }
+  ],
+  "MYFX_SESSION": "LId%2FJttZzMPAPab1CELtXWy0cV7fv43bVWdJXzGbSrQ3PZ%2B8Mbe7b4E2HLgQn0Q0xG1RSNWyYgGK822FtLKt3w%3D%3D",
+  "FINAL": [
+    {
+      "currency": "EURUSD",
+      "shortPercent": 0.39,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.758Z"
+    },
+    {
+      "currency": "GBPUSD",
+      "shortPercent": 0.67,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.767Z"
+    },
+    {
+      "currency": "USDJPY",
+      "shortPercent": 0.7,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.767Z"
+    },
+    {
+      "currency": "GBPJPY",
+      "shortPercent": 0.63,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "USDCAD",
+      "shortPercent": 0.8,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURAUD",
+      "shortPercent": 0.29,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURJPY",
+      "shortPercent": 0.61,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDCAD",
+      "shortPercent": 0.64,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDJPY",
+      "shortPercent": 0.55,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDNZD",
+      "shortPercent": 0.68,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "AUDUSD",
+      "shortPercent": 0.54,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "CADJPY",
+      "shortPercent": 0.45,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURCAD",
+      "shortPercent": 0.29,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURCHF",
+      "shortPercent": 0.56,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURGBP",
+      "shortPercent": 0.08,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "EURNZD",
+      "shortPercent": 0.37,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "GBPCAD",
+      "shortPercent": 0.86,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.768Z"
+    },
+    {
+      "currency": "GBPCHF",
+      "shortPercent": 0.82,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDCAD",
+      "shortPercent": 0.88,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDJPY",
+      "shortPercent": 0.55,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDUSD",
+      "shortPercent": 0.5,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "USDCHF",
+      "shortPercent": 0.58,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "CHFJPY",
+      "shortPercent": 0.73,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "AUDCHF",
+      "shortPercent": 0.79,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "GBPNZD",
+      "shortPercent": 0.73,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "NZDCHF",
+      "shortPercent": 0.75,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "CADCHF",
+      "shortPercent": 0.2,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "GBPAUD",
+      "shortPercent": 0.84,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAGUSD",
+      "shortPercent": 0.44,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAGAUD",
+      "shortPercent": 0,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUUSD",
+      "shortPercent": 0.51,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUEUR",
+      "shortPercent": 0.21,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUAUD",
+      "shortPercent": 0.4,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUGBP",
+      "shortPercent": 0,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "XAUCHF",
+      "shortPercent": 0.03,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:08.769Z"
+    },
+    {
+      "currency": "USDZAR",
+      "shortPercent": 0.55,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:10.981Z"
+    },
+    {
+      "currency": "USDNOK",
+      "shortPercent": 0.47,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:18.054Z"
+    },
+    {
+      "currency": "USDSEK",
+      "shortPercent": 0.45,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:24.992Z"
+    },
+    {
+      "currency": "USDDKK",
+      "shortPercent": 0.36,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:31.425Z"
+    },
+    {
+      "currency": "USDSGD",
+      "shortPercent": 0.25,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:38.379Z"
+    },
+    {
+      "currency": "GBPNOK",
+      "shortPercent": 0.62,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:44.732Z"
+    },
+    {
+      "currency": "EURNOK",
+      "shortPercent": 0.7,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:51.470Z"
+    },
+    {
+      "currency": "EURSEK",
+      "shortPercent": 0.33,
+      "status": 1,
+      "createdAt": "2026-07-12T01:17:57.833Z"
+    },
+    {
+      "currency": "GBPSEK",
+      "shortPercent": 0.54,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:04.186Z"
+    },
+    {
+      "currency": "EURZAR",
+      "shortPercent": 0.83,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:10.537Z"
+    },
+    {
+      "currency": "GBPZAR",
+      "shortPercent": 0.67,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:16.900Z"
+    },
+    {
+      "currency": "XPTUSD",
+      "shortPercent": 0,
+      "status": 0,
+      "createdAt": "2026-07-12T01:18:23.189Z"
+    },
+    {
+      "currency": "OILUSD",
+      "shortPercent": 0.24,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:29.768Z"
+    },
+    {
+      "currency": "#US500",
+      "shortPercent": 0.59,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:36.244Z"
+    },
+    {
+      "currency": "#NAS100",
+      "shortPercent": 0.55,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:43.200Z"
+    },
+    {
+      "currency": "#NIK225",
+      "shortPercent": 0.46,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:50.169Z"
+    },
+    {
+      "currency": "#DE40",
+      "shortPercent": 0.51,
+      "status": 1,
+      "createdAt": "2026-07-12T01:18:57.128Z"
+    },
+    {
+      "currency": "#US30",
+      "shortPercent": 0.7,
+      "status": 1,
+      "createdAt": "2026-07-12T01:19:03.892Z"
+    },
+    {
+      "currency": "#GB100",
+      "shortPercent": 0.48,
+      "status": 1,
+      "createdAt": "2026-07-12T01:19:10.950Z"
+    }
+  ]
 }

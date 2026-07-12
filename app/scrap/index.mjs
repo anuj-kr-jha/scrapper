@@ -39,6 +39,10 @@ async function postSessionResult() {
   const body = { MYFXBOOK: calculate() };
   db.set('FINAL', body.MYFXBOOK).write(); // store computed result (exactly what we POST)
   await saveHistory(body); // persist the exact payload (json + xlsx) BEFORE posting
+  if (process.env.CREATE_POST_REQ !== 'true') {
+    console.yellow('⏭️  post req skipped (CREATE_POST_REQ != true)');
+    return;
+  }
   for (let attempt = 0; attempt <= POSTBACK_RETRIES; attempt++) {
     try {
       if (attempt > 0) await new Promise((r) => setTimeout(r, 3000 * attempt));
@@ -81,6 +85,13 @@ export function resetDb() {
 let sessionRunning = false;
 
 export async function scrapAndSaveOnce() {
+  const skipDays = (process.env.SKIP_DAYS || '').split(',').map((x) => Number(x.trim()));
+  const today = new Date().getDay();
+  if (skipDays.includes(today)) {
+    console.yellow(`skipping scrape today (day ${today}) as per SKIP_DAYS=${process.env.SKIP_DAYS}`);
+    return;
+  }
+  
   if (sessionRunning) {
     console.yellow('scrape session already running, skipping');
     return;
@@ -111,26 +122,26 @@ export async function scrapAndSaveOnce() {
 
       const scrap = async () => {
         try {
-          if (myFxBook_counter === 0 && myfxMap === null) myfxMap = await fetchMyFxOutlook(true);
+          // myfxbook: fetched ONCE, all rows are in-memory reads — no per-step throttle needed.
+          // drain the whole map upfront so it doesn't ride ig's paced loop (ig needs the interval, myfxbook doesn't).
+          if (myFxBook_counter === 0 && myfxMap === null) {
+            myfxMap = await fetchMyFxOutlook(true);
+            for (let i = 0; i <= myFxBook_counter_max; i++) {
+              const name = String(myFxBook_urls[i][1]).toUpperCase();
+              const myfxbook = myfxMap && myfxMap[name] ? { ...myfxMap[name] } : { currency: name, shortPercent: 0, status: 0 };
+              db.get('RAW_MYFXBOOK').value()[i] = { ...myfxbook, createdAt: new Date().toISOString() };
+              console.green('✅', new Date().toLocaleString(), myfxbook, `myFxBook [${i + 1}/${myFxBook_counter_max + 1}]`);
+            }
+            db.get('RAW_MYFXBOOK').write();
+            myFxBook_counter = myFxBook_counter_max + 1; // done; loop now paced by ig only
+          }
 
           const ig = ig_counter <= ig_counter_max ? await scrapIG(ig_urls[ig_counter][0], ig_urls[ig_counter][1]) : null;
-
-          let myfxbook = null;
-          if (myFxBook_counter <= myFxBook_counter_max) {
-            const name = String(myFxBook_urls[myFxBook_counter][1]).toUpperCase();
-            myfxbook = myfxMap && myfxMap[name] ? { ...myfxMap[name] } : { currency: name, shortPercent: 0, status: 0 };
-          }
 
           if (ig) {
             // console.log('ig', ig);
             db.get('RAW_IG').value()[ig_counter] = { ...ig, createdAt: new Date().toISOString() };
             db.get('RAW_IG').write();
-          }
-
-          if (myfxbook) {
-            // console.log('myfxbook', myfxbook);
-            db.get('RAW_MYFXBOOK').value()[myFxBook_counter] = { ...myfxbook, createdAt: new Date().toISOString() };
-            db.get('RAW_MYFXBOOK').write();
           }
 
           //
@@ -142,12 +153,10 @@ export async function scrapAndSaveOnce() {
           // const myFxBook_url = ig_urls[ig_counter][0];
 
           //
-          if (ig_counter <= ig_counter_max) console.green('✅', new Date().toLocaleString(), ig, `ig [${ig_counter}/${ig_counter_max}]`);
-          if (myFxBook_counter <= myFxBook_counter_max) console.green('✅', new Date().toLocaleString(), myfxbook, `myFxBook [${myFxBook_counter}/${myFxBook_counter_max}]`);
+          if (ig_counter <= ig_counter_max) console.green('✅', new Date().toLocaleString(), ig, `ig [${ig_counter + 1}/${ig_counter_max + 1}]`);
 
           //
           ig_counter++;
-          myFxBook_counter++;
 
           //
           if (ig_counter > ig_counter_max && myFxBook_counter > myFxBook_counter_max) {
